@@ -1,3 +1,4 @@
+/* Copyright (C) 2013-2016 Felix Hammer, Florian Thauer, Lothar May */
 /**
  * class NetHand
  * @constructor
