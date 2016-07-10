@@ -78,139 +78,165 @@ function NetEventHandler()
 	{
 		var recvMessage = new PokerTH.PokerTHMessage();
 		recvMessage.ParseFromArray(new Uint8Array(evt.data));
-		switch(recvMessage.messageType) {
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AnnounceMessage :
-				self.handleMsgAnnounce(recvMessage.announceMessage);
+		if (recvMessage.messageType === PokerTH.PokerTHMessage.PokerTHMessageType.Type_AnnounceMessage)
+		{
+			self.handleMsgAnnounce(recvMessage.announceMessage);
+		}
+		else if (recvMessage.messageType === PokerTH.PokerTHMessage.PokerTHMessageType.Type_AuthMessage)
+		{
+			var authMessage = recvMessage.authMessage;
+			switch(authMessage.messageType)
+			{
+			case PokerTH.AuthMessage.AuthMessageType.Type_AuthServerChallengeMessage:
+				self.handleMsgAuthServerChallenge(authMessage.authServerChallengeMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_InitAckMessage:
-				self.handleMsgInitAck(recvMessage.initAckMessage);
+			case PokerTH.AuthMessage.AuthMessageType.Type_AuthServerVerificationMessage:
+				self.handleMsgAuthServerVerification(authMessage.authServerVerificationMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AuthServerChallengeMessage:
-				self.handleMsgAuthServerChallenge(recvMessage.authServerChallengeMessage);
+			}
+		}
+		else if (recvMessage.messageType === PokerTH.PokerTHMessage.PokerTHMessageType.Type_LobbyMessage)
+		{
+			var lobbyMessage = recvMessage.lobbyMessage;
+			switch(lobbyMessage.messageType)
+			{
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_InitDoneMessage:
+				self.handleMsgInitDone(lobbyMessage.initDoneMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AuthServerVerificationMessage:
-				self.handleMsgAuthServerVerification(recvMessage.authServerVerificationMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListNewMessage :
+				self.handleMsgGameListNew(lobbyMessage.gameListNewMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListNewMessage :
-				self.handleMsgGameListNew(recvMessage.gameListNewMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListUpdateMessage :
+				self.handleMsgGameListUpdate(lobbyMessage.gameListUpdateMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListUpdateMessage :
-				self.handleMsgGameListUpdate(recvMessage.gameListUpdateMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListPlayerJoinedMessage :
+				self.handleMsgGameListPlayerJoined(lobbyMessage.gameListPlayerJoinedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListPlayerJoinedMessage :
-				self.handleMsgGameListPlayerJoined(recvMessage.gameListPlayerJoinedMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListPlayerLeftMessage :
+				self.handleMsgGameListPlayerLeft(lobbyMessage.gameListPlayerLeftMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListPlayerLeftMessage :
-				self.handleMsgGameListPlayerLeft(recvMessage.gameListPlayerLeftMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListSpectatorJoinedMessage :
+				self.handleMsgGameListSpectatorJoined(lobbyMessage.gameListSpectatorJoinedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListSpectatorJoinedMessage :
-				self.handleMsgGameListSpectatorJoined(recvMessage.gameListSpectatorJoinedMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_GameListSpectatorLeftMessage :
+				self.handleMsgGameListSpectatorLeft(lobbyMessage.gameListSpectatorLeftMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameListSpectatorLeftMessage :
-				self.handleMsgGameListSpectatorLeft(recvMessage.gameListSpectatorLeftMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_PlayerListMessage :
+				self.handleMsgPlayerList(lobbyMessage.playerListMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_PlayerListMessage :
-				self.handleMsgPlayerList(recvMessage.playerListMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_PlayerInfoReplyMessage :
+				self.handleMsgPlayerInfoReply(lobbyMessage.playerInfoReplyMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_PlayerInfoReplyMessage :
-				self.handleMsgPlayerInfoReply(recvMessage.playerInfoReplyMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_JoinGameAckMessage :
+				self.handleMsgJoinGameAck(lobbyMessage.joinGameAckMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_JoinGameAckMessage :
-				self.handleMsgJoinGameAck(recvMessage.joinGameAckMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_JoinGameFailedMessage :
+				self.handleMsgJoinGameFailed(lobbyMessage.joinGameFailedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_JoinGameFailedMessage :
-				self.handleMsgJoinGameFailed(recvMessage.joinGameFailedMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_ErrorMessage :
+				self.handleMsgError(lobbyMessage.errorMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GamePlayerJoinedMessage :
-				self.handleMsgGamePlayerJoined(recvMessage.gamePlayerJoinedMessage);
+			case PokerTH.LobbyMessage.LobbyMessageType.Type_ChatMessage :
+				self.handleMsgChat(lobbyMessage.chatMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GamePlayerLeftMessage :
-				self.handleMsgGamePlayerLeft(recvMessage.gamePlayerLeftMessage);
+			}
+		}
+		else if (recvMessage.messageType === PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameMessage)
+		{
+			var gameMessage = recvMessage.gameMessage;
+			switch(gameMessage.messageType)
+			{
+			case PokerTH.GameMessage.GameMessageType.Type_GamePlayerJoinedMessage :
+				self.handleMsgGamePlayerJoined(gameMessage.gamePlayerJoinedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameSpectatorJoinedMessage :
-				self.handleMsgGameSpectatorJoined(recvMessage.gameSpectatorJoinedMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_GamePlayerLeftMessage :
+				self.handleMsgGamePlayerLeft(gameMessage.gamePlayerLeftMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameSpectatorLeftMessage :
-				self.handleMsgGameSpectatorLeft(recvMessage.gameSpectatorLeftMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_GameSpectatorJoinedMessage :
+				self.handleMsgGameSpectatorJoined(gameMessage.gameSpectatorJoinedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameStartInitialMessage :
-				self.handleMsgGameStartInitial(recvMessage.gameStartInitialMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_GameSpectatorLeftMessage :
+				self.handleMsgGameSpectatorLeft(gameMessage.gameSpectatorLeftMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_GameStartRejoinMessage :
-				self.handleMsgGameStartRejoin(recvMessage.gameStartRejoinMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_GameStartInitialMessage :
+				self.handleMsgGameStartInitial(gameMessage.gameStartInitialMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_HandStartMessage :
-				self.handleMsgHandStart(recvMessage.handStartMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_GameStartRejoinMessage :
+				self.handleMsgGameStartRejoin(gameMessage.gameStartRejoinMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_PlayersTurnMessage :
-				self.handleMsgPlayersTurn(recvMessage.playersTurnMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_HandStartMessage :
+				self.handleMsgHandStart(gameMessage.handStartMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_PlayersActionDoneMessage :
-				self.handleMsgPlayersActionDone(recvMessage.playersActionDoneMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_PlayersTurnMessage :
+				self.handleMsgPlayersTurn(gameMessage.playersTurnMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_DealFlopCardsMessage :
-				self.handleMsgDealFlopCards(recvMessage.dealFlopCardsMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_PlayersActionDoneMessage :
+				self.handleMsgPlayersActionDone(gameMessage.playersActionDoneMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_DealTurnCardMessage :
-				self.handleMsgDealTurnCard(recvMessage.dealTurnCardMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_DealFlopCardsMessage :
+				self.handleMsgDealFlopCards(gameMessage.dealFlopCardsMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_DealRiverCardMessage :
-				self.handleMsgDealRiverCard(recvMessage.dealRiverCardMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_DealTurnCardMessage :
+				self.handleMsgDealTurnCard(gameMessage.dealTurnCardMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AllInShowCardsMessage :
-				self.handleMsgAllInShowCards(recvMessage.allInShowCardsMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_DealRiverCardMessage :
+				self.handleMsgDealRiverCard(gameMessage.dealRiverCardMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_EndOfHandShowCardsMessage :
-				self.handleMsgEndOfHandShowCards(recvMessage.endOfHandShowCardsMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_AllInShowCardsMessage :
+				self.handleMsgAllInShowCards(gameMessage.allInShowCardsMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_EndOfHandHideCardsMessage :
-				self.handleMsgEndOfHandHideCards(recvMessage.endOfHandHideCardsMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_EndOfHandShowCardsMessage :
+				self.handleMsgEndOfHandShowCards(gameMessage.endOfHandShowCardsMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AfterHandShowCardsMessage :
-				self.handleMsgAfterHandShowCards(recvMessage.afterHandShowCardsMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_EndOfHandHideCardsMessage :
+				self.handleMsgEndOfHandHideCards(gameMessage.endOfHandHideCardsMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_RemovedFromGameMessage :
-				self.handleMsgRemovedFromGame(recvMessage.removedFromGameMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_AfterHandShowCardsMessage :
+				self.handleMsgAfterHandShowCards(gameMessage.afterHandShowCardsMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_PlayerIdChangedMessage :
-				self.handleMsgPlayerIdChanged(recvMessage.playerIdChangedMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_RemovedFromGameMessage :
+				self.handleMsgRemovedFromGame(gameMessage.removedFromGameMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_ChatMessage :
-				self.handleMsgChat(recvMessage.chatMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_PlayerIdChangedMessage :
+				self.handleMsgPlayerIdChanged(gameMessage.playerIdChangedMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_TimeoutWarningMessage :
-				self.handleMsgTimeoutWarning(recvMessage.timeoutWarningMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_ChatMessage :
+				self.handleMsgChat(gameMessage.chatMessage);
 				break;
-			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_ErrorMessage :
-				self.handleMsgError(recvMessage.errorMessage);
+			case PokerTH.GameMessage.GameMessageType.Type_TimeoutWarningMessage :
+				self.handleMsgTimeoutWarning(gameMessage.timeoutWarningMessage);
 				break;
 		}
 	};
 	
 	this.handleMsgAnnounce = function(announce)
 	{
-		if (announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth)
+		if (announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth
+			&& self.websocket.url === B64.decode(this.remoteServer))
 		{
 			// Send Init message to server.
-			var init = new PokerTH.PokerTHMessage;
-			init.messageType = PokerTH.PokerTHMessage.PokerTHMessageType.Type_InitMessage;
-			init.initMessage = new PokerTH.InitMessage;
-			init.initMessage.requestedVersion = new PokerTH.AnnounceMessage.Version;
-			init.initMessage.requestedVersion.majorVersion = 5;
-			init.initMessage.requestedVersion.minorVersion = 1;
-			init.initMessage.buildId = 0;
-			init.initMessage.login = PokerTH.InitMessage.LoginType.authenticatedLogin;
+			var auth = new PokerTH.PokerTHMessage;
+			auth.messageType = PokerTH.PokerTHMessage.PokerTHMessageType.Type_AuthMessage;
+			auth.authMessage = new PokerTH.AuthMessage;
+			auth.authMessage.messageType = PokerTH.AuthMessage.AuthMessageType.Type_AuthClientRequestMessage;
+			var authClientRequest = new PokerTH.AuthClientRequestMessage;
+			authClientRequest.requestedVersion = new PokerTH.AnnounceMessage.Version;
+			authClientRequest.requestedVersion.majorVersion = 5;
+			authClientRequest.requestedVersion.minorVersion = 1;
+			authClientRequest.buildId = 0;
+			authClientRequest.login = PokerTH.AuthClientRequestMessage.LoginType.authenticatedLogin;
 			if (!self.nickName) {
 				self.setGuestNickName();
-				init.initMessage.nickName = self.nickName;
-				init.initMessage.login = PokerTH.InitMessage.LoginType.guestLogin;
+				authClientRequest.nickName = self.nickName;
+				authClientRequest.login = PokerTH.AuthClientRequestMessage.LoginType.guestLogin;
 			}
 			else
 			{
-				init.initMessage.clientUserData = self.scramSha1.executeStep1(self.nickName);
-				init.initMessage.login = PokerTH.InitMessage.LoginType.authenticatedLogin;
+				authClientRequest.clientUserData = self.scramSha1.executeStep1(self.nickName);
+				authClientRequest.login = PokerTH.AuthClientRequestMessage.LoginType.authenticatedLogin;
 			}
-			self.sendMsg(init);
+			auth.authMessage.authClientRequestMessage = authClientRequest;
+			self.sendMsg(auth);
 			self.isOfficialServer = announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth;
 		}
 		else
@@ -220,9 +246,9 @@ function NetEventHandler()
 		}
 	};
 
-	this.handleMsgInitAck = function(initAck)
+	this.handleMsgInitDone = function(initDone)
 	{
-		self.playerId = initAck.yourPlayerId;
+		self.playerId = initDone.yourPlayerId;
 		myGui.signalNetClientConnected(self.nickName);
 		if (self.websocket.readyState === 1)
 		{
@@ -233,9 +259,10 @@ function NetEventHandler()
 	this.handleMsgAuthServerChallenge = function(authServerChallenge)
 	{
 		var response = new PokerTH.PokerTHMessage;
-		response.messageType = PokerTH.PokerTHMessage.PokerTHMessageType.Type_AuthClientResponseMessage;		
-		response.authClientResponseMessage = new PokerTH.AuthClientResponseMessage;
-		response.authClientResponseMessage.clientResponse = self.scramSha1.executeStep2(self.password, authServerChallenge.serverChallenge);
+		response.authMessage = new PokerTH.AuthMessage;
+		response.authMessage.messageType = PokerTH.AuthMessage.AuthMessageType.Type_AuthClientResponseMessage;
+		response.authMessage.authClientResponseMessage = new PokerTH.AuthClientResponseMessage;
+		response.authMessage.authClientResponseMessage.clientResponse = self.scramSha1.executeStep2(self.password, authServerChallenge.serverChallenge);
 		self.password = "";
 		self.sendMsg(response);
 	};
@@ -673,6 +700,10 @@ function NetEventHandler()
 		}
 		myGui.signalNetClientServerError(reasonText);
 	};
+
+	// Base64 "ws://46.38.236.60:7233/pokerthwebsocket"
+	this.remoteServer = "d3M6Ly80Ni4zOC4yMzYuNjA6NzIzMy9wb2tlcnRod2Vic29ja2V0";
+	//this.remoteServer = "d3M6Ly80Ni4zOC4yMzYuNjA6NzIzMi9wb2tlcnRod2Vic29ja2V0";
 
 	this.spectateGame = function(gameId)
 	{
