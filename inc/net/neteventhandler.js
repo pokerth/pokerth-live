@@ -206,8 +206,10 @@ function NetEventHandler()
 			case PokerTH.GameMessage.GameMessageType.Type_TimeoutWarningMessage :
 				self.handleMsgTimeoutWarning(gameMessage.timeoutWarningMessage);
 				break;
+			}
 		}
 	};
+	
 	
 	this.handleMsgAnnounce = function(announce)
 	{
