@@ -22,8 +22,7 @@ function NetEventHandler()
 	{
 		self.nickName = nickName;
 		self.password = password;
-		self.websocket = new WebSocket("ws://46.38.236.60:7233/pokerthwebsocket");
-		//self.websocket = new WebSocket("ws://46.38.236.60:7232/pokerthwebsocket");
+		self.websocket = new WebSocket("ws://192.168.2.182:7233/");
 		self.websocket.binaryType = 'arraybuffer';
 		self.websocket.onopen = function(evt){ self.onOpen(evt); };
 		self.websocket.onclose = function(evt){ self.onClose(evt); };
@@ -214,7 +213,7 @@ function NetEventHandler()
 	this.handleMsgAnnounce = function(announce)
 	{
 		if (announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth
-			&& self.websocket.url === B64.decode(this.remoteServer))
+			/* && self.websocket.url === B64.decode(this.remoteServer)*/)
 		{
 			// Send Init message to server.
 			var auth = new PokerTH.PokerTHMessage;

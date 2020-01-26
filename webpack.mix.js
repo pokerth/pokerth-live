@@ -17,6 +17,7 @@ mix.babel([
   'inc/third_party/protobuf.js',
   'inc/third_party/jquery.timers-1.1.2.js',
   'inc/third_party/base64.js',
+  'node_modules/crypto-js/crypto-js.js',
   'inc/config/configstorage.js',
   'inc/audio/soundplayer.js',
   'inc/audio/soundevents.js',
@@ -36,7 +37,8 @@ mix.babel([
   'inc/gui/lobby/lobby.js',
   'inc/gui/login-dialog/login-dialog.js',
   'inc/gui/gui.js',
-  'inc/net/neteventhandler.js'], 'pokerth-live_min.js');
+  'inc/net/neteventhandler.js',
+  'app.js'], 'pokerth-live_min.js');
 
 // Full API
 // mix.js(src, output);
