@@ -1,7 +1,4 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/* Copyright (C) 2013-2016 Felix Hammer, Florian Thauer, Lothar May */
 MIN_NUMBER_OF_PLAYERS = 2;
 MAX_NUMBER_OF_PLAYERS = 10;
 
