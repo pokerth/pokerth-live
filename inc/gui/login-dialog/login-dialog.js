@@ -28,7 +28,7 @@ function LoginDialogImpl()
 								'<p style="font-style:italic;">Login may take some time, please be patient ...</p> '+
 								'<a id="loginDialogLoginButton" href="" data-role="button" data-inline="true" data-theme="c">Login</a> '+
 								'<a id="loginDialogCancelButton" href="" data-role="button" data-inline="true" data-theme="c">Cancel</a> '+
-								'<br><a target="_blank" href="http://www.poker-heroes.com/register.html">Create your PokerTH gaming account ...</a> '+
+								'<br><a target="_blank" href="https://www.pokerth.net/component/pthranking/?view=registration">Create your PokerTH gaming account ...</a> '+
 							'</div> ').appendTo( popup );
 
 			popup.popup();
