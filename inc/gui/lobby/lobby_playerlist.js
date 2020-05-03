@@ -24,7 +24,7 @@ function LobbyPlayerListImpl()
 		if(myNetCache.hasPlayerData(playerId)) {
 			playerNameString = myNetCache.getPlayerData(playerId).playerInfoData.playerName;
 			avatarFileName = myNetCache.getPlayerData(playerId).avatarFileName;
-			if(avatarFileName != "") { avatarFileName = 'http://avatar.poker-heroes.com/web/'+avatarFileName; }
+			if(avatarFileName != "") { avatarFileName = avatarServerURL + avatarFileName; }
 			else { avatarFileName = "gfx/1px.png"; }
 		}
 		else {
@@ -55,7 +55,7 @@ function LobbyPlayerListImpl()
 		var playerName = myNetCache.getPlayerData(playerId).playerInfoData.playerName;
 		$('#lobbyPlayerList_playerName-'+playerId).html(playerName);
 		var avatarFileName = myNetCache.getPlayerData(playerId).avatarFileName;
-		if(avatarFileName != "") { avatarFileName = 'http://avatar.poker-heroes.com/web/'+avatarFileName; }
+		if(avatarFileName != "") { avatarFileName = avatarServerURL + avatarFileName; }
 		else { avatarFileName = "gfx/1px.png"; }
 		$('#lobbyPlayerList_playerAvatar-'+playerId).attr("src", avatarFileName);
 		self.updatePlayerListView();

@@ -1,0 +1,189 @@
+
+#lobbyArea {
+	position: absolute;
+    left: 0px;
+    right: 0px;
+	top: 0px;
+    margin: 0 auto!important;
+}
+
+#lobby-header-container{
+	min-height: 75px;
+	position: sticky;
+	top:0;
+	z-index: 2;
+}
+
+#lobby-user-loggedIn {
+	text-align: left;
+	padding: 12px 0 8px 0;
+	width: 20%;
+	float: left;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#lobby-header {
+	text-align: center;
+	color: gold;
+	width: 60%;
+	float: left;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+#lobby-version-info {
+	text-align: right;
+	padding: 12px 0 8px 0;
+	width: 20%;
+	float: left;
+	font-style: italic;
+	font-size: 12px;
+}
+
+
+ 
+.lobbyNavbarButtons {
+	padding: 10px 0 10px 0;
+}
+
+	
+// Lobby - gameList
+#lobbyGameList_gameDesc {
+	width: 300px;
+	float: left;
+	height: 26px;
+}
+
+.lobbyGameList_numberOfPlayers {
+	height: 26px;
+	width: 60px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: center;
+}
+
+.lobbyGameList_gameMode {
+	height: 26px;
+	width: 40px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: center;
+}
+
+#lobbyGameList_gameType {
+	height: 26px;
+	width: 40px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: center;
+}
+
+#lobbyGameList_gamePrivate {
+	height: 26px;
+	width: 40px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: center;
+}
+
+#lobbyGameList_gameSpectators {
+	height: 26px;
+	width: 60px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: left;
+	padding: 0 0 0 8px;
+	vertical-align: top;
+}
+
+#lobbyGameList_gameSpectators_img {
+	margin-top: -2px;
+}
+
+.lobbyGameList_gameNumberOfSpectators {
+	height: 26px;
+	vertical-align: top;
+	margin: 0 0 0 8px;
+}
+
+#lobbyGameList_gameTimeouts {
+	height: 26px;
+	width: 80px;
+	float: left;
+	border-left: solid 1px black;
+	text-align: center;
+}
+
+.lobbyGameList_spectateButton {
+	color: green;
+	font-weight: bolder;
+	font-size-adjust: 1;
+}
+
+#lobbyGameList_playerAvatar {
+	margin:0px;
+	padding-top:1px;
+	padding-left:0px;
+	padding-bottom:0px;
+}
+
+#lobbyGameList_playerName {
+	margin:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:20px;
+}
+
+.lobbyPlayerList-playerItem {
+	min-height: 51px !important;
+	max-height: 51px !important;
+	height: 51px;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.lobbyPlayerList-playerAvatar {
+	width: 50px;
+	height: 50px;
+	margin: 0 0 1px 1px !important;
+}
+
+.lobbyPlayerList-playerName {
+	margin: 5px 0;
+	padding: 0;
+}
+
+.lobbyPlayerList-playerAvatarDiv {
+	float:left;
+	height: 51px;
+	width: 50px;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.lobbyPlayerList-playerNameGameInfosDiv {
+	float:left;
+	height: 50px;
+	padding: 0 10px 0 15px !important;
+	margin: 0 !important;
+}
+
+.lobbyPlayerList-spectatorButtonDiv {
+	float:right;
+	height: 50px;
+	padding: 0 !important;
+}
+
+.lobbyPlayerList_spectatorButton {
+	margin: 3px 7px 0 0 !important;
+}
+
+// Lobby - chat
+#lobby_chat_text {
+	font-size: 18px;
+}
+
+#lobbyChat {
+	padding: 0px;
+}

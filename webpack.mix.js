@@ -37,6 +37,10 @@ mix.babel([
   'inc/gui/login-dialog/login-dialog.js',
   'inc/gui/gui.js',
   'inc/net/neteventhandler.js'], 'pokerth-live_min.js');
+  mix.sass('styles/styles.scss', 'styles/styles.css')
+    .options({
+      processCssUrls: false
+    });
 
 // Full API
 // mix.js(src, output);

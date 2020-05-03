@@ -25,6 +25,9 @@ $( document ).on( "mobileinit", function() {
   $.mobile.loader.prototype.options.html = "";
 });
 
+// Avatar server URL
+var avatarServerURL = 'http://pokerth.net/avatardav/';
+
 ///////////// GUI HELPER FUNCTION ////////////
 CanvasRenderingContext2D.prototype.roundRect = function (xx,yy, ww,hh, rad, fill, stroke) {
     if (typeof(rad) == "undefined") rad = 5;
