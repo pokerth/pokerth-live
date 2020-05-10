@@ -43,7 +43,6 @@ function LobbyImpl()
 		myLobbyChat.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
 		$('#lobbyArea').css({'overflow-y':'auto'});
-		$('#content').css({'padding':'0px'});
 	};
        
 	this.showPlayerList = function() 
@@ -53,7 +52,6 @@ function LobbyImpl()
 		myLobbyChat.setActiveState(false);
 		myLobbyGameList.setActiveState(false);
 		$('#lobbyArea').css({'overflow-y':'auto'});
-		$('#content').css({'padding':'0px'});
 	};
 	 
 	this.showChat = function() 
@@ -62,7 +60,6 @@ function LobbyImpl()
 		myLobbyGameList.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
 		$('#lobbyArea').css({'overflow-y':'hidden'});
-		$('#content').css({'padding':'0px 0px 0px 15px'});
 	};
 	
 	this.showWaitStartMsg = function(gameId, waitText) 

@@ -18,7 +18,7 @@
 
 		<!-- Main -->
 		<main>
-			<div id="gameArea">
+			<div id="gameArea" class="gameArea">
 				<canvas id="gameCanvas">
 				</canvas>
 				<canvas id="gameCanvas2">
@@ -35,21 +35,21 @@
 				</canvas>
 			</div>
 			
-			<div id="lobbyArea">
-				<div data-role="page" id="lobbyPage">
+			<div id="lobbyArea" class="lobbyArea">
+				<div id="lobbyPage" class="lobbyPage" data-role="page">
 					
-					<div id="lobby-header-container" data-role="header">
-						<div id="lobby-user-loggedIn">
+					<div id="lobby-header-container" class="lobby-header-container" data-role="header">
+						<div id="lobby-user-loggedIn" class="lobby-user-loggedIn">
 						</div>
 
-						<div id="lobby-header">
+						<div id="lobby-header" class="lobby-header">
 							PokerTH Lobby
 						</div>
 
-						<div id="lobby-version-info">
+						<div id="lobby-version-info" class="lobby-version-info">
 						</div>
 
-						<div id="lobby-navbar" data-role="navbar">
+						<div id="lobby-navbar" class="lobby-navbar" data-role="navbar">
 							<ul>
 								<li>
 									<a id="lobbyGameListButton" class="lobbyNavbarButtons ui-btn-active" href="">
@@ -71,13 +71,17 @@
 
 					</div>
 				
-					<div id="content" data-role="content">	
-						<div id="lobbyGameList" style="display:none;" data-role="content">
+					<div id="lobby-content" class="lobby-content" data-role="content">
+
+						<div id="lobbyGameList" class="lobbyGameList" data-role="content">
 						</div>
-						<div id="lobbyPlayerList" style="display:none;" data-role="content">
+
+						<div id="lobbyPlayerList" class="lobbyPlayerList" data-role="content">
 						</div>
-						<div id="lobbyChat" style="display:none;" data-role="content">
+
+						<div id="lobbyChat" class="lobbyChat" data-role="content">
 						</div>
+
 					</div>
 
 				</div>
@@ -99,7 +103,7 @@
 				pokerthStarted = "1";
 			}
 		</script>
-		<script type="text/javascript" src="inc/pokerth-live_min.js?ts=3" ></script>
+		<script src="inc/pokerth-live_min.js?ts=3" ></script>
 		 
 	</body>
 
