@@ -35,7 +35,7 @@ npm run prod
 
 ## Configuration
 
-Change the websocket ip:port in the following file "pokerth-live/inc/net/neteventhandler.js"  
+Change the websocket ip:port in the following file "/inc/net/neteventhandler.js"  
 
 *Inspect html code at http://live.pokerth.net/ to know the websocket ip:port used
 
