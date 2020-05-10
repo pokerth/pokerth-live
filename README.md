@@ -4,7 +4,7 @@ PokerTH live - Spectator tool
 
 April note (for live.pokerth.net):  
 *Login as Guest (username/password disabled)  
-*Logins only work on Main FR Server
+*Login only works for Main FR Server
 
 ## Installation
 
