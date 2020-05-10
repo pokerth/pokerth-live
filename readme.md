@@ -2,9 +2,9 @@
 
 PokerTH live - Spectator tool
 
-April note (for live.pokerth.net):
-*Login as Guest (username/password disabled)
-*Logins do work only on the Main FR Server
+April note (for live.pokerth.net):  
+*Login as Guest (username/password disabled)  
+*Logins only work on Main FR Server
 
 ## Installation
 
@@ -35,9 +35,9 @@ npm run prod
 
 ## Configuration
 
-Change the websocket ip:port in "pokerth-live/inc/net/neteventhandler.js" file.
+Change the websocket ip:port in the following file "pokerth-live/inc/net/neteventhandler.js"  
 
-*Take html of http://live.pokerth.net/ as example how to init the spec tool.
+*Inspect html code at http://live.pokerth.net/ to know the websocket ip:port used
 
 ## License
 GNU Affero General Public License
