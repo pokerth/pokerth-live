@@ -16,10 +16,10 @@ Use git clone from Master branch.
 git clone https://github.com/pokerth/pokerth-live.git
 ```
 
-Then switch to the 001-webpack-html branch.
+Then switch to the 001-webpack-html5 branch.
 
 ```bash
-git checkout 001-webpack-html
+git checkout 001-webpack-html5
 ```
 
 Now install neccesary dependencies.
