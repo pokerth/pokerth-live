@@ -10,7 +10,7 @@ function LobbyImpl()
 	var self = this;
 	this.isActive = false;
 	this.currentWaitingGameId = 0;
-	$("#lobby-version-info").html("v"+POKERTH_BETA_RELEASE_STRING+"&nbsp;&nbsp;");
+	$("#lobby-version-info").html("v"+POKERTH_BETA_RELEASE_STRING);
 	
 	this.clearLobby = function()
 	{
@@ -27,14 +27,14 @@ function LobbyImpl()
         
 	this.clientConnected = function(nickName) 
 	{
-		$("#lobby-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;"+nickName);
-		$("#lobby-user-loggedIn").css({ "color" : "green" });
+		$("#lobby-user-loggedIn").html(nickName);
+		$("#lobby-user-loggedIn").addClass('online');
 	}
 	
 	this.clientDisconnected = function() 
 	{
-		$("#lobby-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;offline");
-		$("#lobby-user-loggedIn").css({ "color" : "red" });
+		$("#lobby-user-loggedIn").html("offline");
+		$("#lobby-user-loggedIn").addClass('offline');
 	}
 		
 	this.showGameList = function() 
@@ -42,16 +42,14 @@ function LobbyImpl()
 		myLobbyGameList.setActiveState(true);
 		myLobbyChat.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'auto'});
 	};
        
 	this.showPlayerList = function() 
 	{
 		myLobbyPlayerList.setActiveState(true);
-		myLobbyPlayerList.updatePlayerListView();
 		myLobbyChat.setActiveState(false);
 		myLobbyGameList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'auto'});
+		myLobbyPlayerList.updatePlayerListView();
 	};
 	 
 	this.showChat = function() 
@@ -59,7 +57,6 @@ function LobbyImpl()
 		myLobbyChat.setActiveState(true);
 		myLobbyGameList.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'hidden'});
 	};
 	
 	this.showWaitStartMsg = function(gameId, waitText) 
@@ -135,7 +132,9 @@ function LobbyImpl()
 		$("#loadingLobbyMsg").popup("close");
 		$("#loadingLobbyMsg").remove();
 	};
-	
+
+	/* Better use CSS classes for responsive */
+	/*
 	this.resizeLobby = function()
  	{
 		var lobbyArea = document.getElementById('lobbyArea');
@@ -173,21 +172,22 @@ function LobbyImpl()
 		if(myLobbyChat.isActive) {
 			myLobbyChat.resize();
 		}
- 	};	
+	};
+	 */
 	
 	this.setActiveState = function(active) {
 		
 		if(active) {
 			self.isActive = true;
-			window.addEventListener('resize', self.resizeLobby, false);
-			window.addEventListener('orientationchange', self.resizeLobby, false);
-			self.resizeLobby();
+			// window.addEventListener('resize', self.resizeLobby, false);
+			// window.addEventListener('orientationchange', self.resizeLobby, false);
+			// self.resizeLobby();
 		}
 		else {
 			self.isActive = false;
 			self.hideWaitStartGameMsg();		
-			window.removeEventListener('resize', self.resizeLobby, false);
-			window.removeEventListener('orientationchange', self.resizeLobby, false);
+			// window.removeEventListener('resize', self.resizeLobby, false);
+			// window.removeEventListener('orientationchange', self.resizeLobby, false);
 		}
 	};
 };

@@ -11,7 +11,6 @@ function LobbyGameListImpl()
 	this.isActive = false;
 	$("#lobbyGameList").append('<div id="gameListCollapsibleSet" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-inset="true"></div>');
 	$("#lobbyGameListButton").html("Games ("+$('.gameListCollapsible').length+")");
-	$("#lobbyGameListButton").addClass("ui-btn-active");
 	
 	//class members
 	this.prepare = function() {

@@ -1,1 +1,444 @@
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}body{background:#393939;background-image:url(../gfx/body_bg.png);background:url(../gfx/body_bg.png) top repeat,linear-gradient(0deg,#1c1e21,#3b3f45)}.lobbyArea{position:absolute;left:0;right:0;top:0;margin:0 auto!important}.lobby-header-container{min-height:75px;position:-webkit-sticky;position:sticky;top:0;z-index:2}.lobby-user-loggedIn{text-align:left;padding:12px 0 8px;width:20%;float:left;font-weight:700;font-size:12px}.lobby-header{text-align:center;color:gold;width:60%;float:left;font-weight:700;margin:10px 0}.lobby-version-info{text-align:right;padding:12px 0 8px;width:20%;float:left;font-style:italic;font-size:12px}.lobbyNavbarButtons{padding:10px 0}.lobby-content{padding:0}.lobbyGameList{display:none;padding:16px 32px}#lobbyGameList_gameDesc{width:300px;float:left;height:26px}.lobbyGameList_numberOfPlayers{width:60px}.lobbyGameList_gameMode,.lobbyGameList_numberOfPlayers{height:26px;float:left;border-left:1px solid #000;text-align:center}.lobbyGameList_gameMode{width:40px}#lobbyGameList_gamePrivate,#lobbyGameList_gameType{height:26px;width:40px;float:left;border-left:1px solid #000;text-align:center}#lobbyGameList_gameSpectators{height:26px;width:60px;float:left;border-left:1px solid #000;text-align:left;padding:0 0 0 8px;vertical-align:top}#lobbyGameList_gameSpectators_img{margin-top:-2px}.lobbyGameList_gameNumberOfSpectators{height:26px;vertical-align:top;margin:0 0 0 8px}#lobbyGameList_gameTimeouts{height:26px;width:80px;float:left;border-left:1px solid #000;text-align:center}.lobbyGameList_spectateButton{color:green;font-weight:bolder;font-size-adjust:1}#lobbyGameList_playerAvatar{margin:0;padding-top:1px;padding-left:0;padding-bottom:0}#lobbyGameList_playerName{margin:0;padding-top:0;padding-bottom:0;padding-left:20px}.lobbyPlayerList{display:none;padding:16px 32px}.lobbyPlayerList .ui-listview-filter,.lobbyPlayerList>.ui-listview{margin:0}.lobbyPlayerList-playerItem{min-height:51px!important;max-height:51px!important;height:51px;margin:0!important;padding:0!important}.lobbyPlayerList-playerAvatar{width:50px;height:50px;margin:0 0 1px 1px!important}.lobbyPlayerList-playerName{margin:5px 0;padding:0}.lobbyPlayerList-playerAvatarDiv{float:left;height:51px;width:50px;margin:0!important;padding:0!important}.lobbyPlayerList-playerNameGameInfosDiv{float:left;height:50px;padding:0 10px 0 15px!important;margin:0!important}.lobbyPlayerList-spectatorButtonDiv{float:right;height:50px;padding:0!important}.lobbyPlayerList_spectatorButton{margin:3px 7px 0 0!important}.lobbyChat{display:none;padding:16px 32px}#chatTextArea{background:#fff;box-shadow:inset 1px 1px 3px 0 rgba(0,0,0,.75)}#lobby_chat_text{font-size:18px}.gameArea{position:absolute;left:0;right:0;top:0;margin:0 auto!important}#gameCanvas{z-index:1}#gameCanvas,#gameCanvas2{width:100%;height:100%;position:absolute;left:0;top:0}#gameCanvas2{z-index:2}#gameCanvas3{z-index:3}#gameCanvas3,#gameCanvas4{width:100%;height:100%;position:absolute;left:0;top:0}#gameCanvas4{z-index:4}#gameCanvas5{z-index:5}#gameCanvas5,#gameCanvas6{width:100%;height:100%;position:absolute;left:0;top:0}#gameCanvas6{z-index:6}#gameCanvas7{width:100%;height:100%;position:absolute;left:0;top:0;z-index:7}#table-user-loggedIn{font-family:sans-serif;text-align:left;padding:5 0 0;position:absolute;top:0;left:0;font-weight:700;font-size:12px;z-index:15}#table-chat-textArea{position:absolute;z-index:1000;font-color:white;color:#fff;background-color:#0a132b;overflow-y:scroll;border:2px solid #021a7d}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* nunito-regular - latin */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../inc/fonts/nunito-v12-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Nunito Regular"), local("Nunito-Regular"), url("../inc/fonts/nunito-v12-latin-regular.eot?#iefix") format("embedded-opentype"), url("../inc/fonts/nunito-v12-latin-regular.woff2") format("woff2"), url("../inc/fonts/nunito-v12-latin-regular.woff") format("woff"), url("../inc/fonts/nunito-v12-latin-regular.ttf") format("truetype"), url("../inc/fonts/nunito-v12-latin-regular.svg#Nunito") format("svg");
+  /* Legacy iOS */
+}
+/* nunito-700 - latin */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../inc/fonts/nunito-v12-latin-700.eot");
+  /* IE9 Compat Modes */
+  src: local("Nunito Bold"), local("Nunito-Bold"), url("../inc/fonts/nunito-v12-latin-700.eot?#iefix") format("embedded-opentype"), url("../inc/fonts/nunito-v12-latin-700.woff2") format("woff2"), url("../inc/fonts/nunito-v12-latin-700.woff") format("woff"), url("../inc/fonts/nunito-v12-latin-700.ttf") format("truetype"), url("../inc/fonts/nunito-v12-latin-700.svg#Nunito") format("svg");
+  /* Legacy iOS */
+}
+/**
+* Main structure for lobby and game areas
+* TODO: remove all !important in attr when jQuery Mobile will be deleted
+**/
+html {
+  background: linear-gradient(0deg, #1c1e21 0%, #3b3f45 100%);
+}
+
+body {
+  background: #393939;
+  background-image: url("../gfx/body_bg.png");
+  background: url("../gfx/body_bg.png") top center repeat;
+  font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.ui-mobile, .ui-mobile body {
+  height: 100% !important;
+}
+
+.header {
+  background-image: url("../gfx/header_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  background-size: cover;
+  width: 100%;
+  height: 155px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.header .header-top-container {
+  display: flex;
+  background: rgba(35, 64, 35, 0.55);
+}
+.header .header-top-container .logo-main {
+  padding: 20px 30px;
+}
+.header .header-top-container .header-info {
+  padding: 30px;
+  margin-left: auto;
+}
+.header .header-top-container .version-info {
+  color: white;
+  font-size: 0.75rem;
+}
+.header .header-top-container .user-loggedIn {
+  text-align: right;
+  font-weight: 700;
+  padding: 10px 0;
+}
+.header .header-top-container .user-loggedIn.online {
+  color: white;
+}
+.header .header-top-container .user-loggedIn.offline {
+  color: red;
+}
+.header .header-navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.header .header-navbar .navbar-btn {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 12px;
+}
+.header .header-navbar .navbar-btn-a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+.header .header-navbar .navbar-btn:not(:first-child) {
+  border-left: 1px solid white;
+}
+.header .header-navbar .navbar-btn .ui-btn-inner {
+  padding: 0;
+  border: none;
+}
+
+.lobbyArea {
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100% - 155px);
+  position: relative;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+.lobbyPage {
+  min-height: unset !important;
+  position: relative !important;
+}
+
+.lobby-content {
+  height: calc(100vh - 155px);
+  padding: 0;
+}
+
+.lobbyGameList {
+  display: none;
+  padding: 16px 32px;
+}
+
+#lobbyGameList_gameDesc {
+  width: 300px;
+  float: left;
+  height: 26px;
+}
+
+.lobbyGameList_numberOfPlayers {
+  height: 26px;
+  width: 60px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: center;
+}
+
+.lobbyGameList_gameMode {
+  height: 26px;
+  width: 40px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: center;
+}
+
+#lobbyGameList_gameType {
+  height: 26px;
+  width: 40px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: center;
+}
+
+#lobbyGameList_gamePrivate {
+  height: 26px;
+  width: 40px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: center;
+}
+
+#lobbyGameList_gameSpectators {
+  height: 26px;
+  width: 60px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: left;
+  padding: 0 0 0 8px;
+  vertical-align: top;
+}
+
+#lobbyGameList_gameSpectators_img {
+  margin-top: -2px;
+}
+
+.lobbyGameList_gameNumberOfSpectators {
+  height: 26px;
+  vertical-align: top;
+  margin: 0 0 0 8px;
+}
+
+#lobbyGameList_gameTimeouts {
+  height: 26px;
+  width: 80px;
+  float: left;
+  border-left: solid 1px black;
+  text-align: center;
+}
+
+.lobbyGameList_spectateButton {
+  color: green;
+  font-weight: bolder;
+  font-size-adjust: 1;
+}
+
+#lobbyGameList_playerAvatar {
+  margin: 0px;
+  padding-top: 1px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+
+#lobbyGameList_playerName {
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}
+
+.lobbyPlayerList {
+  display: none;
+  padding: 16px 32px;
+}
+.lobbyPlayerList > form {
+  background: transparent;
+  margin: 8px 0 24px 0;
+}
+.lobbyPlayerList > .ui-listview {
+  margin: 0;
+}
+
+.lobbyPlayerList-playerItem {
+  min-height: 51px !important;
+  max-height: 51px !important;
+  height: 51px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.lobbyPlayerList-playerAvatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 0 1px 1px !important;
+}
+
+.lobbyPlayerList-playerName {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.lobbyPlayerList-playerAvatarDiv {
+  float: left;
+  height: 51px;
+  width: 50px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.lobbyPlayerList-playerNameGameInfosDiv {
+  float: left;
+  height: 50px;
+  padding: 0 10px 0 15px !important;
+  margin: 0 !important;
+}
+
+.lobbyPlayerList-spectatorButtonDiv {
+  float: right;
+  height: 50px;
+  padding: 0 !important;
+}
+
+.lobbyPlayerList_spectatorButton {
+  margin: 3px 7px 0 0 !important;
+}
+
+.lobbyChat {
+  display: none;
+  padding: 16px 32px;
+  height: calc(100% - 32px);
+}
+
+#chatTextArea {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  padding: 16px !important;
+  height: 100% !important;
+  min-height: 200px;
+}
+
+#lobby_chat_text {
+  font-size: 18px;
+}
+
+#game_chat_text {
+  line-height: 1.4rem;
+}
+
+.gameArea {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 155px;
+  margin: 0 auto !important;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+
+#gameCanvas2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+
+#gameCanvas3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 3;
+}
+
+#gameCanvas4 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 4;
+}
+
+#gameCanvas5 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 5;
+}
+
+#gameCanvas6 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 6;
+}
+
+#gameCanvas7 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 7;
+}
+
+#table-user-loggedIn {
+  text-align: left;
+  padding: 5 0 0 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: bold;
+  font-size: 12px;
+  z-index: 15;
+}
+
+#table-chat-textArea {
+  position: absolute;
+  z-index: 1000;
+  font-color: white;
+  color: white;
+  background-color: #0A132B;
+  overflow-y: scroll;
+  border: 2px solid #021A7D;
+}

@@ -13,7 +13,40 @@
 
 	<body>
 		<!-- Header -->
-		<header>
+		<header class="header">
+			<div class="header-top-container">
+				<div class="logo-main">
+					<img src="gfx/pokerth-template-logo_light.png" alt="PokerTH logo">
+				</div>
+
+				<div class="header-info">
+					<div id="lobby-version-info" class="version-info">
+					</div>
+					
+					<div id="lobby-user-loggedIn" class="user-loggedIn">
+					</div>
+				</div>			
+			</div>
+
+			<nav class="header-navbar">
+				<div class="navbar-btn">
+					<a id="lobbyGameListButton" class="navbar-btn-a" href="">
+						Games
+					</a>
+				</div>
+				<div class="navbar-btn">
+					<a id="lobbyPlayerListButton" class="navbar-btn-a" href="">
+						Players
+					</a>
+				</div>
+				<div class="navbar-btn">
+					<a id="lobbyChatButton" class="navbar-btn-a" href="">
+						Chat
+					</a>
+				</div>
+			</nav>
+
+
 		</header>
 
 		<!-- Main -->
@@ -38,39 +71,6 @@
 			<div id="lobbyArea" class="lobbyArea">
 				<div id="lobbyPage" class="lobbyPage" data-role="page">
 					
-					<div id="lobby-header-container" class="lobby-header-container" data-role="header">
-						<div id="lobby-user-loggedIn" class="lobby-user-loggedIn">
-						</div>
-
-						<div id="lobby-header" class="lobby-header">
-							PokerTH Lobby
-						</div>
-
-						<div id="lobby-version-info" class="lobby-version-info">
-						</div>
-
-						<div id="lobby-navbar" class="lobby-navbar" data-role="navbar">
-							<ul>
-								<li>
-									<a id="lobbyGameListButton" class="lobbyNavbarButtons ui-btn-active" href="">
-										Games
-									</a>
-								</li>
-								<li>
-									<a id="lobbyPlayerListButton" class="lobbyNavbarButtons" href="">
-										Players
-									</a>
-								</li>
-								<li>
-									<a id="lobbyChatButton" class="lobbyNavbarButtons" href="">
-										Chat
-									</a>
-								</li>
-							</ul>
-						</div>
-
-					</div>
-				
 					<div id="lobby-content" class="lobby-content" data-role="content">
 
 						<div id="lobbyGameList" class="lobbyGameList" data-role="content">

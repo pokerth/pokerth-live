@@ -664,7 +664,6 @@ function GameTableImpl()
 						'position' : 'absolute',
 						'opacity' :'1.0',					
 						'color': 'yellow',
-						'font-family' : 'sans-serif',
 						'font-weight' : 'bold',
 						'font-size': parseInt(myHeight * 3.2 / 100)+'px',
 						'left': parseInt(myHeight * 98.5 / 100),

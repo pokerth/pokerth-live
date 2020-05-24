@@ -2,7 +2,7 @@
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	top: 0px;
+	top: $headerHeight;
 	margin: 0 auto!important;
 }
 
@@ -67,7 +67,6 @@
 }
 
 #table-user-loggedIn {
-	font-family: sans-serif;
 	text-align: left;
 	padding: 5 0 0 0;
 	position: absolute;
