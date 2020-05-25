@@ -65,7 +65,7 @@ function LobbyPlayerListImpl()
 	{
 		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
 		$("#lobbyPlayerList_gameInfos-"+playerId).html("This player is playing at: <b>"+gameName+"</b>");
-		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="gear">Spectate</a>');
+		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="search">Spectate</a>');
 		$("#spectateButton-"+playerId).button();
 //		$('#playerList').listview('refresh');
 		$("#lobbyPlayerList").delegate('#spectateButton-'+playerId, "click", function(){

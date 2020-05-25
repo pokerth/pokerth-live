@@ -162,6 +162,11 @@ body {
   border: none;
 }
 
+@media (max-width: 768px) {
+  .lobbyPlayerList-playerAvatarDiv {
+    display: none;
+  }
+}
 .lobbyArea {
   width: 100%;
   max-width: 1200px;
@@ -284,23 +289,23 @@ body {
   margin: 0;
 }
 
+.ui-listview-filter > .ui-input-search.ui-focus {
+  box-shadow: none;
+  border: 1px solid #858585;
+}
+
 .lobbyPlayerList-playerItem {
-  min-height: 51px !important;
-  max-height: 51px !important;
-  height: 51px;
-  margin: 0 !important;
+  height: 70px;
   padding: 0 !important;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  border-radius: 5px !important;
+  margin-bottom: 16px;
+  border: none;
+  overflow: hidden;
 }
-
-.lobbyPlayerList-playerAvatar {
-  width: 50px;
-  height: 50px;
-  margin: 0 0 1px 1px !important;
-}
-
-.lobbyPlayerList-playerName {
-  margin: 5px 0;
-  padding: 0;
+.lobbyPlayerList-playerItem:hover {
+  background: #CCC;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.16), 0 1px 3px 1px rgba(66, 66, 66, 0.32);
 }
 
 .lobbyPlayerList-playerAvatarDiv {
@@ -308,20 +313,42 @@ body {
   height: 51px;
   width: 50px;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 10px;
+}
+
+.lobbyPlayerList-playerAvatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 !important;
 }
 
 .lobbyPlayerList-playerNameGameInfosDiv {
   float: left;
-  height: 50px;
-  padding: 0 10px 0 15px !important;
+  padding: 10px 15px !important;
   margin: 0 !important;
 }
 
 .lobbyPlayerList-spectatorButtonDiv {
-  float: right;
-  height: 50px;
-  padding: 0 !important;
+  height: 100%;
+}
+
+.lobbyPlayerList-spectatorButtonDiv > a {
+  height: 100%;
+  line-height: 3;
+  background: none;
+  margin: 0 !important;
+  border: none;
+  box-shadow: none;
+}
+.lobbyPlayerList-spectatorButtonDiv > a:focus {
+  box-shadow: none;
+}
+.lobbyPlayerList-spectatorButtonDiv > a > span {
+  border: none;
+  text-align: right;
+}
+.lobbyPlayerList-spectatorButtonDiv > a > span .ui-icon {
+  display: none;
 }
 
 .lobbyPlayerList_spectatorButton {

@@ -1,0 +1,14 @@
+// Breakpoints
+$screenFullHD: 1920px;
+$screenLarge: 1280px;
+$screenMedium: 960px;
+$screenSmall: 768px;
+$screenTiny: 480px;
+
+
+// Lobby - Player list
+@media (max-width: $screenSmall) { 
+    .lobbyPlayerList-playerAvatarDiv{
+        display: none;
+    }
+}
