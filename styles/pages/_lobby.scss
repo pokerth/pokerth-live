@@ -57,7 +57,7 @@
 	.col_gameType,
 	.col_gamePrivate,
 	.col_gameSpectators{
-		margin: 0 2%;
+		margin: 0 1.5%;
 	}
 
 }
@@ -106,7 +106,6 @@
 			align-items: center;
 			justify-content: center;
 			font-weight: normal;
-			
 		}
 		.lobbyGameList_gameDesc,
 		.lobbyGameList_numberOfPlayers,
@@ -121,7 +120,7 @@
 		.lobbyGameList_gameType,
 		.lobbyGameList_gamePrivate,
 		.lobbyGameList_gameSpectators{
-			margin: 0 2%;
+			margin: 0 1.5%;
 		}
 		#lobbyGameList_gameSpectators_img{
 			margin-right: 8px;
@@ -129,28 +128,50 @@
 
 	}
 
-}
+	.ui-collapsible-content ul.ui-listview{
+		margin: 0;
+		&> li.ui-li-divider{
+			display: inline-flex;
+			align-items: center;
+			background: none;
+			border: none;
+			padding: 6px 8px;
+			margin: 10px;
+			background: $light-gray;
+			border-radius: 5px;
+			text-shadow: none;
+			&>img{
+				position: relative;
+				padding: 0;
+				margin: 0;
+			}
+			#lobbyGameList_playerName{
+				padding-left: 10px;
+			}
+		}
+		&> li.ui-li-static{
+			margin-top: 16px;
+			border-top: 1px solid $gray;
+		}
+		&> li.ui-btn.ui-last-child{
+			border: none;
+			background: none;
+			width: 200px;
+			margin: 12px auto 0 auto;
+			.ui-btn-inner{
+				border-radius: 50px;
+				background: $black;
+				border-top: 1px solid $white;
+				border-color: rgba(255,255,255,.3);
+				background-image: linear-gradient(#444,#2d2d2d);
+			}
+			.lobbyGameList_spectateButton{
+				color: $white;
+				text-shadow: none;
+			}
+		}
+	}
 
-
-
-.lobbyGameList_spectateButton {
-	color: green;
-	font-weight: bolder;
-	font-size-adjust: 1;
-}
-
-#lobbyGameList_playerAvatar {
-	margin:0px;
-	padding-top:1px;
-	padding-left:0px;
-	padding-bottom:0px;
-}
-
-#lobbyGameList_playerName {
-	margin:0px;
-	padding-top:0px;
-	padding-bottom:0px;
-	padding-left:20px;
 }
 
 // Lobby - Player list

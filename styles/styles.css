@@ -81,7 +81,7 @@ html {
 }
 
 body {
-  background: #CCCCCC;
+  background: #393939;
   background-image: url("../gfx/body_bg.png");
   background: url("../gfx/body_bg.png") top center repeat;
   font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
@@ -222,7 +222,7 @@ body {
 .gameListHeader .col_gameType,
 .gameListHeader .col_gamePrivate,
 .gameListHeader .col_gameSpectators {
-  margin: 0 2%;
+  margin: 0 1.5%;
 }
 
 .gameListCollapsible {
@@ -283,30 +283,53 @@ body {
 .gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameType,
 .gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gamePrivate,
 .gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameSpectators {
-  margin: 0 2%;
+  margin: 0 1.5%;
 }
 .gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text #lobbyGameList_gameSpectators_img {
   margin-right: 8px;
 }
-
-.lobbyGameList_spectateButton {
-  color: green;
-  font-weight: bolder;
-  font-size-adjust: 1;
+.gameListCollapsible .ui-collapsible-content ul.ui-listview {
+  margin: 0;
 }
-
-#lobbyGameList_playerAvatar {
-  margin: 0px;
-  padding-top: 1px;
-  padding-left: 0px;
-  padding-bottom: 0px;
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  margin: 10px;
+  background: #EEEEEE;
+  border-radius: 5px;
+  text-shadow: none;
 }
-
-#lobbyGameList_playerName {
-  margin: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider > img {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider #lobbyGameList_playerName {
+  padding-left: 10px;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-static {
+  margin-top: 16px;
+  border-top: 1px solid #CCCCCC;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child {
+  border: none;
+  background: none;
+  width: 200px;
+  margin: 12px auto 0 auto;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child .ui-btn-inner {
+  border-radius: 50px;
+  background: #000000;
+  border-top: 1px solid #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(#444, #2d2d2d);
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child .lobbyGameList_spectateButton {
+  color: #FFFFFF;
+  text-shadow: none;
 }
 
 .lobbyPlayerList {
@@ -505,6 +528,36 @@ body {
 @media (max-width: 960px) {
   .gameListHeader {
     display: none;
+  }
+
+  .lobbyGameList_numberOfPlayers,
+.lobbyGameList_gameMode,
+.lobbyGameList_gameType,
+.lobbyGameList_gamePrivate,
+.lobbyGameList_gameSpectators,
+.lobbyGameList_gameTimeouts {
+    flex-basis: 70px !important;
+  }
+
+  .lobbyGameList_gameMode,
+.lobbyGameList_gameType,
+.lobbyGameList_gamePrivate,
+.lobbyGameList_gameSpectators {
+    margin: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .lobbyGameList_gameDesc {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 10px !important;
+    padding-left: 15px !important;
+    margin-bottom: 10px;
+  }
+
+  .lobbyGameList_numberOfPlayers {
+    margin-left: 0 !important;
   }
 }
 @media (max-width: 768px) {
