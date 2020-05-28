@@ -6,10 +6,9 @@
 
 // Components styles
 
-// Layout styles
-@import "layout/_responsive.scss";
-
 // Page styles
 @import "pages/_lobby.scss";
 @import "pages/_game.scss";
 
+// Layout styles
+@import "layout/_responsive.scss";

@@ -18,15 +18,20 @@ body {
 	height: 100%!important;
 }
 
+// Override jQuery mobile font-family
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button{
+	font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
+}
+
 // Header
-$headerHeight: 155px;
+
 .header{
 	background-image: url('../gfx/header_bg.jpg');
 	background-repeat: no-repeat;
 	background-position: center 40%;
 	background-size: cover;
 	width: 100%;
-	height: $headerHeight;
+	height: $headerHeightPx;
 	max-width: 1200px;		
 	margin: 0 auto;
 	position: relative;
@@ -41,14 +46,14 @@ $headerHeight: 155px;
 			margin-left: auto;
 		}
 		.version-info{
-			color: white;
+			color: $white;
 			font-size: 0.75rem;
 		}
 		.user-loggedIn{
 			text-align: right;
 			font-weight: 700;
 			padding: 10px 0;
-			&.online{color: white;}
+			&.online{color: $white;}
 			&.offline{color: red;}
 		}
 	}
@@ -69,7 +74,7 @@ $headerHeight: 155px;
 				text-decoration: none;
 				font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
 				font-weight: 700;
-				color: white;
+				color: $white;
 				margin: 0;
 				border-radius: 0;
 				background: none;
@@ -78,7 +83,7 @@ $headerHeight: 155px;
 				text-shadow: none;
 			}
 			&:not(:first-child){
-				border-left: 1px solid white;
+				border-left: 1px solid $white;
 			}
 			// TODO: remove when jQuery Mobile will be deleted
 			.ui-btn-inner{

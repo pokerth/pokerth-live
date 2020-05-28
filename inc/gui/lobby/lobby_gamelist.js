@@ -14,6 +14,7 @@ function LobbyGameListImpl()
 	
 	//class members
 	this.prepare = function() {
+		$("#lobbyGameList").append('<div class="gameListHeader"><div class="col_gameDesc">Game name</div><div class="col_numberOfPlayers">Players</div><div class="col_gameMode">Mode</div><div class="col_gameType">Type</div><div class="col_gamePrivate">Private</div><div class="col_gameSpectators">Spectators</div><div class="col_gameTimeouts">Timeouts</div></div>');
 		$("#lobbyGameList").append('<div id="gameListCollapsibleSet" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-inset="true"></div>');
 	};
 	
@@ -108,7 +109,7 @@ function LobbyGameListImpl()
 		}
 		//COLLAPSIBLE TEST
 		$('#gameListCollapsibleSet').append('<div class="gameListCollapsible" id="gameListGameID-'+gameId+'" data-role="collapsible"> '+
-			'<h2><div id="lobbyGameList_gameDesc">'+myNetCache.getGameData(gameId).gameInfo.gameName+'</div><div class="lobbyGameList_numberOfPlayers" id="lobbyGameList_numberOfPlayers_gameId-'+gameId+'">'+playerCounter+'/'+myNetCache.getGameData(gameId).gameInfo.maxNumPlayers+'</div><div class="lobbyGameList_gameMode" id="lobbyGameList_gameMode_gameId-'+gameId+'"><img src=\"'+gameModeGfxUrl+'\" width=25 height=25></div><div id="lobbyGameList_gameType"><img src=\"'+gameTypeGfxUrl+'\" height=25></div><div id="lobbyGameList_gamePrivate"><img src=\"'+gamePrivateGfxUrl+'\" width=20 height=24></div><div id="lobbyGameList_gameSpectators"><img id="lobbyGameList_gameSpectators_img" src=\"'+gameAllowSpectatorsGfxUrl+'\" width=26 height=26><span class="lobbyGameList_gameNumberOfSpectators" id="lobbyGameList_gameNumberOfSpectators_gameId-'+gameId+'">'+numberOfSpectators+'</span></div><div id="lobbyGameList_gameTimeouts">'+myNetCache.getGameData(gameId).gameInfo.playerActionTimeout+'s/'+myNetCache.getGameData(gameId).gameInfo.delayBetweenHands+'s</div></h2> '+
+			'<h2><div id="lobbyGameList_gameDesc" class="lobbyGameList_gameDesc">'+myNetCache.getGameData(gameId).gameInfo.gameName+'</div><div class="lobbyGameList_numberOfPlayers" id="lobbyGameList_numberOfPlayers_gameId-'+gameId+'">'+playerCounter+'/'+myNetCache.getGameData(gameId).gameInfo.maxNumPlayers+'</div><div class="lobbyGameList_gameMode" id="lobbyGameList_gameMode_gameId-'+gameId+'"><img src=\"'+gameModeGfxUrl+'\" width=25 height=25></div><div id="lobbyGameList_gameType" class="lobbyGameList_gameType"><img src=\"'+gameTypeGfxUrl+'\" height=25></div><div id="lobbyGameList_gamePrivate" class="lobbyGameList_gamePrivate"><img src=\"'+gamePrivateGfxUrl+'\" width=20 height=24></div><div id="lobbyGameList_gameSpectators" class="lobbyGameList_gameSpectators"><img id="lobbyGameList_gameSpectators_img" src=\"'+gameAllowSpectatorsGfxUrl+'\" width=26 height=26><span class="lobbyGameList_gameNumberOfSpectators" id="lobbyGameList_gameNumberOfSpectators_gameId-'+gameId+'">'+numberOfSpectators+'</span></div><div id="lobbyGameList_gameTimeouts" class="lobbyGameList_gameTimeouts">'+myNetCache.getGameData(gameId).gameInfo.playerActionTimeout+'s/'+myNetCache.getGameData(gameId).gameInfo.delayBetweenHands+'s</div></h2> '+
 				'<ul id="lobbyGameList_gameDetails_gameId-'+gameId+'" data-role="listview" data-theme="d" data-divider-theme="d"> '+
                                     playerString +
                                     '<li> '+

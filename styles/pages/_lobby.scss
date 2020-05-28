@@ -3,7 +3,7 @@
 .lobbyArea {
 	width: 100%;
 	max-width: 1200px;
-	height: calc(100% - #{$headerHeight});;
+	height: calc(100% - #{$headerHeightPx});
 	position: relative;
 	margin: 0 auto!important;
 	overflow: visible!important;
@@ -15,7 +15,7 @@
 }
 
 .lobby-content{
-	height: calc(100vh - #{$headerHeight});
+	height: calc(100vh - #{$headerHeightPx});
 	padding: 0;
 }
 
@@ -26,71 +26,112 @@
 	padding: 16px 32px;
 }
 
-#lobbyGameList_gameDesc {
-	width: 300px;
-	float: left;
-	height: 26px;
+.gameListHeader{
+	display: flex;
+	flex-direction: row;
+	margin: 10px 0 10px 0;
+	padding: 10px 12px 10px 40px;
+	background: $light-gray;
+	.col_gameDesc{
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: 30%;
+		max-width: 30%;
+		text-align: center;
+		font-weight: 700;
+	}
+	.col_numberOfPlayers,
+	.col_gameMode,
+	.col_gameType,
+	.col_gamePrivate,
+	.col_gameSpectators,
+	.col_gameTimeouts{
+		flex-basis: 80px;
+		text-align: center;
+		font-weight: 700;
+	}
+	.col_numberOfPlayers{
+		margin-left: auto;
+	}
+	.col_gameMode,
+	.col_gameType,
+	.col_gamePrivate,
+	.col_gameSpectators{
+		margin: 0 2%;
+	}
+
+}
+.gameListCollapsible {
+	padding:0!important;
+	box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+	border-radius: 5px!important;
+	margin-bottom: 16px!important;
+	background: $light-gray;
+	border:none;
+	overflow: hidden;
+	&:hover{
+		background: $gray;
+		box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.16), 0 1px 3px 1px rgba(66, 66, 66, 0.32);
+	}
+
+	a.ui-collapsible-heading-toggle{
+		background: none;
+		border: none;
+		color: $black;
+		text-shadow: 0 1px 0 $white;
+	}
+
+	a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		.lobbyGameList_gameDesc{
+			display: flex;
+			align-items: center;
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: 30%;
+			max-width: 30%;
+			white-space: break-spaces;
+			word-break: break-word;
+		}
+		.lobbyGameList_numberOfPlayers,
+		.lobbyGameList_gameMode,
+		.lobbyGameList_gameType,
+		.lobbyGameList_gamePrivate,
+		.lobbyGameList_gameSpectators,
+		.lobbyGameList_gameTimeouts{
+			display: flex;
+			flex-basis: 80px;
+			align-items: center;
+			justify-content: center;
+			font-weight: normal;
+			
+		}
+		.lobbyGameList_gameDesc,
+		.lobbyGameList_numberOfPlayers,
+		.lobbyGameList_gameTimeouts{
+			padding: 5px 0;
+		}
+
+		.lobbyGameList_numberOfPlayers{
+			margin-left: auto;
+		}
+		.lobbyGameList_gameMode,
+		.lobbyGameList_gameType,
+		.lobbyGameList_gamePrivate,
+		.lobbyGameList_gameSpectators{
+			margin: 0 2%;
+		}
+		#lobbyGameList_gameSpectators_img{
+			margin-right: 8px;
+		}
+
+	}
+
 }
 
-.lobbyGameList_numberOfPlayers {
-	height: 26px;
-	width: 60px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: center;
-}
 
-.lobbyGameList_gameMode {
-	height: 26px;
-	width: 40px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: center;
-}
-
-#lobbyGameList_gameType {
-	height: 26px;
-	width: 40px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: center;
-}
-
-#lobbyGameList_gamePrivate {
-	height: 26px;
-	width: 40px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: center;
-}
-
-#lobbyGameList_gameSpectators {
-	height: 26px;
-	width: 60px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: left;
-	padding: 0 0 0 8px;
-	vertical-align: top;
-}
-
-#lobbyGameList_gameSpectators_img {
-	margin-top: -2px;
-}
-
-.lobbyGameList_gameNumberOfSpectators {
-	height: 26px;
-	vertical-align: top;
-	margin: 0 0 0 8px;
-}
-
-#lobbyGameList_gameTimeouts {
-	height: 26px;
-	width: 80px;
-	float: left;
-	border-left: solid 1px black;
-	text-align: center;
-}
 
 .lobbyGameList_spectateButton {
 	color: green;
@@ -139,7 +180,7 @@
 	border:none;
 	overflow: hidden;
 	&:hover{
-		background: #CCC;
+		background: $gray;
 		box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.16), 0 1px 3px 1px rgba(66, 66, 66, 0.32);
 	}
 }
@@ -199,7 +240,7 @@
 
 #chatTextArea{
 	background: $white;
-	border: 1px solid $light-gray;
+	border: 1px solid $gray;
 	box-sizing: border-box;
 	padding: 16px!important;
 	height: 100%!important;

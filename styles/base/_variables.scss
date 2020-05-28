@@ -1,13 +1,27 @@
+// Structure
+$headerHeight: 155;
+$headerHeightPx: $headerHeight + px;
+$headerNav: 40;
+
 // Font
+
 
 
 // Colors
 $gray: #393939;
-$light-gray: #CCCCCC;
+$gray: #CCCCCC;
+$light-gray: #EEEEEE;
 $white: #FFFFFF;
+$black: #000000;
 
 
 // Spacing (rem)
 
 
+
 // Breakpoints
+$screenFullHD: 1920px;
+$screenLarge: 1280px;
+$screenMedium: 960px;
+$screenSmall: 768px;
+$screenTiny: 480px;

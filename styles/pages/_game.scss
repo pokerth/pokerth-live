@@ -2,8 +2,9 @@
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	top: $headerHeight;
+	top: ($headerHeight - $headerNav) + px;
 	margin: 0 auto!important;
+	border:1px solid $black;
 }
 
 #gameCanvas { 
@@ -80,8 +81,7 @@
 #table-chat-textArea {
 	position: absolute;
 	z-index: 1000;
-	font-color: white;
-	color: white;
+	color: $white;
 	background-color: #0A132B;
 	overflow-y:scroll;
 	border: 2px solid #021A7D;
