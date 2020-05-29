@@ -14,7 +14,7 @@ function LobbyGameListImpl()
 	
 	//class members
 	this.prepare = function() {
-		$("#lobbyGameList").append('<div class="gameListHeader"><div class="col_gameDesc">Game name</div><div class="col_numberOfPlayers">Players</div><div class="col_gameMode">Mode</div><div class="col_gameType">Type</div><div class="col_gamePrivate">Private</div><div class="col_gameSpectators">Spectators</div><div class="col_gameTimeouts">Timeouts</div></div>');
+		$("#lobbyGameList").append('<div class="gameListHeader"><div class="col_gameDesc">Name</div><div class="col_numberOfPlayers">Players</div><div class="col_gameMode">Status</div><div class="col_gameType">Type</div><div class="col_gamePrivate">Private</div><div class="col_gameSpectators">Spectators</div><div class="col_gameTimeouts">Timeouts</div></div>');
 		$("#lobbyGameList").append('<div id="gameListCollapsibleSet" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-inset="true"></div>');
 	};
 	
