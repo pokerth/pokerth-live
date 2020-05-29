@@ -218,12 +218,16 @@ function GuiImpl()
 	{ 
 		if(visible === true) {
 			var gameArea = document.getElementById('gameArea');
+			var gameAreaBg = document.getElementById('gameAreaBg');
 			gameArea.style.display = "";
+			gameAreaBg.style.display = "";
 			myGameTable.setActiveState(true);
 		} 
 		else {
 			var gameArea = document.getElementById('gameArea');
+			var gameAreaBg = document.getElementById('gameAreaBg');
 			gameArea.style.display = "none";
+			gameAreaBg.style.display = "none";
 			myGameTable.setActiveState(false);
 		}
 	};

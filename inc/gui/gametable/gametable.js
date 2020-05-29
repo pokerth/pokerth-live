@@ -31,7 +31,6 @@ function GameTableImpl()
 		$("#gameArea").append('<div id="distributePotAnimationLabel'+i+'"></div>');
 		$("#gameArea").append('<div id="table-user-loggedIn"></div>');
 		$("#gameArea").append('<div id="spectatorLabel"></div>');
-		$("#gameArea").append('<div id="table-chat-textArea"></div>');	
 		$("#avatarLabel"+i).css({ 
 			'z-index' : this.avatarLabelCssZIndex, 
 			'image-rendering' : 'optimizeQuality',
@@ -110,7 +109,7 @@ function GameTableImpl()
 	
 	this.clientConnected = function(nickName) 
 	{
-		$("#table-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;"+nickName);
+		$("#table-user-loggedIn").html(nickName);
 		$("#table-user-loggedIn").css({ 
 			"color" : "green" 
 		});
@@ -118,16 +117,15 @@ function GameTableImpl()
 	
 	this.clientDisconnected = function() 
 	{
-		$("#table-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;offline");
+		$("#table-user-loggedIn").html("offline");
 		$("#table-user-loggedIn").css({ "color" : "red" });
 	}
 	
 	this.refreshClientLabel = function() 
 	{
 		$("#table-user-loggedIn").css({ 
-			'position' : 'absolute',
-			'top' : parseInt(myHeight * 0.3 / 100) + 'px',
-			'left' : parseInt(myWidth * 3.7 / 100) + 'px'
+			'bottom' : parseInt(myHeight * 0.3 / 100) + 'px',
+			'right' : parseInt(myWidth * 3.7 / 100) + 'px'
 		});
 	}
 	
@@ -792,13 +790,8 @@ function GameTableImpl()
 		var spectatorImageWidth = parseInt(myWidth * 3.5 / 100);
 		$("#spectatorLabel").html("<img border=0 style='margin-left: auto; margin-right: auto; width: "+spectatorImageWidth+"px; height: "+spectatorImageWidth+"px;' src='gfx/gametable/spectator.svg'><br><span style='margin-left: "+parseInt(myHeight * 2.7 / 100)+"px; vertical-align: top; font: bold "+parseInt(myHeight * 2.3 / 100)+"px sans-serif;'>"+spectatorNumber+"</span>");
 		$("#spectatorLabel").css( {
-				'display' : 'block',
-				'border' : '0px solid white',
-				'position' : 'absolute',
-				'z-index' : '1000' ,
-				'top' : parseInt(myHeight * 0.3 / 100) + 'px',
-				'left' : parseInt(myWidth * 0.3 / 100) + 'px',
-				'color' : 'white'
+				'bottom' : parseInt(myHeight * 0.3 / 100) + 'px',
+				'right' : parseInt(myWidth * 0.3 / 100) + 'px'
 		} );
 	};
 	
@@ -806,8 +799,6 @@ function GameTableImpl()
 	{
 		$("#table-chat-textArea").textinput();
 		$("#table-chat-textArea").css( {
-				'top' : parseInt(myHeight * 80 / 100) + 'px',
-				'left' : parseInt(myWidth * 0.3 / 100) + 'px',
 				'height' : parseInt(myHeight * 15 / 100) + 'px',
 				'width' : parseInt(myWidth * 33 / 100) + 'px',
 				'font-size' : parseInt(myHeight * 2.1 / 100)
@@ -850,6 +841,7 @@ function GameTableImpl()
 	this.resizeGameTable = function()
 	{
 		var gameArea = document.getElementById('gameArea');
+		var gameAreaBg = document.getElementById('gameAreaBg');
 		var widthToHeight = 1024 / 600;
 		var newWidth = parseInt(window.innerWidth);
 		var newHeight = parseInt(window.innerHeight);
@@ -862,6 +854,7 @@ function GameTableImpl()
 				newHeight = 392;
 			}
 			gameArea.style.height = newHeight + 'px';
+			gameAreaBg.style.height = newHeight + 'px';
 			gameArea.style.width = newWidth + 'px';
 		}
 		else {
@@ -873,6 +866,7 @@ function GameTableImpl()
 			}
 			gameArea.style.width = newWidth + 'px';
 			gameArea.style.height = newHeight + 'px';
+			gameAreaBg.style.height = newHeight + 'px';
 		}
 		gameArea.style.marginTop = 0 + 'px';
 		gameArea.style.marginLeft = 0 + 'px';

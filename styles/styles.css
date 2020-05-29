@@ -166,6 +166,10 @@ body {
   border: none;
 }
 
+#main {
+  height: calc(100% - 155px);
+}
+
 .lobbyArea {
   width: 100%;
   max-width: 1200px;
@@ -433,13 +437,25 @@ body {
   line-height: 1.4rem;
 }
 
+.gameAreaBg {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  max-height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  background: url("../gfx/gametable/floor.jpg") top center repeat;
+  margin-top: -40px;
+  padding-top: 40px;
+}
+
 .gameArea {
   position: absolute;
   left: 0px;
   right: 0px;
-  top: 115px;
-  margin: 0 auto !important;
-  border: 1px solid #000000;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 40px !important;
 }
 
 #gameCanvas {
@@ -505,12 +521,20 @@ body {
   z-index: 7;
 }
 
+#spectatorLabel {
+  display: block;
+  border: 0px solid white;
+  position: absolute;
+  z-index: 1000;
+  color: white;
+}
+
 #table-user-loggedIn {
   text-align: left;
   padding: 5 0 0 0;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  bottom: 0px;
+  right: 0px;
   font-weight: bold;
   font-size: 12px;
   z-index: 15;
@@ -518,6 +542,8 @@ body {
 
 #table-chat-textArea {
   position: absolute;
+  bottom: 3px;
+  left: 10px;
   z-index: 1000;
   color: #FFFFFF;
   background-color: #0A132B;

@@ -24,7 +24,6 @@ body {
 }
 
 // Header
-
 .header{
 	background-image: url('../gfx/header_bg.jpg');
 	background-repeat: no-repeat;
@@ -96,6 +95,8 @@ body {
 }
 
 // Main body
-
+#main{
+	height: calc(100% - #{$headerHeightPx});
+}
 
 // Footer
