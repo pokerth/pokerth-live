@@ -15,6 +15,8 @@
 }
 
 .lobby-content{
+	display: flex;
+	flex-direction: column;
 	height: calc(100vh - #{$headerHeightPx});
 	padding: 0;
 }
@@ -23,6 +25,7 @@
 // Lobby - Game list
 .lobbyGameList{
 	display: none;
+	overflow: unset;
 	padding: 16px 32px;
 }
 
@@ -178,6 +181,7 @@
 .lobbyPlayerList{
 	display: none;
 	padding: 16px 32px;
+	overflow: unset;
 	&>form{
 		background: transparent;
 		margin: 8px 0 24px 0;
@@ -256,7 +260,7 @@
 .lobbyChat {
 	display: none;
 	padding: 16px 32px;
-	height: calc(100% - 32px);
+	height: calc(100% - 62px);
 }
 
 #chatTextArea{
@@ -274,4 +278,15 @@
 
 #game_chat_text{
 	line-height: 1.4rem;
+}
+
+// Lobby footer
+.lobby-version-info{
+	margin-top: auto;
+	background: $black;
+	color: $white;
+	font-size: 0.65rem;
+	text-align: center;
+	padding: 10px;
+	text-shadow: none;
 }

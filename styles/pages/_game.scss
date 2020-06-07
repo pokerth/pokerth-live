@@ -79,23 +79,27 @@
 	z-index: 7;	
 }
 
+#gameTitleName{
+	position: absolute;
+	z-index: 1000;
+	text-align: center;
+	color: white;
+	top:-35px;
+	left: 0;
+	right: 0;
+	font-weight: bold;
+	h2{
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+}
+
 #spectatorLabel{
 	display: block;
 	border: 0px solid white;
 	position: absolute;
 	z-index: 1000;
 	color: white;
-}
-
-#table-user-loggedIn {
-	text-align: left;
-	padding: 5 0 0 0;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	font-weight: bold;
-	font-size: 12px;
-	z-index: 15;
 }
 
 #table-chat-textArea {

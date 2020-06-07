@@ -6,7 +6,7 @@ POKERTH_VERSION_MAJOR = 1;
 POKERTH_VERSION_MINOR = 1;
 POKERTH_BETA_RELEASE_STRING	= "1.2-web10dev-html5";
 
-//BEtting ROund
+// BEtting ROund
 BERO = {
 	PREFLOP : {value: 0 }, 
 	FLOP: {value: 1 }, 

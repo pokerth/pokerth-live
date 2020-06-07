@@ -12,7 +12,7 @@ function LobbyPlayerListImpl()
 	$("#lobbyPlayerList").append('<ul id="playerList" data-role="listview data-filter="true"></ul>'); //data-autodividers="true" data-sort="true"
 	$("#lobbyPlayerListButton").html("Players ("+$('.lobbyPlayerList-playerItem').length+")");
 
-	//class members
+	// class members
 	this.prepare = function() {
 		$("#lobbyPlayerList").append('<ul id="playerList" data-role="listview data-filter="true""></ul>'); //data-autodividers="true" data-sort="true"
 	};
@@ -67,7 +67,6 @@ function LobbyPlayerListImpl()
 		$("#lobbyPlayerList_gameInfos-"+playerId).html("This player is playing at: <b>"+gameName+"</b>");
 		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="search">Spectate</a>');
 		$("#spectateButton-"+playerId).button();
-//		$('#playerList').listview('refresh');
 		$("#lobbyPlayerList").delegate('#spectateButton-'+playerId, "click", function(){
 			var $this = $(this),
 			myGameId = $this.data('gameid');

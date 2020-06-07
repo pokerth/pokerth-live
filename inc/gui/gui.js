@@ -13,7 +13,7 @@ function GuiImpl()
 	$("#lobbyPlayerListButton").click(function(){ myLobby.showPlayerList();	});
 	$("#lobbyChatButton").click(function(){ myLobby.showChat();	});
 
-	//interface functions
+	// interface functions
 	this.signalNetClientShowLoginDialog = function() { 
 		myLoginDialog.showLogin();
 	};
@@ -21,13 +21,11 @@ function GuiImpl()
 		location.reload();
 	};
 	this.signalNetClientConnected = function(nickName) { 
-		myLobby.clientConnected(nickName); 
-		myGameTable.clientConnected(nickName); 
+		myLobby.clientConnected(nickName);  
 		myLoginDialog.hideLogin();
 	};
 	this.signalNetClientDisconnected = function() { 
 		myLobby.clientDisconnected(); 
-		myGameTable.clientDisconnected(); 
 	};
 	this.signalBeginInitialLobbyUpdate = function() { myLobby.showLoadingMsg(); };
 	this.signalEndInitialLobbyUpdate = function() { myLobby.hideLoadingMsg(); };
@@ -116,7 +114,7 @@ function GuiImpl()
 	this.signalNetClientMsgBox = function(msg) { this.showMyMessageBox("GlobalNotice", "Global Notice", msg, "Close"); };
 	this.signalNetClientShowTimeoutDialog = function(msgId, timeout) { this.showTimeOutMessageBox(msgId, timeout); };
 	
-	//DEFINE public funtions
+	// DEFINE public funtions
 	this.showMyMessageBox = function(id, title, message, buttonText) 
 	{   
 		var show = function(){
@@ -130,7 +128,7 @@ function GuiImpl()
 			popup.popup("option", "positionTo", "window" );
 			page.page('destroy').page();
 			
-			//HACK until the reload signal is triggered from network engine
+			// HACK until the reload signal is triggered from network engine
 			if(message == "Your player name is already in use.")
 			{
 				var reload = function(){ location.reload(); }
@@ -157,7 +155,7 @@ function GuiImpl()
 		var show = function(){
 			self.currentVisibleMessageBoxId = "timeOutMessageBox";
 			var page;
-			//differend pages for lobby or gametable
+			// differend pages for lobby or gametable
 			if(myLobby.isActive) {
 				page = $('#lobbyPage');
 			}
@@ -258,4 +256,3 @@ function initGuiImpl()
 }
 
 window.addEventListener("load", initGuiImpl, false);
-

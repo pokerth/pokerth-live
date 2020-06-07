@@ -109,17 +109,31 @@ body {
 .header .header-top-container {
   display: flex;
   background: rgba(35, 64, 35, 0.55);
+  height: 115px;
 }
 .header .header-top-container .logo-main {
+  align-self: center;
   padding: 20px 30px;
 }
+.header .header-top-container .logo-main img {
+  width: 100%;
+  max-width: 275px;
+  min-width: 190px;
+}
+@media (max-width: 480px) {
+  .header .header-top-container .logo-main {
+    padding: 10px;
+  }
+}
 .header .header-top-container .header-info {
+  align-self: center;
   padding: 30px;
   margin-left: auto;
 }
-.header .header-top-container .version-info {
-  color: #FFFFFF;
-  font-size: 0.75rem;
+@media (max-width: 480px) {
+  .header .header-top-container .header-info {
+    padding: 10px;
+  }
 }
 .header .header-top-container .user-loggedIn {
   text-align: right;
@@ -185,12 +199,15 @@ body {
 }
 
 .lobby-content {
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 155px);
   padding: 0;
 }
 
 .lobbyGameList {
   display: none;
+  overflow: unset;
   padding: 16px 32px;
 }
 
@@ -339,6 +356,7 @@ body {
 .lobbyPlayerList {
   display: none;
   padding: 16px 32px;
+  overflow: unset;
 }
 .lobbyPlayerList > form {
   background: transparent;
@@ -417,7 +435,7 @@ body {
 .lobbyChat {
   display: none;
   padding: 16px 32px;
-  height: calc(100% - 32px);
+  height: calc(100% - 62px);
 }
 
 #chatTextArea {
@@ -435,6 +453,16 @@ body {
 
 #game_chat_text {
   line-height: 1.4rem;
+}
+
+.lobby-version-info {
+  margin-top: auto;
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 10px;
+  text-shadow: none;
 }
 
 .gameAreaBg {
@@ -521,23 +549,27 @@ body {
   z-index: 7;
 }
 
+#gameTitleName {
+  position: absolute;
+  z-index: 1000;
+  text-align: center;
+  color: white;
+  top: -35px;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+}
+#gameTitleName h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 #spectatorLabel {
   display: block;
   border: 0px solid white;
   position: absolute;
   z-index: 1000;
   color: white;
-}
-
-#table-user-loggedIn {
-  text-align: left;
-  padding: 5 0 0 0;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  font-weight: bold;
-  font-size: 12px;
-  z-index: 15;
 }
 
 #table-chat-textArea {

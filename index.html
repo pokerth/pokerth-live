@@ -20,9 +20,6 @@
 				</div>
 
 				<div class="header-info">
-					<div id="lobby-version-info" class="version-info">
-					</div>
-					
 					<div id="lobby-user-loggedIn" class="user-loggedIn">
 					</div>
 				</div>			
@@ -46,13 +43,15 @@
 				</div>
 			</nav>
 
-
 		</header>
 
 		<!-- Main -->
 		<main id="main">
 
+			<!-- Game area -->
 			<div id="gameArea" class="gameArea">
+				<div id="gameTitleName">
+				</div>
 				<canvas id="gameCanvas">
 				</canvas>
 				<canvas id="gameCanvas2">
@@ -69,10 +68,13 @@
 				</canvas>
 				<div id="table-chat-textArea">
 				</div>
+				<div id="spectatorLabel">
+				</div>
 			</div>
 			<div id="gameAreaBg" class="gameAreaBg" style="display: none;">
 			</div>
 			
+			<!-- Lobby area -->
 			<div id="lobbyArea" class="lobbyArea">
 				<div id="lobbyPage" class="lobbyPage" data-role="page">
 					
@@ -87,10 +89,14 @@
 						<div id="lobbyChat" class="lobbyChat" data-role="content">
 						</div>
 
+						<div id="lobby-version-info" class="lobby-version-info">
+						</div>
+
 					</div>
 
 				</div>
 			</div>
+
 		</main>
 
 		<!-- Footer -->
@@ -108,7 +114,7 @@
 				pokerthStarted = "1";
 			}
 		</script>
-		<script src="inc/pokerth-live_min.js?ts=3" ></script>
+		<script src="inc/pokerth-live_min.js?ts=3"></script>
 		 
 	</body>
 

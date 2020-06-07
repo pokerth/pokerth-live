@@ -37,7 +37,7 @@ function LoginDialogImpl()
 			page.page('destroy').page();
 			$('#loginDialogLoginButton').removeClass('ui-disabled');
 			$('#text-LoginDialog-username').focus();
-			//enter should click the login button
+			// enter should click the login button
 			$(function() {
 				$("#text-LoginDialog-password").keypress(function (e) {
 					if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {

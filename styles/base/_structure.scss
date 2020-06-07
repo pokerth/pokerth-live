@@ -37,16 +37,26 @@ body {
 	.header-top-container{
 		display: flex;
 		background: rgba(35,64,35,0.55);
+		height: $headerTopHeight + px;
 		.logo-main{
+			align-self: center;
 			padding: 20px 30px;
+			img{
+				width: 100%;
+				max-width: 275px;
+				min-width: 190px;
+			}
+			@media (max-width:$screenTiny) {
+				padding: 10px;
+			}
 		}
 		.header-info{
+			align-self: center;
 			padding: 30px;
 			margin-left: auto;
-		}
-		.version-info{
-			color: $white;
-			font-size: 0.75rem;
+			@media (max-width:$screenTiny) {
+				padding: 10px;
+			}			
 		}
 		.user-loggedIn{
 			text-align: right;
@@ -99,4 +109,6 @@ body {
 	height: calc(100% - #{$headerHeightPx});
 }
 
+
 // Footer
+

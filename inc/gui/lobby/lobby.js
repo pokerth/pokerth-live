@@ -115,7 +115,7 @@ function LobbyImpl()
 			page.page('destroy').page();
 		}
 		
-		//show loading msg only if there is no other popup visible currently, except login-dialog which will be closed
+		// show loading msg only if there is no other popup visible currently, except login-dialog which will be closed
 		if(myGui.currentVisibleMessageBoxId == "") {
 			show();
 		}
@@ -132,62 +132,15 @@ function LobbyImpl()
 		$("#loadingLobbyMsg").popup("close");
 		$("#loadingLobbyMsg").remove();
 	};
-
-	/* Better use CSS classes for responsive */
-	/*
-	this.resizeLobby = function()
- 	{
-		var lobbyArea = document.getElementById('lobbyArea');
- 		var widthToHeight = 1024 / 600;
- 		var newWidth = parseInt(window.innerWidth);
- 		var newHeight = parseInt(window.innerHeight);
- 		var newWidthToHeight = newWidth / newHeight;
- 		if (newWidthToHeight > widthToHeight) {
-			newWidth = parseInt(newHeight * widthToHeight);
- 			//set minimum size
- 			if(newWidth <= 669) {	
- 	 			newWidth = 669;
- 	 			newHeight = 392;
- 	 		}
-			lobbyArea.style.height = newHeight + 'px';
- 			lobbyArea.style.width = newWidth + 'px';
- 		} 
-		else {
- 			newHeight = parseInt(newWidth / widthToHeight);
-// 			set minimum size
- 			if(newHeight <= 392) {	
- 	 			newWidth = 669;
- 	 			newHeight = 392;
- 	 		}
-			lobbyArea.style.width = newWidth + 'px';
- 			lobbyArea.style.height = newHeight + 'px';
- 		}
- 		
- 		lobbyArea.style.marginTop = 0 + 'px';
- 		lobbyArea.style.marginLeft = 0 + 'px';
- 		//write global variables
- 		myWidth = newWidth;
-		myHeight = newHeight;		
-		
-		if(myLobbyChat.isActive) {
-			myLobbyChat.resize();
-		}
-	};
-	 */
 	
 	this.setActiveState = function(active) {
 		
 		if(active) {
 			self.isActive = true;
-			// window.addEventListener('resize', self.resizeLobby, false);
-			// window.addEventListener('orientationchange', self.resizeLobby, false);
-			// self.resizeLobby();
 		}
 		else {
 			self.isActive = false;
 			self.hideWaitStartGameMsg();		
-			// window.removeEventListener('resize', self.resizeLobby, false);
-			// window.removeEventListener('orientationchange', self.resizeLobby, false);
 		}
 	};
 };

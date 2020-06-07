@@ -2,9 +2,10 @@
 $headerHeight: 155;
 $headerHeightPx: $headerHeight + px;
 $headerNav: 40;
+$headerTopHeight: $headerHeight - $headerNav;
+
 
 // Font
-
 
 
 // Colors
@@ -16,7 +17,6 @@ $black: #000000;
 
 
 // Spacing (rem)
-
 
 
 // Breakpoints

@@ -12,7 +12,7 @@ function LobbyGameListImpl()
 	$("#lobbyGameList").append('<div id="gameListCollapsibleSet" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-inset="true"></div>');
 	$("#lobbyGameListButton").html("Games ("+$('.gameListCollapsible').length+")");
 	
-	//class members
+	// class members
 	this.prepare = function() {
 		$("#lobbyGameList").append('<div class="gameListHeader"><div class="col_gameDesc">Name</div><div class="col_numberOfPlayers">Players</div><div class="col_gameMode">Status</div><div class="col_gameType">Type</div><div class="col_gamePrivate">Private</div><div class="col_gameSpectators">Spectators</div><div class="col_gameTimeouts">Timeouts</div></div>');
 		$("#lobbyGameList").append('<div id="gameListCollapsibleSet" data-role="collapsible-set" data-theme="b" data-content-theme="d" data-inset="true"></div>');
@@ -51,6 +51,7 @@ function LobbyGameListImpl()
 		}
 		else {
 			gamePrivateGfxUrl = '';
+			gamePrivateGfxTitle = '';
 		}
 
 		var gameModeGfxUrl;
@@ -125,7 +126,7 @@ function LobbyGameListImpl()
 		if(myNetCache.getGameData(gameId).spectatorIds.length > 0) {
 			numberOfSpectators = myNetCache.getGameData(gameId).spectatorIds.length;
 		}
-		//COLLAPSIBLE TEST
+		// COLLAPSIBLE TEST
 		$('#gameListCollapsibleSet').append('<div class="gameListCollapsible" id="gameListGameID-'+gameId+'" data-role="collapsible"> '+
 			'<h2><div id="lobbyGameList_gameDesc" class="lobbyGameList_gameDesc">'+myNetCache.getGameData(gameId).gameInfo.gameName+'</div><div class="lobbyGameList_numberOfPlayers" id="lobbyGameList_numberOfPlayers_gameId-'+gameId+'">'+playerCounter+'/'+myNetCache.getGameData(gameId).gameInfo.maxNumPlayers+'</div><div class="lobbyGameList_gameMode" id="lobbyGameList_gameMode_gameId-'+gameId+'"><img src=\"'+gameModeGfxUrl+'\" title=\"'+gameModeGfxTitle+'\"></div><div id="lobbyGameList_gameType" class="lobbyGameList_gameType"><img src=\"'+gameTypeGfxUrl+'\" title=\"'+gameTypeGfxTitle+'\"></div><div id="lobbyGameList_gamePrivate" class="lobbyGameList_gamePrivate"><img src=\"'+gamePrivateGfxUrl+'\" title=\"'+gamePrivateGfxTitle+'\"></div><div id="lobbyGameList_gameSpectators" class="lobbyGameList_gameSpectators"><img id="lobbyGameList_gameSpectators_img" src=\"'+gameAllowSpectatorsGfxUrl+'\" title=\"'+gameAllowSpectatorsGfxTitle+'\"><span class="lobbyGameList_gameNumberOfSpectators" id="lobbyGameList_gameNumberOfSpectators_gameId-'+gameId+'">'+numberOfSpectators+'</span></div><div id="lobbyGameList_gameTimeouts" class="lobbyGameList_gameTimeouts">'+myNetCache.getGameData(gameId).gameInfo.playerActionTimeout+'s/'+myNetCache.getGameData(gameId).gameInfo.delayBetweenHands+'s</div></h2> '+
 				'<ul id="lobbyGameList_gameDetails_gameId-'+gameId+'" data-role="listview" data-theme="d" data-divider-theme="d"> '+
@@ -190,12 +191,12 @@ function LobbyGameListImpl()
 
 	this.gameAddPlayer = function(gameId, playerId) 
 	{
-		//update playercounter in game desc
+		// update playercounter in game desc
 		var playerIdArray = myNetCache.getGameData(gameId).playerIds;
 		var playerCounter = playerIdArray.length;
 		$("#lobbyGameList_numberOfPlayers_gameId-"+gameId).html(playerCounter+'/'+myNetCache.getGameData(gameId).gameInfo.maxNumPlayers);
 		
-		//add player to game details player list
+		// add player to game details player list
 		var playerNameString = "";
 		var avatarFileName = "";
 		if(myNetCache.hasPlayerData(playerId)) {
@@ -218,12 +219,12 @@ function LobbyGameListImpl()
 	
 	this.gameRemovePlayer = function(gameId, playerId) 
 	{
-		//update playercounter in game desc
+		// update playercounter in game desc
 		var playerIdArray = myNetCache.getGameData(gameId).playerIds;
 		var playerCounter = playerIdArray.length;
 		$("#lobbyGameList_numberOfPlayers_gameId-"+gameId).html(playerCounter+'/'+myNetCache.getGameData(gameId).gameInfo.maxNumPlayers);
 		
-		//remove player entry
+		// remove player entry
 		$("#lobbyGameList_playerInGameList_playerId"+playerId).remove();
 	};
 

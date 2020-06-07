@@ -15,7 +15,7 @@ function LobbyChatImpl()
 	$("#lobbyChat").append('<div id="chatTextArea" style="padding: 0px; width:100%; height:'+height+'px; overflow-y:scroll;"></div>');	
 	$("#lobbyChatButton").html("Chat");
 
-	//class members
+	// class members
 	this.prepare = function() {
 		$("#lobbyChat").append('<div id="chatTextArea" style="padding: 0px; width:100%; height:'+height+'px; overflow-y:scroll;"></div>');	
 	};
@@ -55,13 +55,8 @@ function LobbyChatImpl()
 	
 	this.finalReceiveMsg = function(msgText, refresh) 
 	{
-//		if(self.isActive) {
 		$("#chatTextArea").append(msgText);
 		$("#chatTextArea").scrollTop($('#chatTextArea')[0].scrollHeight);
-//		}
-//		if(!refresh) {
-//			self.chatCache.push(msgText);
-//		}
 	};
 	
 	
@@ -83,12 +78,6 @@ function LobbyChatImpl()
 		if(active) {
 			self.isActive = true;
 			$("#lobbyChat").show();
-//			if(self.chatCache.length > 0) {
-//				for (var i = 0; i < self.chatCache.length; i++) {
-//					var refresh = true;
-//					self.finalReceiveMsg(self.chatCache[i], refresh);
-//				}
-//			}
 		}
 		else {
 			self.isActive = false;
