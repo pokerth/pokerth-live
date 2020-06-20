@@ -8,7 +8,7 @@ myButtons = new Object();
 function ButtonsImpl()
 {
 	var self = this;
-	$("#gameArea").append('<div id="tableMenuButtonContainer"><a id="tableMenuButton" href="" data-role="button" data-icon="gear" data-mini="true" data-theme="a">PokerTH</a></div>');
+	$("#gameArea").append('<div id="tableMenuButtonContainer"><a id="tableMenuButton" href="" data-role="button" data-icon="gear" data-mini="true" data-theme="a">Settings</a></div>');
 	$("#tabelMenuButtonContainer").hide();
 	$("#gameArea").append('<div id="tableMenuPopup" data-role="popup" class="ui-content">' +
                                     '<a id="tableMenuPopupCloseIcon" href="" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>' +

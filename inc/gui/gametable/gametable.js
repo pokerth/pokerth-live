@@ -29,9 +29,6 @@ function GameTableImpl()
 		$("#gameArea").append('<div id="winnerLabel'+i+'"></div>');
 		$("#gameArea").append('<div id="avatarLabel'+i+'"></div>');
 		$("#gameArea").append('<div id="distributePotAnimationLabel'+i+'"></div>');
-		$("#gameArea").append('<div id="table-user-loggedIn"></div>');
-		$("#gameArea").append('<div id="spectatorLabel"></div>');
-		$("#gameArea").append('<div id="table-chat-textArea"></div>');	
 		$("#avatarLabel"+i).css({ 
 			'z-index' : this.avatarLabelCssZIndex, 
 			'image-rendering' : 'optimizeQuality',
@@ -92,8 +89,8 @@ function GameTableImpl()
 		self.refreshDealerButton();
 		self.refreshPot();
 		self.refreshUIButtons();
+		self.refreshGameTitleName();
 		self.refreshSpectatorLabel();
-		self.refreshClientLabel();
 		self.refreshChat();
 	};
 	
@@ -108,32 +105,9 @@ function GameTableImpl()
 		ct7.clearRect(0, 0, myWidth, myHeight);
 	};
 	
-	this.clientConnected = function(nickName) 
-	{
-		$("#table-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;"+nickName);
-		$("#table-user-loggedIn").css({ 
-			"color" : "green" 
-		});
-	}
-	
-	this.clientDisconnected = function() 
-	{
-		$("#table-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;offline");
-		$("#table-user-loggedIn").css({ "color" : "red" });
-	}
-	
-	this.refreshClientLabel = function() 
-	{
-		$("#table-user-loggedIn").css({ 
-			'position' : 'absolute',
-			'top' : parseInt(myHeight * 0.3 / 100) + 'px',
-			'left' : parseInt(myWidth * 3.7 / 100) + 'px'
-		});
-	}
-	
 	this.drawFloorAndTable = function()
 	{
-//draw floor
+	// draw floor
 		img = new Image();
 		img.onload = function() {
 			var ptrn = ct.createPattern(img, 'repeat');
@@ -188,9 +162,9 @@ function GameTableImpl()
 		grd.addColorStop(1, "rgba(255, 255, 255, 0.0)");
 		ct.fillStyle = grd;
 		ct.fill();
-// //table border
+// // table border
 		var tableBorderWidth = myHeight * 4 / 100;
-//plain dark border
+// plain dark border
 		ct.beginPath();
 		ct.lineWidth = tableBorderWidth + tableBorderWidth * 30 / 100;
 		ct.arc(leftCircleCenterX, circleCenterY, circleRadius, (Math.PI * 90) / 180, (Math.PI * 270) / 180, false);
@@ -202,7 +176,7 @@ function GameTableImpl()
 		ct.closePath();
 		ct.strokeStyle = "#431907";
 		ct.stroke();
-//plain lighter border
+// plain lighter border
 		ct.beginPath();
 		ct.lineWidth = tableBorderWidth + tableBorderWidth * 15 / 100;
 		ct.arc(leftCircleCenterX, circleCenterY, circleRadius, (Math.PI * 90) / 180, (Math.PI * 270) / 180, false);
@@ -214,7 +188,7 @@ function GameTableImpl()
 		ct.closePath();
 		ct.strokeStyle = "#67270B";
 		ct.stroke();
-//texture filling
+// texture filling
 		var img = new Image();
 		ct.beginPath();
 		ct.lineWidth = tableBorderWidth;
@@ -260,35 +234,35 @@ function GameTableImpl()
 		var cardHolderBGColor = "rgba(255,255,255,0.05)";
 		var cardHolderTextColor = "rgba(255,255,255,0.05)";
 		ct5.fillStyle = cardHolderBGColor;
-//flop1
+// flop1
 		ct5.roundRect(self.cardHolder.flop1X, self.cardHolder.cardHolderY, self.cardHolder.cardHolderWidth, self.cardHolder.cardHolderHeight, self.cardHolder.cardHolderRadius);
 		ct5.fill();
 		ct5.fillStyle = cardHolderTextColor;
 		ct5.font = 'bold ' + (myHeight * 8 / 100) + 'px sans-serif';
 		ct5.textBaseline = 'bottom';
 		ct5.fillText("f", self.cardHolder.flop1X + (myWidth * 2.8 / 100), self.cardHolder.cardHolderY + (myHeight * 14.3 / 100));
-//flop2
+// flop2
 		ct5.roundRect(self.cardHolder.flop2X, self.cardHolder.cardHolderY, self.cardHolder.cardHolderWidth, self.cardHolder.cardHolderHeight, self.cardHolder.cardHolderRadius);
 		ct5.fill();
 		ct5.fillStyle = cardHolderTextColor;
 		ct5.font = 'bold ' + (myHeight * 8 / 100) + 'px sans-serif';
 		ct5.textBaseline = 'bottom';
 		ct5.fillText("f", self.cardHolder.flop2X + (myWidth * 2.8 / 100), self.cardHolder.cardHolderY + (myHeight * 14.3 / 100));
-//flop3
+// flop3
 		ct5.roundRect(self.cardHolder.flop3X, self.cardHolder.cardHolderY, self.cardHolder.cardHolderWidth, self.cardHolder.cardHolderHeight, self.cardHolder.cardHolderRadius);
 		ct5.fill();
 		ct5.fillStyle = cardHolderTextColor;
 		ct5.font = 'bold ' + (myHeight * 8 / 100) + 'px sans-serif';
 		ct5.textBaseline = 'bottom';
 		ct5.fillText("f", self.cardHolder.flop3X + (myWidth * 2.8 / 100), self.cardHolder.cardHolderY + (myHeight * 14.3 / 100));
-//turn
+// turn
 		ct5.roundRect(self.cardHolder.turnX, self.cardHolder.cardHolderY, self.cardHolder.cardHolderWidth, self.cardHolder.cardHolderHeight, self.cardHolder.cardHolderRadius);
 		ct5.fill();
 		ct5.fillStyle = cardHolderTextColor;
 		ct5.font = 'bold ' + (myHeight * 8 / 100) + 'px sans-serif';
 		ct5.textBaseline = 'bottom';
 		ct5.fillText("t", self.cardHolder.turnX + (myWidth * 2.8 / 100), self.cardHolder.cardHolderY + (myHeight * 14.3 / 100));
-//river
+// river
 		ct5.roundRect(self.cardHolder.riverX, self.cardHolder.cardHolderY, self.cardHolder.cardHolderWidth, self.cardHolder.cardHolderHeight, self.cardHolder.cardHolderRadius);
 		ct5.fill();
 		ct5.fillStyle = cardHolderTextColor;
@@ -299,7 +273,7 @@ function GameTableImpl()
 	
 	this.setupSeats = function()
 	{
-//init global seatSize here
+		// init global seatSize here
 		seatWidth = myWidth * 15 / 100;
 		seatHeight = myHeight * 20 / 100;
 		var seat0X = myWidth * 50 / 100 - (seatWidth / 2);
@@ -332,26 +306,9 @@ function GameTableImpl()
 		var seat9X = myWidth * 70 / 100 - (seatWidth / 2);
 		var seat9Y = myHeight * 68 / 100 - (seatHeight / 2);
 		var seat9 = new Array(seat9X, seat9Y);
-//gloabl seats ARRAY!!!!!!
+		// gloabl seats ARRAY!!!!!!
 		self.seatsArray = new Array(seat0, seat1, seat2, seat3, seat4, seat5, seat6, seat7, seat8, seat9);
 		myCards.setupHoleCards(self.seatsArray);
-//create myCards Object
-//draw seats squares for testing CONTEXT2
-// ct2.clearRect(0, 0, myWidth, myHeight);
-//
-// var seatsBackgroundColor = "rgba(0,0,0,0.2)";
-// ct2.fillStyle = seatsBackgroundColor;
-// ct2.fillRect(seat0X, seat0Y, seatWidth, seatHeight);
-// ct2.fillRect(seat1X, seat1Y, seatWidth, seatHeight);
-// ct2.fillRect(seat2X, seat2Y, seatWidth, seatHeight);
-// ct2.fillRect(seat3X, seat3Y, seatWidth, seatHeight);
-// ct2.fillRect(seat4X, seat4Y, seatWidth, seatHeight);
-// ct2.fillRect(seat5X, seat5Y, seatWidth, seatHeight);
-// ct2.fillRect(seat6X, seat6Y, seatWidth, seatHeight);
-// ct2.fillRect(seat7X, seat7Y, seatWidth, seatHeight);
-// ct2.fillRect(seat8X, seat8Y, seatWidth, seatHeight);
-// ct2.fillRect(seat9X, seat9Y, seatWidth, seatHeight);
-//
 	};
 	
 	this.refreshActivePlayer = function()
@@ -359,7 +316,7 @@ function GameTableImpl()
 		ct2.clearRect(0, 0, myWidth, myHeight);
 		var currentPlayer = self.getPlayerSeat(myNetCache.getNetGame().getNetHand().getCurrentPlayerId());
 		if (typeof(currentPlayer) != "undefined") {
-			//clear PlayerAction before
+			// clear PlayerAction before
 			ct7.clearRect(self.seatsArray[currentPlayer][0], self.seatsArray[currentPlayer][1], seatWidth, seatHeight);
 			if (currentPlayer >= 3 && currentPlayer <= 7) {
 				var avatarSize = myHeight * 8 / 100;
@@ -381,13 +338,13 @@ function GameTableImpl()
 			}
 		}
 		else {
-//			if no player is current clear all 
+		// if no player is current clear all 
 			var playerSeatsArray = myNetCache.getNetGame().getGameData().playerSeats;
 			for (var i = 0; i < playerSeatsArray.length; i++) {
 				ct2.clearRect(self.seatsArray[i][0], self.seatsArray[i][1], seatWidth, seatHeight);
 			}
 		}
-		//do refresh player action to clear the actions when a new betting round starts (possible a bit dirty :( ) <-- JAAA wenn nach raise z.b. die runde weiter geht dann wird nicht mehr action gelöscht wenn einer dran ist <-- TODO
+		// do refresh player action to clear the actions when a new betting round starts (possible a bit dirty :( ) <-- JAAA wenn nach raise z.b. die runde weiter geht dann wird nicht mehr action gelöscht wenn einer dran ist <-- TODO
 		self.refreshPlayerAction();
 	};
 
@@ -402,7 +359,7 @@ function GameTableImpl()
 				avatarPicture.src = "gfx/pokerth.png";	
 			}
 			else { 
-				avatarPicture.src = 'http://avatar.poker-heroes.com/web/' + avatarPicture.src;
+				avatarPicture.src = avatarServerURL + avatarPicture.src;
 			}
 			avatarPicture.myX = parseInt(self.seatsArray[i][0] + myHeight * 0.5 / 100);
 			if (i >= 3 && i <= 7) { 
@@ -440,7 +397,6 @@ function GameTableImpl()
 	{
 		if(self.isActive) {
 			var fontSize = parseInt(myHeight * 2.3 / 100);
-	// if(fontSize < 15) { fontSize = 15; }
 			var playerSeatsArray = myNetCache.getNetGame().getGameData().playerSeats;
 			for (var i = 0; i < playerSeatsArray.length; i++) {
 				var nickString;
@@ -454,7 +410,7 @@ function GameTableImpl()
 				if (i >= 3 && i <= 7) {
 					topYOffset = 17;
 				}
-				//add some more space (e.g. -3 px) to clearRect because of "j g y" etc.
+				// add some more space (e.g. -3 px) to clearRect because of "j g y" etc.
 				ct3.clearRect(self.seatsArray[i][0] + (myHeight * 9 / 100), self.seatsArray[i][1] + (myHeight * (19.6-topYOffset) / 100) - parseInt(myHeight * 3.5 / 100), parseInt((myHeight * 2.7 / 100) * 12), parseInt(myHeight * 4 / 100));
 				if(self.getCurrentSeatState(playerSeatsArray[i]) != self.SEAT_STATE.CLEAR) {
 					var opacity = 1.0;
@@ -582,7 +538,7 @@ function GameTableImpl()
 				ct3.fillText("D", dealerCircleCenterX - (myHeight * 1.33 / 100), dealerCircleCenterY + (myHeight * 2.25 / 100));
 			}
 			else {
-				//add some more space (e.g. -3 px) to clearRect because of anitalising 
+				// add some more space (e.g. -3 px) to clearRect because of anitalising 
 				ct3.clearRect(dealerCircleCenterX-dealerCircleRadius-3, dealerCircleCenterY-dealerCircleRadius-3, 2*dealerCircleRadius+6, 2*dealerCircleRadius+6);
 			}
 		}
@@ -608,7 +564,7 @@ function GameTableImpl()
 	
 	this.distributePot = function()
 	{
-		//collect sets and refresh POT at first
+		// collect sets and refresh POT at first
 		self.refreshPot();
 		
 		function clearAction(x,y) {
@@ -637,7 +593,7 @@ function GameTableImpl()
 			if( isActive && action != 1 /*fold*/ && moneyWon > 0) {
 				var topPlayerYOffset = 0;
 				if(cardsValue === myNetCache.getNetGame().getNetHand().getHighestCardsValue()) {
-					//show winner	
+					// show winner	
 					$("#winnerLabel"+i).empty();
 					$("#winnerLabel"+i).append("Winner")
 					if (i >= 3 && i <= 7) {
@@ -654,7 +610,7 @@ function GameTableImpl()
 							'top': parseInt(self.seatsArray[i][1] + (myHeight * (10 + topPlayerYOffset) / 100))
 					} ).delay(2000).show(50, clearAction(seatX, seatY));
 				}
-				//clear animate pot distribution
+				// clear animate pot distribution
 				if (i >= 3 && i <= 7) {
 					topPlayerYOffset = 11;
 				}
@@ -664,13 +620,12 @@ function GameTableImpl()
 						'position' : 'absolute',
 						'opacity' :'1.0',					
 						'color': 'yellow',
-						'font-family' : 'sans-serif',
 						'font-weight' : 'bold',
 						'font-size': parseInt(myHeight * 3.2 / 100)+'px',
 						'left': parseInt(myHeight * 98.5 / 100),
 						'top': parseInt(myHeight * 47.5 / 100)
 				} ).delay(2500).show(1, function() { 
-					//clear canvas POT 
+					// clear canvas POT 
 					ct4.clearRect(myWidth *  57.5 / 100, (myHeight * 50 / 100) - parseInt(myHeight * 3.2 / 100), myWidth * 20 / 100, parseInt(myHeight * 4.5 / 100));
 				}).animate({
 						'left' : parseInt(self.seatsArray[i][0] + (myHeight * 11 / 100)),
@@ -680,14 +635,13 @@ function GameTableImpl()
 				}, 1000, function() { self.refreshPlayerCash(); } ).hide(1);				
 				
 				if(activeNonFoldPlayersCounter >= 0 && cardsValue === myNetCache.getNetGame().getNetHand().getHighestCardsValue()) {
-					//start fade out non winning cards
+					// start fade out non winning cards
 					var bestHandPosition = myNetCache.getPlayerData(playerSeatsArray[i]).gameValues.bestHandPosition;
 					if (bestHandPosition.length > 0) {
 						var index0 = true;
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 0 ) {
 								index0 = false;
-//								myCards.raiseHoleCard(playerSeatsArray[i], 0);
 								break;
 							}
 						}
@@ -699,7 +653,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 1 ) {
 								index1 = false;
-//								myCards.raiseHoleCard(playerSeatsArray[i], 1);
 								break;
 							}
 						}
@@ -711,7 +664,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 2 ) {
 								index2 = false;
-//								myCards.raiseTableCard(0)
 								break;
 							}
 						}
@@ -723,7 +675,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 3 ) {
 								index3 = false;
-//								myCards.raiseTableCard(1)
 								break;
 							}
 						}
@@ -735,7 +686,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 4 ) {
 								index4 = false;
-//								myCards.raiseTableCard(2)
 								break;
 							}
 						}
@@ -747,7 +697,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 5 ) {
 								index5 = false;
-//								myCards.raiseTableCard(3)
 								break;
 							}
 						}
@@ -759,7 +708,6 @@ function GameTableImpl()
 						for(var j=0; j<5; j++) {
 							if (bestHandPosition[j] == 6 ) {
 								index6 = false;
-//								myCards.raiseTableCard(4)
 								break;
 							}
 						}
@@ -786,6 +734,12 @@ function GameTableImpl()
 	{
 		myButtons.refreshAll();
 	};
+
+	this.refreshGameTitleName = function ()
+	{
+		var gameTitleName = myNetCache.getNetGame().getGameData().gameInfo.gameName;
+		$("#gameTitleName").html("<h3>"+gameTitleName+"</h3>");		
+	}
 	
 	this.refreshSpectatorLabel = function()
 	{
@@ -793,13 +747,8 @@ function GameTableImpl()
 		var spectatorImageWidth = parseInt(myWidth * 3.5 / 100);
 		$("#spectatorLabel").html("<img border=0 style='margin-left: auto; margin-right: auto; width: "+spectatorImageWidth+"px; height: "+spectatorImageWidth+"px;' src='gfx/gametable/spectator.svg'><br><span style='margin-left: "+parseInt(myHeight * 2.7 / 100)+"px; vertical-align: top; font: bold "+parseInt(myHeight * 2.3 / 100)+"px sans-serif;'>"+spectatorNumber+"</span>");
 		$("#spectatorLabel").css( {
-				'display' : 'block',
-				'border' : '0px solid white',
-				'position' : 'absolute',
-				'z-index' : '1000' ,
-				'top' : parseInt(myHeight * 0.3 / 100) + 'px',
-				'left' : parseInt(myWidth * 0.3 / 100) + 'px',
-				'color' : 'white'
+				'bottom' : parseInt(myHeight * 0.3 / 100) + 'px',
+				'right' : parseInt(myWidth * 0.3 / 100) + 'px'
 		} );
 	};
 	
@@ -807,8 +756,6 @@ function GameTableImpl()
 	{
 		$("#table-chat-textArea").textinput();
 		$("#table-chat-textArea").css( {
-				'top' : parseInt(myHeight * 80 / 100) + 'px',
-				'left' : parseInt(myWidth * 0.3 / 100) + 'px',
 				'height' : parseInt(myHeight * 15 / 100) + 'px',
 				'width' : parseInt(myWidth * 33 / 100) + 'px',
 				'font-size' : parseInt(myHeight * 2.1 / 100)
@@ -851,29 +798,34 @@ function GameTableImpl()
 	this.resizeGameTable = function()
 	{
 		var gameArea = document.getElementById('gameArea');
+		var gameAreaBg = document.getElementById('gameAreaBg');
 		var widthToHeight = 1024 / 600;
+		var headerHeight = 116;
+		var navHeight = 40;
 		var newWidth = parseInt(window.innerWidth);
-		var newHeight = parseInt(window.innerHeight);
+		var newHeight = ( parseInt(window.innerHeight) - headerHeight - navHeight);
 		var newWidthToHeight = newWidth / newHeight;
 		if (newWidthToHeight > widthToHeight) {
 			newWidth = parseInt(newHeight * widthToHeight);
-//set minimum size
+			// set minimum size
 			if (newWidth <= 669) {
 				newWidth = 669;
 				newHeight = 392;
 			}
 			gameArea.style.height = newHeight + 'px';
+			gameAreaBg.style.height = newHeight + 'px';
 			gameArea.style.width = newWidth + 'px';
 		}
 		else {
 			newHeight = parseInt(newWidth / widthToHeight);
-// set minimum size
+			// set minimum size
 			if (newHeight <= 392) {
 				newWidth = 669;
 				newHeight = 392;
 			}
 			gameArea.style.width = newWidth + 'px';
 			gameArea.style.height = newHeight + 'px';
+			gameAreaBg.style.height = newHeight + 'px';
 		}
 		gameArea.style.marginTop = 0 + 'px';
 		gameArea.style.marginLeft = 0 + 'px';
@@ -900,7 +852,7 @@ function GameTableImpl()
 		gameCanvas7.height = newHeight;//write global variables
 		myWidth = newWidth;
 		myHeight = newHeight;
-//now draw again
+		// now draw again
 		self.refreshAll();
 		myCards.refreshAll();
 	};
@@ -919,7 +871,7 @@ function GameTableImpl()
 		}
 	};
 	
-//HELPER
+// HELPER
 	this.getCurrentSeatState = function(playerId)
 	{
 		if(myNetCache.getPlayerData(playerId).gameValues.active) {

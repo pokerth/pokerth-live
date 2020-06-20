@@ -12,7 +12,7 @@ function LobbyPlayerListImpl()
 	$("#lobbyPlayerList").append('<ul id="playerList" data-role="listview data-filter="true"></ul>'); //data-autodividers="true" data-sort="true"
 	$("#lobbyPlayerListButton").html("Players ("+$('.lobbyPlayerList-playerItem').length+")");
 
-	//class members
+	// class members
 	this.prepare = function() {
 		$("#lobbyPlayerList").append('<ul id="playerList" data-role="listview data-filter="true""></ul>'); //data-autodividers="true" data-sort="true"
 	};
@@ -24,12 +24,12 @@ function LobbyPlayerListImpl()
 		if(myNetCache.hasPlayerData(playerId)) {
 			playerNameString = myNetCache.getPlayerData(playerId).playerInfoData.playerName;
 			avatarFileName = myNetCache.getPlayerData(playerId).avatarFileName;
-			if(avatarFileName != "") { avatarFileName = 'http://avatar.poker-heroes.com/web/'+avatarFileName; }
-			else { avatarFileName = "gfx/1px.png"; }
+			if(avatarFileName != "") { avatarFileName = avatarServerURL + avatarFileName; }
+			else { avatarFileName = "gfx/pokerTH_50x50_alpha50.png"; }
 		}
 		else {
 			playerNameString = "id"+playerId;
-			avatarFileName = "gfx/1px.png";
+			avatarFileName = "gfx/pokerTH_50x50_alpha50.png";
 		}
 		var playerString = '<li class="lobbyPlayerList-playerItem" id="lobbyPlayerList_playerId-'+playerId+'"> '+
 			'<div class="lobbyPlayerList-playerAvatarDiv"><img class="lobbyPlayerList-playerAvatar" id="lobbyPlayerList_playerAvatar-'+playerId+'" width="50" height="50" border="0" src="'+avatarFileName+'"></div> '+
@@ -55,8 +55,8 @@ function LobbyPlayerListImpl()
 		var playerName = myNetCache.getPlayerData(playerId).playerInfoData.playerName;
 		$('#lobbyPlayerList_playerName-'+playerId).html(playerName);
 		var avatarFileName = myNetCache.getPlayerData(playerId).avatarFileName;
-		if(avatarFileName != "") { avatarFileName = 'http://avatar.poker-heroes.com/web/'+avatarFileName; }
-		else { avatarFileName = "gfx/1px.png"; }
+		if(avatarFileName != "") { avatarFileName = avatarServerURL + avatarFileName; }
+		else { avatarFileName = "gfx/pokerTH_50x50_alpha50.png"; }
 		$('#lobbyPlayerList_playerAvatar-'+playerId).attr("src", avatarFileName);
 		self.updatePlayerListView();
 	};
@@ -65,9 +65,8 @@ function LobbyPlayerListImpl()
 	{
 		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
 		$("#lobbyPlayerList_gameInfos-"+playerId).html("This player is playing at: <b>"+gameName+"</b>");
-		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="gear">Spectate</a>');
+		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="search">Spectate</a>');
 		$("#spectateButton-"+playerId).button();
-//		$('#playerList').listview('refresh');
 		$("#lobbyPlayerList").delegate('#spectateButton-'+playerId, "click", function(){
 			var $this = $(this),
 			myGameId = $this.data('gameid');

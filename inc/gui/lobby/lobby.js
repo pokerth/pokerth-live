@@ -10,7 +10,7 @@ function LobbyImpl()
 	var self = this;
 	this.isActive = false;
 	this.currentWaitingGameId = 0;
-	$("#lobby-version-info").html("v"+POKERTH_BETA_RELEASE_STRING+"&nbsp;&nbsp;");
+	$("#lobby-version-info").html("v"+POKERTH_BETA_RELEASE_STRING);
 	
 	this.clearLobby = function()
 	{
@@ -27,14 +27,14 @@ function LobbyImpl()
         
 	this.clientConnected = function(nickName) 
 	{
-		$("#lobby-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;"+nickName);
-		$("#lobby-user-loggedIn").css({ "color" : "green" });
+		$("#lobby-user-loggedIn").html(nickName);
+		$("#lobby-user-loggedIn").addClass('online');
 	}
 	
 	this.clientDisconnected = function() 
 	{
-		$("#lobby-user-loggedIn").html("&nbsp;&nbsp;&#9673;&nbsp;offline");
-		$("#lobby-user-loggedIn").css({ "color" : "red" });
+		$("#lobby-user-loggedIn").html("offline");
+		$("#lobby-user-loggedIn").addClass('offline');
 	}
 		
 	this.showGameList = function() 
@@ -42,18 +42,14 @@ function LobbyImpl()
 		myLobbyGameList.setActiveState(true);
 		myLobbyChat.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'auto'});
-		$('#content').css({'padding':'0px'});
 	};
        
 	this.showPlayerList = function() 
 	{
 		myLobbyPlayerList.setActiveState(true);
-		myLobbyPlayerList.updatePlayerListView();
 		myLobbyChat.setActiveState(false);
 		myLobbyGameList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'auto'});
-		$('#content').css({'padding':'0px'});
+		myLobbyPlayerList.updatePlayerListView();
 	};
 	 
 	this.showChat = function() 
@@ -61,8 +57,6 @@ function LobbyImpl()
 		myLobbyChat.setActiveState(true);
 		myLobbyGameList.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
-		$('#lobbyArea').css({'overflow-y':'hidden'});
-		$('#content').css({'padding':'0px 0px 0px 15px'});
 	};
 	
 	this.showWaitStartMsg = function(gameId, waitText) 
@@ -121,7 +115,7 @@ function LobbyImpl()
 			page.page('destroy').page();
 		}
 		
-		//show loading msg only if there is no other popup visible currently, except login-dialog which will be closed
+		// show loading msg only if there is no other popup visible currently, except login-dialog which will be closed
 		if(myGui.currentVisibleMessageBoxId == "") {
 			show();
 		}
@@ -139,58 +133,14 @@ function LobbyImpl()
 		$("#loadingLobbyMsg").remove();
 	};
 	
-	this.resizeLobby = function()
- 	{
-		var lobbyArea = document.getElementById('lobbyArea');
- 		var widthToHeight = 1024 / 600;
- 		var newWidth = parseInt(window.innerWidth);
- 		var newHeight = parseInt(window.innerHeight);
- 		var newWidthToHeight = newWidth / newHeight;
- 		if (newWidthToHeight > widthToHeight) {
-			newWidth = parseInt(newHeight * widthToHeight);
- 			//set minimum size
- 			if(newWidth <= 669) {	
- 	 			newWidth = 669;
- 	 			newHeight = 392;
- 	 		}
-			lobbyArea.style.height = newHeight + 'px';
- 			lobbyArea.style.width = newWidth + 'px';
- 		} 
-		else {
- 			newHeight = parseInt(newWidth / widthToHeight);
-// 			set minimum size
- 			if(newHeight <= 392) {	
- 	 			newWidth = 669;
- 	 			newHeight = 392;
- 	 		}
-			lobbyArea.style.width = newWidth + 'px';
- 			lobbyArea.style.height = newHeight + 'px';
- 		}
- 		
- 		lobbyArea.style.marginTop = 0 + 'px';
- 		lobbyArea.style.marginLeft = 0 + 'px';
- 		//write global variables
- 		myWidth = newWidth;
-		myHeight = newHeight;		
-		
-		if(myLobbyChat.isActive) {
-			myLobbyChat.resize();
-		}
- 	};	
-	
 	this.setActiveState = function(active) {
 		
 		if(active) {
 			self.isActive = true;
-			window.addEventListener('resize', self.resizeLobby, false);
-			window.addEventListener('orientationchange', self.resizeLobby, false);
-			self.resizeLobby();
 		}
 		else {
 			self.isActive = false;
 			self.hideWaitStartGameMsg();		
-			window.removeEventListener('resize', self.resizeLobby, false);
-			window.removeEventListener('orientationchange', self.resizeLobby, false);
 		}
 	};
 };

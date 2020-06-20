@@ -1,0 +1,14 @@
+// Base styles
+@import "base/_reset.scss";
+@import "base/_variables.scss";
+@import "base/_fonts.scss";
+@import "base/_structure.scss";
+
+// Components styles
+
+// Page styles
+@import "pages/_lobby.scss";
+@import "pages/_game.scss";
+
+// Layout styles
+@import "layout/_responsive.scss";

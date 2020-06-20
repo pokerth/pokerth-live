@@ -37,7 +37,7 @@ function NetCache()
 
 	this.addPlayerData = function(playerData)
 	{
-		// Ein vorab erstelltes PlayerData-Objekt berücksichtigen.
+		// Include a previous created PlayerData object
 		if (self.playerDataMap.hasOwnProperty(playerData.playerId))
 		{
 			var oldPlayerData = self.getPlayerData(playerData.playerId);

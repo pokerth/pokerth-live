@@ -1,0 +1,42 @@
+// Lobby - Game list
+@media (max-width: $screenMedium) {
+    .gameListHeader{
+        display: none;
+    }
+    .lobbyGameList_numberOfPlayers,
+    .lobbyGameList_gameMode,
+    .lobbyGameList_gameType,
+    .lobbyGameList_gamePrivate,
+    .lobbyGameList_gameSpectators,
+    .lobbyGameList_gameTimeouts{
+        flex-basis: 70px!important;
+    }    
+    .lobbyGameList_gameMode,
+    .lobbyGameList_gameType,
+    .lobbyGameList_gamePrivate,
+    .lobbyGameList_gameSpectators{
+        margin: 0!important;
+    }    
+}
+
+@media (max-width: $screenSmall) {
+    .lobbyGameList_gameDesc{
+        flex-basis: 100%!important;
+        max-width: 100%!important;
+        border-bottom: 1px solid $gray;
+        padding-bottom: 10px!important;
+        padding-left: 15px!important;
+        margin-bottom: 10px;
+    }
+    .lobbyGameList_numberOfPlayers{
+        margin-left: 0!important;
+    }
+}
+
+
+// Lobby - Player list
+@media (max-width: $screenSmall) { 
+    .lobbyPlayerList-playerAvatarDiv{
+        display: none;
+    }
+}

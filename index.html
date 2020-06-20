@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>PokerTH live</title>
+		<meta name="description" content="Free online poker with the best open source texas holden poker game and a great community - PokerTH" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="inc/third_party/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="styles/styles.css" type="text/css" />
+	</head>
+
+	<body>
+		<!-- Header -->
+		<header class="header">
+			<div class="header-top-container">
+				<div class="logo-main">
+					<img src="gfx/pokerth-template-logo_light.png" alt="PokerTH logo">
+				</div>
+
+				<div class="header-info">
+					<div id="lobby-user-loggedIn" class="user-loggedIn">
+					</div>
+				</div>			
+			</div>
+
+			<nav class="header-navbar">
+				<div class="navbar-btn">
+					<a id="lobbyGameListButton" class="navbar-btn-a" href="">
+						Games
+					</a>
+				</div>
+				<div class="navbar-btn">
+					<a id="lobbyPlayerListButton" class="navbar-btn-a" href="">
+						Players
+					</a>
+				</div>
+				<div class="navbar-btn">
+					<a id="lobbyChatButton" class="navbar-btn-a" href="">
+						Chat
+					</a>
+				</div>
+			</nav>
+
+		</header>
+
+		<!-- Main -->
+		<main id="main">
+
+			<!-- Game area -->
+			<div id="gameArea" class="gameArea">
+				<div id="gameTitleName">
+				</div>
+				<canvas id="gameCanvas">
+				</canvas>
+				<canvas id="gameCanvas2">
+				</canvas>
+				<canvas id="gameCanvas3">
+				</canvas>
+				<canvas id="gameCanvas4">
+				</canvas>
+				<canvas id="gameCanvas5">
+				</canvas>
+				<canvas id="gameCanvas6">
+				</canvas>
+				<canvas id="gameCanvas7">
+				</canvas>
+				<div id="table-chat-textArea">
+				</div>
+				<div id="spectatorLabel">
+				</div>
+			</div>
+			<div id="gameAreaBg" class="gameAreaBg" style="display: none;">
+			</div>
+			
+			<!-- Lobby area -->
+			<div id="lobbyArea" class="lobbyArea">
+				<div id="lobbyPage" class="lobbyPage" data-role="page">
+					
+					<div id="lobby-content" class="lobby-content" data-role="content">
+
+						<div id="lobbyGameList" class="lobbyGameList" data-role="content">
+						</div>
+
+						<div id="lobbyPlayerList" class="lobbyPlayerList" data-role="content">
+						</div>
+
+						<div id="lobbyChat" class="lobbyChat" data-role="content">
+						</div>
+
+						<div id="lobby-version-info" class="lobby-version-info">
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</main>
+
+		<!-- Footer -->
+		<footer class="footer">
+		</footer>
+
+		<!-- Javascript -->
+		<script src="inc/third_party/jquery-1.9.1.min.js"></script>
+		<script src="inc/third_party/jquery.mobile-1.3.2.min.js"></script>
+		<script>
+			var pokerthStarted;
+			try {
+				pokerthStarted = window.sessionStorage.getItem("PokerTH-started");
+			} catch(e) {
+				pokerthStarted = "1";
+			}
+		</script>
+		<script src="inc/pokerth-live_min.js?ts=3"></script>
+		 
+	</body>
+
+</html>

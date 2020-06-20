@@ -1,0 +1,625 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* nunito-regular - latin */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../inc/fonts/nunito-v12-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Nunito Regular"), local("Nunito-Regular"), url("../inc/fonts/nunito-v12-latin-regular.eot?#iefix") format("embedded-opentype"), url("../inc/fonts/nunito-v12-latin-regular.woff2") format("woff2"), url("../inc/fonts/nunito-v12-latin-regular.woff") format("woff"), url("../inc/fonts/nunito-v12-latin-regular.ttf") format("truetype"), url("../inc/fonts/nunito-v12-latin-regular.svg#Nunito") format("svg");
+  /* Legacy iOS */
+}
+/* nunito-700 - latin */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../inc/fonts/nunito-v12-latin-700.eot");
+  /* IE9 Compat Modes */
+  src: local("Nunito Bold"), local("Nunito-Bold"), url("../inc/fonts/nunito-v12-latin-700.eot?#iefix") format("embedded-opentype"), url("../inc/fonts/nunito-v12-latin-700.woff2") format("woff2"), url("../inc/fonts/nunito-v12-latin-700.woff") format("woff"), url("../inc/fonts/nunito-v12-latin-700.ttf") format("truetype"), url("../inc/fonts/nunito-v12-latin-700.svg#Nunito") format("svg");
+  /* Legacy iOS */
+}
+/**
+* Main structure for lobby and game areas
+* TODO: remove all !important in attr when jQuery Mobile will be deleted
+**/
+html {
+  background: linear-gradient(0deg, #1c1e21 0%, #3b3f45 100%);
+}
+
+body {
+  background: #393939;
+  background-image: url("../gfx/body_bg.png");
+  background: url("../gfx/body_bg.png") top center repeat;
+  font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.ui-mobile, .ui-mobile body {
+  height: 100% !important;
+}
+
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button {
+  font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.header {
+  background-image: url("../gfx/header_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  background-size: cover;
+  width: 100%;
+  height: 155px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.header .header-top-container {
+  display: flex;
+  background: rgba(35, 64, 35, 0.55);
+  height: 115px;
+}
+.header .header-top-container .logo-main {
+  align-self: center;
+  padding: 20px 30px;
+}
+.header .header-top-container .logo-main img {
+  width: 100%;
+  max-width: 275px;
+  min-width: 190px;
+}
+@media (max-width: 480px) {
+  .header .header-top-container .logo-main {
+    padding: 10px;
+  }
+}
+.header .header-top-container .header-info {
+  align-self: center;
+  padding: 30px;
+  margin-left: auto;
+}
+@media (max-width: 480px) {
+  .header .header-top-container .header-info {
+    padding: 10px;
+  }
+}
+.header .header-top-container .user-loggedIn {
+  text-align: right;
+  font-weight: 700;
+  padding: 10px 0;
+}
+.header .header-top-container .user-loggedIn.online {
+  color: #FFFFFF;
+}
+.header .header-top-container .user-loggedIn.offline {
+  color: red;
+}
+.header .header-navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.header .header-navbar .navbar-btn {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 12px;
+}
+.header .header-navbar .navbar-btn-a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+.header .header-navbar .navbar-btn:not(:first-child) {
+  border-left: 1px solid #FFFFFF;
+}
+.header .header-navbar .navbar-btn .ui-btn-inner {
+  padding: 0;
+  border: none;
+}
+
+#main {
+  height: calc(100% - 155px);
+}
+
+.lobbyArea {
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100% - 155px);
+  position: relative;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+.lobbyPage {
+  min-height: unset !important;
+  position: relative !important;
+}
+
+.lobby-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 155px);
+  padding: 0;
+}
+
+.lobbyGameList {
+  display: none;
+  overflow: unset;
+  padding: 16px 32px;
+}
+
+.gameListHeader {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+  padding: 10px 12px 10px 40px;
+  background: #EEEEEE;
+}
+.gameListHeader .col_gameDesc {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%;
+  max-width: 30%;
+  text-align: center;
+  font-weight: 700;
+}
+.gameListHeader .col_numberOfPlayers,
+.gameListHeader .col_gameMode,
+.gameListHeader .col_gameType,
+.gameListHeader .col_gamePrivate,
+.gameListHeader .col_gameSpectators,
+.gameListHeader .col_gameTimeouts {
+  flex-basis: 80px;
+  text-align: center;
+  font-weight: 700;
+}
+.gameListHeader .col_numberOfPlayers {
+  margin-left: auto;
+}
+.gameListHeader .col_gameMode,
+.gameListHeader .col_gameType,
+.gameListHeader .col_gamePrivate,
+.gameListHeader .col_gameSpectators {
+  margin: 0 1.5%;
+}
+
+.gameListCollapsible {
+  padding: 0 !important;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  border-radius: 5px !important;
+  margin-bottom: 16px !important;
+  background: #EEEEEE;
+  border: none;
+  overflow: hidden;
+}
+.gameListCollapsible:hover {
+  background: #CCCCCC;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.16), 0 1px 3px 1px rgba(66, 66, 66, 0.32);
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle {
+  background: none;
+  border: none;
+  color: #000000;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameDesc {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%;
+  max-width: 30%;
+  white-space: break-spaces;
+  word-break: break-word;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_numberOfPlayers,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameMode,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameType,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gamePrivate,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameSpectators,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameTimeouts {
+  display: flex;
+  flex-basis: 80px;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameDesc,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_numberOfPlayers,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameTimeouts {
+  padding: 5px 0;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_numberOfPlayers {
+  margin-left: auto;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameMode,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameType,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gamePrivate,
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text .lobbyGameList_gameSpectators {
+  margin: 0 1.5%;
+}
+.gameListCollapsible a.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text #lobbyGameList_gameSpectators_img {
+  margin-right: 8px;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview {
+  margin: 0;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  margin: 10px;
+  background: #EEEEEE;
+  border-radius: 5px;
+  text-shadow: none;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider > img {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-divider #lobbyGameList_playerName {
+  padding-left: 10px;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-static {
+  margin-top: 16px;
+  border-top: 1px solid #CCCCCC;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child {
+  border: none;
+  background: none;
+  width: 200px;
+  margin: 12px auto 0 auto;
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child .ui-btn-inner {
+  border-radius: 50px;
+  background: #000000;
+  border-top: 1px solid #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(#444, #2d2d2d);
+}
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child .lobbyGameList_spectateButton {
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.lobbyPlayerList {
+  display: none;
+  padding: 16px 32px;
+  overflow: unset;
+}
+.lobbyPlayerList > form {
+  background: transparent;
+  margin: 8px 0 24px 0;
+}
+.lobbyPlayerList > .ui-listview {
+  margin: 0;
+}
+
+.ui-listview-filter > .ui-input-search.ui-focus {
+  box-shadow: none;
+  border: 1px solid #858585;
+}
+
+.lobbyPlayerList-playerItem {
+  height: 70px;
+  padding: 0 !important;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  border-radius: 5px !important;
+  margin-bottom: 16px;
+  border: none;
+  overflow: hidden;
+}
+.lobbyPlayerList-playerItem:hover {
+  background: #CCCCCC;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.16), 0 1px 3px 1px rgba(66, 66, 66, 0.32);
+}
+
+.lobbyPlayerList-playerAvatarDiv {
+  float: left;
+  height: 51px;
+  width: 50px;
+  margin: 0 !important;
+  padding: 10px;
+}
+
+.lobbyPlayerList-playerAvatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 !important;
+}
+
+.lobbyPlayerList-playerNameGameInfosDiv {
+  float: left;
+  padding: 10px 15px !important;
+  margin: 0 !important;
+}
+
+.lobbyPlayerList-spectatorButtonDiv {
+  height: 100%;
+}
+
+.lobbyPlayerList-spectatorButtonDiv > a {
+  height: 100%;
+  line-height: 3;
+  background: none;
+  margin: 0 !important;
+  border: none;
+  box-shadow: none;
+}
+.lobbyPlayerList-spectatorButtonDiv > a:focus {
+  box-shadow: none;
+}
+.lobbyPlayerList-spectatorButtonDiv > a > span {
+  border: none;
+  text-align: right;
+}
+.lobbyPlayerList-spectatorButtonDiv > a > span .ui-icon {
+  display: none;
+}
+
+.lobbyPlayerList_spectatorButton {
+  margin: 3px 7px 0 0 !important;
+}
+
+.lobbyChat {
+  display: none;
+  padding: 16px 32px;
+  height: calc(100% - 62px);
+}
+
+#chatTextArea {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  padding: 16px !important;
+  height: 100% !important;
+  min-height: 200px;
+}
+
+#lobby_chat_text {
+  font-size: 18px;
+}
+
+#game_chat_text {
+  line-height: 1.4rem;
+}
+
+.lobby-version-info {
+  margin-top: auto;
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 10px;
+  text-shadow: none;
+}
+
+.gameAreaBg {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  max-height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  background: url("../gfx/gametable/floor.jpg") top center repeat;
+  margin-top: -40px;
+  padding-top: 40px;
+}
+
+.gameArea {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 40px !important;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+
+#gameCanvas2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+
+#gameCanvas3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 3;
+}
+
+#gameCanvas4 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 4;
+}
+
+#gameCanvas5 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 5;
+}
+
+#gameCanvas6 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 6;
+}
+
+#gameCanvas7 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 7;
+}
+
+#gameTitleName {
+  position: absolute;
+  z-index: 1000;
+  text-align: center;
+  color: white;
+  top: -35px;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+}
+#gameTitleName h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#spectatorLabel {
+  display: block;
+  border: 0px solid white;
+  position: absolute;
+  z-index: 1000;
+  color: white;
+}
+
+#table-chat-textArea {
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  z-index: 1000;
+  color: #FFFFFF;
+  background-color: #0A132B;
+  overflow-y: scroll;
+  border: 2px solid #021A7D;
+}
+
+@media (max-width: 960px) {
+  .gameListHeader {
+    display: none;
+  }
+
+  .lobbyGameList_numberOfPlayers,
+.lobbyGameList_gameMode,
+.lobbyGameList_gameType,
+.lobbyGameList_gamePrivate,
+.lobbyGameList_gameSpectators,
+.lobbyGameList_gameTimeouts {
+    flex-basis: 70px !important;
+  }
+
+  .lobbyGameList_gameMode,
+.lobbyGameList_gameType,
+.lobbyGameList_gamePrivate,
+.lobbyGameList_gameSpectators {
+    margin: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .lobbyGameList_gameDesc {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 10px !important;
+    padding-left: 15px !important;
+    margin-bottom: 10px;
+  }
+
+  .lobbyGameList_numberOfPlayers {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .lobbyPlayerList-playerAvatarDiv {
+    display: none;
+  }
+}

@@ -1,0 +1,114 @@
+/**
+* Main structure for lobby and game areas
+* TODO: remove all !important in attr when jQuery Mobile will be deleted
+**/
+html{
+	background: linear-gradient(0deg, rgba(28,30,33,1) 0%, rgba(59,63,69,1) 100%);
+}
+
+body {
+	background: $dark-gray;
+	background-image: url('../gfx/body_bg.png');
+	background: url('../gfx/body_bg.png') top center repeat;
+	font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
+}
+
+// Override jQuery mobile height
+.ui-mobile, .ui-mobile body{
+	height: 100%!important;
+}
+
+// Override jQuery mobile font-family
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button{
+	font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
+}
+
+// Header
+.header{
+	background-image: url('../gfx/header_bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center 40%;
+	background-size: cover;
+	width: 100%;
+	height: $headerHeightPx;
+	max-width: 1200px;		
+	margin: 0 auto;
+	position: relative;
+	.header-top-container{
+		display: flex;
+		background: rgba(35,64,35,0.55);
+		height: $headerTopHeight + px;
+		.logo-main{
+			align-self: center;
+			padding: 20px 30px;
+			img{
+				width: 100%;
+				max-width: 275px;
+				min-width: 190px;
+			}
+			@media (max-width:$screenTiny) {
+				padding: 10px;
+			}
+		}
+		.header-info{
+			align-self: center;
+			padding: 30px;
+			margin-left: auto;
+			@media (max-width:$screenTiny) {
+				padding: 10px;
+			}			
+		}
+		.user-loggedIn{
+			text-align: right;
+			font-weight: 700;
+			padding: 10px 0;
+			&.online{color: $white;}
+			&.offline{color: red;}
+		}
+	}
+	.header-navbar{
+		display:flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+
+		.navbar-btn{
+			flex: 1;
+			background: rgba(0,0,0,0.80);
+			text-align: center;
+			padding: 12px;
+			&-a{
+				display: block;
+				width: 100%;
+				text-decoration: none;
+				font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
+				font-weight: 700;
+				color: $white;
+				margin: 0;
+				border-radius: 0;
+				background: none;
+				border: none;
+				box-shadow: none;
+				text-shadow: none;
+			}
+			&:not(:first-child){
+				border-left: 1px solid $white;
+			}
+			// TODO: remove when jQuery Mobile will be deleted
+			.ui-btn-inner{
+				padding: 0;
+				border: none;
+			}
+		}
+
+	}
+}
+
+// Main body
+#main{
+	height: calc(100% - #{$headerHeightPx});
+}
+
+
+// Footer
+

@@ -217,7 +217,9 @@ function CardsImpl()
 				$("#"+self.tableCardsArray[4].id).promise().done( function(card, delay){ self.flipOneTableCard(card, delay) }(self.tableCardsArray[4], delayBeforeTurn) );
 			}
 			break;
-			default: { console.log("ERROR: myCards.dealTableCards() switch default!"); }
+			default: { 
+				// console.log("ERROR: myCards.dealTableCards() switch default!"); 
+			}
 		}
 	};
 
@@ -378,7 +380,7 @@ function CardsImpl()
 					} ).show();
 				}
 			    break;
-				default: console.log(">>ERROR: refreshHoleCards() cardA switch default!<<");
+				default: // console.log(">>ERROR: refreshHoleCards() cardA switch default!<<");
 				break;
 			}
 			
@@ -469,7 +471,7 @@ function CardsImpl()
 					} ).show();
 				}
 			    break;
-				default: console.log(">>ERROR: refreshTableCards() switch default!<<");
+				default: // console.log(">>ERROR: refreshTableCards() switch default!<<");
 				break;
 			}
 		}
@@ -508,7 +510,7 @@ function CardsImpl()
 	};
 	
 
-	//HELPER
+	// HELPER
 	this.getDealStartPosition = function(cardType) 
 	{
 		var playerSeatsArray = myNetCache.getNetGame().getGameData().playerSeats;

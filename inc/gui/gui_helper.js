@@ -1,5 +1,5 @@
 /* Copyright (C) 2013-2016 Felix Hammer, Florian Thauer, Lothar May */
-//init global gui values
+// init global gui values
 myWidth = 0;
 myHeight = 0;
 var objCanvas = document.getElementById('gameCanvas');
@@ -17,13 +17,16 @@ ct6 = objCanvas6.getContext('2d'); //cards
 var objCanvas7 = document.getElementById('gameCanvas7');
 ct7 = objCanvas7.getContext('2d'); //PlayerActions
 
-//default loader theme
+// default loader theme
 $( document ).on( "mobileinit", function() {
   $.mobile.loader.prototype.options.text = "loading ...";
   $.mobile.loader.prototype.options.textVisible = true;
   $.mobile.loader.prototype.options.theme = "c";
   $.mobile.loader.prototype.options.html = "";
 });
+
+// Avatar server URL
+var avatarServerURL = 'http://pokerth.net/avatardav/';
 
 ///////////// GUI HELPER FUNCTION ////////////
 CanvasRenderingContext2D.prototype.roundRect = function (xx,yy, ww,hh, rad, fill, stroke) {
@@ -46,38 +49,3 @@ function checkBrowserName(name){
    return false;  
  };  
  
- //autosort listviews
- function sortListView() { //outdated 
-	// Find all lists that use the autodivider feature and should be sorted
-	
-//		var list = $('ul[data-autodividers="true"][data-sort="true"]');
-//		list.each(function (i, item) {
-//			var that = $(item);
-//			// Gel all the list items into an array (excluding te dividers)
-//			var lis = that.find('li').not('.ui-li-divider').get();
-//
-//			// Sort the list items alphabetically, descending
-//			lis.sort(function (a, b) {
-//				var valA = $(a).text().toLowerCase(),
-//					valB = $(b).text().toLowerCase();
-//				if (valA < valB) {
-//					return -1;
-//				}
-//				if (valA > valB) {
-//					return 1;
-//				}
-//				return 0;
-//			});
-//
-//			// Remove all list items
-//			that.empty();
-//
-//			// Rebuild the list with the ordered items
-//			$.each(lis, function (i, li) {
-//				that.append(li);
-//			});
-//
-//			// Refresh/rebuild the listview
-//			that.listview('refresh');
-//		});
-};

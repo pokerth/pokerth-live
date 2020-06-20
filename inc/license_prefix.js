@@ -61,12 +61,5 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * PokerTH-live uses:
- *  Modernizr (Custom Build) | MIT & BSD
- *
- * PokerTH-live uses:
- *  Base64 encode / decode
- *  http://www.webtoolkit.info/javascript-base64.html
- *
  *****************************************************************************/
  
