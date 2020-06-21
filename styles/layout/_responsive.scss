@@ -39,4 +39,14 @@
     .lobbyPlayerList-playerAvatarDiv{
         display: none;
     }
+    .lobbyPlayerList-playerNameGameInfosDiv .ui-li-desc{
+        white-space: normal;
+    }
 }
+@media (max-width: $screenTiny) {
+    .lobbyPlayerList_spectatorButton .ui-btn-inner{
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+

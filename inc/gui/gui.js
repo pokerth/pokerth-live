@@ -9,9 +9,9 @@ function GuiImpl()
 {
 	var self = this;
 	this.currentVisibleMessageBoxId = "";
-	$("#lobbyGameListButton").click(function(){ myLobby.showGameList();	});
-	$("#lobbyPlayerListButton").click(function(){ myLobby.showPlayerList();	});
-	$("#lobbyChatButton").click(function(){ myLobby.showChat();	});
+	$("#lobbyGameListButton").click(function(){ myLobby.showGameList(); });
+	$("#lobbyPlayerListButton").click(function(){ myLobby.showPlayerList(); });
+	$("#lobbyChatButton").click(function(){ myLobby.showChat(); });
 
 	// interface functions
 	this.signalNetClientShowLoginDialog = function() { 
@@ -108,7 +108,7 @@ function GuiImpl()
 	};
 	this.signalNetClientLobbyChatMsg = function(playerId, msg) { myLobbyChat.receiveMessage(playerId, msg); };
 	this.signalNetClientPrivateChatMsg = function(playerId, msg) { myLobbyChat.receivePrivateMessage(playerId, msg); };
-	this.signalNetClientGameChatMsg = function(gameId, playerId, msg) { myGameTable.receiveChatMessage(playerId, msg); };
+	// this.signalNetClientGameChatMsg = function(gameId, playerId, msg) { myGameTable.receiveChatMessage(playerId, msg); };
 	this.signalNetClientGlobalNotice = function(msg) { myLobbyChat.receiveGlobalNotice(msg); };
 	this.signalNetClientChatBotNotice = function(playerId, msg) { myLobbyChat.receiveChatBotNotice(playerId, msg); };
 	this.signalNetClientMsgBox = function(msg) { this.showMyMessageBox("GlobalNotice", "Global Notice", msg, "Close"); };

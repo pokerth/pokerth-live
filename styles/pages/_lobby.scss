@@ -155,6 +155,9 @@
 		&> li.ui-li-static{
 			margin-top: 16px;
 			border-top: 1px solid $gray;
+			tr.gameInfo-row > td{
+				padding-bottom: 1rem;
+			}			
 		}
 		&> li.ui-btn.ui-last-child{
 			border: none;
@@ -248,12 +251,27 @@
 	border:none;
 	text-align: right;
 		.ui-icon{
-			display: none;
+			right: 30px;
+			left: unset;
+			z-index: 1;
 		}
 	}
 }
+
 .lobbyPlayerList_spectatorButton {
 	margin: 3px 7px 0 0 !important;
+}
+
+.lobbyPlayerList_spectatorButton .ui-btn-text{
+	color: #FFFFFF;
+	text-shadow: none;
+	padding: .7em 15px;	
+	padding-right: 40px;
+	border-radius: 50px;
+	background: $black;
+	border-top: 1px solid $white;
+	border-color: rgba(255,255,255,.3);
+	background-image: linear-gradient(#444,#2d2d2d);
 }
 
 // Lobby - Chat

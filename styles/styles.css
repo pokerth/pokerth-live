@@ -163,14 +163,18 @@ body {
   width: 100%;
   text-decoration: none;
   font-family: "Nunito", Verdana, Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  color: #FFFFFF;
+  font-weight: normal;
+  color: #b7d98a;
   margin: 0;
   border-radius: 0;
   background: none;
   border: none;
   box-shadow: none;
   text-shadow: none;
+}
+.header .header-navbar .navbar-btn-a.btn-selected {
+  font-weight: 700;
+  color: #FFFFFF;
 }
 .header .header-navbar .navbar-btn:not(:first-child) {
   border-left: 1px solid #FFFFFF;
@@ -335,6 +339,9 @@ body {
   margin-top: 16px;
   border-top: 1px solid #CCCCCC;
 }
+.gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-li-static tr.gameInfo-row > td {
+  padding-bottom: 1rem;
+}
 .gameListCollapsible .ui-collapsible-content ul.ui-listview > li.ui-btn.ui-last-child {
   border: none;
   background: none;
@@ -425,11 +432,25 @@ body {
   text-align: right;
 }
 .lobbyPlayerList-spectatorButtonDiv > a > span .ui-icon {
-  display: none;
+  right: 30px;
+  left: unset;
+  z-index: 1;
 }
 
 .lobbyPlayerList_spectatorButton {
   margin: 3px 7px 0 0 !important;
+}
+
+.lobbyPlayerList_spectatorButton .ui-btn-text {
+  color: #FFFFFF;
+  text-shadow: none;
+  padding: 0.7em 15px;
+  padding-right: 40px;
+  border-radius: 50px;
+  background: #000000;
+  border-top: 1px solid #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(#444, #2d2d2d);
 }
 
 .lobbyChat {
@@ -572,17 +593,18 @@ body {
   color: white;
 }
 
+/*
 #table-chat-textArea {
-  position: absolute;
-  bottom: 3px;
-  left: 10px;
-  z-index: 1000;
-  color: #FFFFFF;
-  background-color: #0A132B;
-  overflow-y: scroll;
-  border: 2px solid #021A7D;
+	position: absolute;
+	bottom: 3px;
+	left: 10px;
+	z-index: 1000;
+	color: $white;
+	background-color: #0A132B;
+	overflow-y:scroll;
+	border: 2px solid #021A7D;
 }
-
+*/
 @media (max-width: 960px) {
   .gameListHeader {
     display: none;
@@ -621,5 +643,15 @@ body {
 @media (max-width: 768px) {
   .lobbyPlayerList-playerAvatarDiv {
     display: none;
+  }
+
+  .lobbyPlayerList-playerNameGameInfosDiv .ui-li-desc {
+    white-space: normal;
+  }
+}
+@media (max-width: 480px) {
+  .lobbyPlayerList_spectatorButton .ui-btn-inner {
+    visibility: hidden;
+    opacity: 0;
   }
 }

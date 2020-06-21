@@ -2,24 +2,18 @@
 
 PokerTH live - Spectator tool
 
-April note (for live.pokerth.net):  
+April 2020 note (for live.pokerth.net):  
 *Login as Guest (username/password disabled)  
 *Login only works for Main FR Server
 
 ## Installation
 
-You need [Node.js](https://nodejs.org/) and [git](https://git-scm.com/) in order to clone and build the project.
+You need [git](https://git-scm.com/) and [Node.js](https://nodejs.org/) in order to clone and build the project.
 
 Use git clone from Master branch.
 
 ```bash
 git clone https://github.com/pokerth/pokerth-live.git
-```
-
-Then switch to the 001-webpack-html5 branch.
-
-```bash
-git checkout 001-webpack-html5
 ```
 
 Now install neccesary dependencies.
