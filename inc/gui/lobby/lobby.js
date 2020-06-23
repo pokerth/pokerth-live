@@ -22,7 +22,6 @@ function LobbyImpl()
 		myLobbyGameList.updateGameStats();
 		myLobbyPlayerList.prepare();
 		myLobbyPlayerList.updatePlayerStats();
-		$("#lobbyGameListButton").button().click();
 	};
         
 	this.clientConnected = function(nickName) 
@@ -40,6 +39,8 @@ function LobbyImpl()
 	this.showGameList = function() 
 	{
 		myLobbyGameList.setActiveState(true);
+		$('.header-navbar .navbar-btn > a').removeClass('btn-selected');
+		$('#lobbyGameListButton').addClass('btn-selected');
 		myLobbyChat.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
 	};
@@ -47,6 +48,8 @@ function LobbyImpl()
 	this.showPlayerList = function() 
 	{
 		myLobbyPlayerList.setActiveState(true);
+		$('.header-navbar .navbar-btn > a').removeClass('btn-selected');
+		$('#lobbyPlayerListButton').addClass('btn-selected');
 		myLobbyChat.setActiveState(false);
 		myLobbyGameList.setActiveState(false);
 		myLobbyPlayerList.updatePlayerListView();
@@ -55,6 +58,8 @@ function LobbyImpl()
 	this.showChat = function() 
 	{
 		myLobbyChat.setActiveState(true);
+		$('.header-navbar .navbar-btn > a').removeClass('btn-selected');
+		$('#lobbyChatButton').addClass('btn-selected');
 		myLobbyGameList.setActiveState(false);
 		myLobbyPlayerList.setActiveState(false);
 	};

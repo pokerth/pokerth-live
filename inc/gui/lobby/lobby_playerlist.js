@@ -64,8 +64,8 @@ function LobbyPlayerListImpl()
 	this.playerAddGame = function(gameId, playerId)
 	{
 		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
-		$("#lobbyPlayerList_gameInfos-"+playerId).html("This player is playing at: <b>"+gameName+"</b>");
-		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="search">Spectate</a>');
+		$("#lobbyPlayerList_gameInfos-"+playerId).html("Playing at: "+gameName);
+		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="arrow-r">Spectate</a>');
 		$("#spectateButton-"+playerId).button();
 		$("#lobbyPlayerList").delegate('#spectateButton-'+playerId, "click", function(){
 			var $this = $(this),
@@ -77,18 +77,18 @@ function LobbyPlayerListImpl()
 	this.spectatorAddGame = function(gameId, playerId)
 	{
 		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
-		$("#lobbyPlayerList_gameInfos-"+playerId).html("This player is watching: <b>"+gameName+"</b>");
+		$("#lobbyPlayerList_gameInfos-"+playerId).html("Player watching: "+gameName);
 	};
 	
 	this.playerRemoveGame = function(gameId, playerId)
 	{
-		$("#lobbyPlayerList_gameInfos-"+playerId).html("<i>This player is currently idle &nbsp;</i>");
+		$("#lobbyPlayerList_gameInfos-"+playerId).html("Player currently idle &nbsp;");
 		$("#spectateButton-"+playerId).remove();
 	};
 
 	this.spectatorRemoveGame = function(gameId, playerId)
 	{
-		$("#lobbyPlayerList_gameInfos-"+playerId).html("<i>This player is currently idle &nbsp;</i>");
+		$("#lobbyPlayerList_gameInfos-"+playerId).html("Player currently idle &nbsp;");
 	};
 
 	this.addGameInfos = function(gameId) 

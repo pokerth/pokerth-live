@@ -133,15 +133,15 @@ function LobbyGameListImpl()
                                     playerString +
                                     '<li> '+
                                         '<table width=100%> '+
-                                            '<tr> '+
-                                                '<td style="text-align:right;">Start cash: </td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.startMoney+'</b></td><td style="text-align:right;">First small blind: </td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.firstSmallBlind+'</b></td> '+
+                                            '<tr class="gameInfo-row"> '+
+                                                '<td style="text-align:right;">Start cash: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.startMoney+'</b></td><td style="text-align:right;">First small blind: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.firstSmallBlind+'</b></td> '+
                                             '</tr> '+
-                                            '<tr> '+
-                                                '<td style="text-align:right;">Blinds raise interval: </td><td style="text-align:left;"><b>'+blindsRaiseIntervalString+'</b></td><td style="text-align:right;">Blinds raise mode: </td><td style="text-align:left;"><b>'+blindsRaiseModeString+'</b></td> '+
+                                            '<tr class="gameInfo-row"> '+
+                                                '<td style="text-align:right;">Blinds raise interval: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseIntervalString+'</b></td><td style="text-align:right;">Blinds raise mode: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseModeString+'</b></td> '+
                                             '</tr> '+
 					'</table> '+
 					'</li> '+
-					'<li><a class="lobbyGameList_spectateButton" id="lobbyGameList_spectateButton-'+gameId+'" data-gameid="'+gameId+'" href="">Spectate!</a></li> '+
+					'<li><a class="lobbyGameList_spectateButton" id="lobbyGameList_spectateButton-'+gameId+'" data-gameid="'+gameId+'" href="">Spectate</a></li> '+
 				'</ul> '+
 			'</div>');
 

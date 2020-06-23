@@ -91,7 +91,7 @@ function GameTableImpl()
 		self.refreshUIButtons();
 		self.refreshGameTitleName();
 		self.refreshSpectatorLabel();
-		self.refreshChat();
+		// self.refreshChat();
 	};
 	
 	this.clearAllLayers = function()
@@ -752,6 +752,7 @@ function GameTableImpl()
 		} );
 	};
 	
+	/*
 	this.refreshChat = function()
 	{
 		$("#table-chat-textArea").textinput();
@@ -794,6 +795,7 @@ function GameTableImpl()
 			self.chatCache.push(msgText);
 		}
 	};
+	*/
 	
 	this.resizeGameTable = function()
 	{

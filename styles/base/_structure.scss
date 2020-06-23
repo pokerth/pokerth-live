@@ -82,14 +82,18 @@ body {
 				width: 100%;
 				text-decoration: none;
 				font-family: 'Nunito', Verdana, Helvetica, Arial, sans-serif;
-				font-weight: 700;
-				color: $white;
+				font-weight: normal;
+				color: $light-green;
 				margin: 0;
 				border-radius: 0;
 				background: none;
 				border: none;
 				box-shadow: none;
 				text-shadow: none;
+			}
+			&-a.btn-selected{
+				font-weight: 700;
+				color: $white;
 			}
 			&:not(:first-child){
 				border-left: 1px solid $white;
@@ -111,4 +115,5 @@ body {
 
 
 // Footer
+
 
