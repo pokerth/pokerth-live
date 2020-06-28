@@ -134,10 +134,10 @@ function LobbyGameListImpl()
                                     '<li> '+
                                         '<table width=100%> '+
                                             '<tr class="gameInfo-row"> '+
-                                                '<td style="text-align:right;">Start cash: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.startMoney+'</b></td><td style="text-align:right;">First small blind: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.firstSmallBlind+'</b></td> '+
+                                                '<td style="text-align:right;white-space:pre;">Start cash: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.startMoney+'</b></td><td style="text-align:right;white-space:pre;">First small blind: &nbsp;</td><td style="text-align:left;"><b>$'+myNetCache.getGameData(gameId).gameInfo.firstSmallBlind+'</b></td> '+
                                             '</tr> '+
                                             '<tr class="gameInfo-row"> '+
-                                                '<td style="text-align:right;">Blinds raise interval: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseIntervalString+'</b></td><td style="text-align:right;">Blinds raise mode: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseModeString+'</b></td> '+
+                                                '<td style="text-align:right;white-space:pre;">Blinds raise interval: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseIntervalString+'</b></td><td style="text-align:right;white-space:pre;">Blinds raise mode: &nbsp;</td><td style="text-align:left;"><b>'+blindsRaiseModeString+'</b></td> '+
                                             '</tr> '+
 					'</table> '+
 					'</li> '+
