@@ -33,7 +33,7 @@ Change the websocket ip:port in the following file "/inc/net/neteventhandler.js"
 
 *If you run your own server, check in your server side "~/.pokerth/config.xml" for the corresponding values to edit there.
 
-*If you just want to connecto to pokerth.net, inspect html code at http://live.pokerth.net/ to know the websocket ip:port used.
+*If you just want connect to pokerth.net, inspect html code at http://live.pokerth.net/ to know the websocket ip:port used.
 
 ## License
 GNU Affero General Public License
