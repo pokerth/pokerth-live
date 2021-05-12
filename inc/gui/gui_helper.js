@@ -26,7 +26,7 @@ $( document ).on( "mobileinit", function() {
 });
 
 // Avatar server URL
-var avatarServerURL = 'http://pokerth.net/avatardav/';
+var avatarServerURL = 'https://pokerth.net/avatardav/';
 
 ///////////// GUI HELPER FUNCTION ////////////
 CanvasRenderingContext2D.prototype.roundRect = function (xx,yy, ww,hh, rad, fill, stroke) {
