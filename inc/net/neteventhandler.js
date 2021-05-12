@@ -22,8 +22,13 @@ function NetEventHandler()
 	{
 		self.nickName = nickName;
 		self.password = password;
-		// self.websocket = new WebSocket("ws://1.2.3.4:7236/pthsocketserver");
-		self.websocket = new WebSocket("ws://149.202.223.116:7236/pthsocketserver");
+		try{
+			self.websocket = new WebSocket("wss://pokerth.net:443/pthlive");
+			// console.log(self.websocket)
+		}catch(e){
+			console.log("exception", e)
+		}
+
 		self.websocket.binaryType = 'arraybuffer';
 		self.websocket.onopen = function(evt){ self.onOpen(evt); };
 		self.websocket.onclose = function(evt){ self.onClose(evt); };
