@@ -17,17 +17,17 @@ function LoginDialogImpl()
 			var popup = $('<div data-role="popup" id="loginDialog" data-dismissible="false" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all" data-history="false"></div>').appendTo( page );
 			var header = $('<div data-role="header" data-theme="a" class="ui-corner-top"><h1>Login</h1></div>').appendTo( popup );
 			var content = $('<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content"> '+
-								'<form> '+
-									'<label for="checkbox-registeredPlayer">Registered player login</label> '+
-									'<input type="checkbox" name="checkbox-registeredPlayer" id="checkbox-registeredPlayer" checked="checked"></input> '+
-									'<input type="text" name="text-LoginDialog-username" id="text-LoginDialog-username" value="" placeholder="username"> '+
-									'<input type="password" name="text-LoginDialog-password" id="text-LoginDialog-password" value="" autocomplete="off" placeholder="password"> '+
+								'<form style="visibility: hidden; height: 1px;"> '+
+									// '<label for="checkbox-registeredPlayer">Registered player login</label> '+
+									// '<input type="checkbox" name="checkbox-registeredPlayer" id="checkbox-registeredPlayer"></input> '+
+									// '<input type="text" name="text-LoginDialog-username" id="text-LoginDialog-username" value="" placeholder="username"> '+
+									// '<input type="password" name="text-LoginDialog-password" id="text-LoginDialog-password" value="" autocomplete="off" placeholder="password"> '+
 									'<label for="checkbox-guestPlayer">Guest player login</label> '+
-									'<input type="checkbox" name="checkbox-guestPlayer" id="checkbox-guestPlayer"></input> '+
+									'<input type="checkbox" name="checkbox-guestPlayer" id="checkbox-guestPlayer" checked="checked"></input> '+
 								'</form> '+
 								'<p style="font-style:italic;">Login may take some time, please be patient ...</p> '+
 								'<a id="loginDialogLoginButton" href="" data-role="button" data-inline="true" data-theme="c">Login</a> '+
-								'<a id="loginDialogCancelButton" href="" data-role="button" data-inline="true" data-theme="c">Cancel</a> '+
+								// '<a id="loginDialogCancelButton" href="" data-role="button" data-inline="true" data-theme="c">Cancel</a> '+
 								'<br><a target="_blank" href="https://pokerth.net/ucp.php?mode=register">Create your PokerTH gaming account ...</a> '+
 							'</div> ').appendTo( popup );
 
