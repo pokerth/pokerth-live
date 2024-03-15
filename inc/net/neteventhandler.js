@@ -23,7 +23,7 @@ function NetEventHandler()
 		self.nickName = nickName;
 		self.password = password;
 		try{
-			self.websocket = new WebSocket("wss://pokerth.net:443/pthlive");
+			self.websocket = new WebSocket("wss://www.pokerth.net:443/pthlive");
 			// console.log(self.websocket)
 		}catch(e){
 			console.log("exception", e)
