@@ -63,7 +63,7 @@ function LobbyPlayerListImpl()
 	
 	this.playerAddGame = function(gameId, playerId)
 	{
-		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
+		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName.replace(/<[^>]*>/g, '');
 		$("#lobbyPlayerList_gameInfos-"+playerId).html("Playing at: "+gameName);
 		$("#lobbyPlayerList_spectatorButton-"+playerId).append('<a class="lobbyPlayerList_spectatorButton" id="spectateButton-'+playerId+'" href="" data-gameid="'+gameId+'" data-role="button" data-icon="arrow-r">Spectate</a>');
 		$("#spectateButton-"+playerId).button();
@@ -76,7 +76,7 @@ function LobbyPlayerListImpl()
 
 	this.spectatorAddGame = function(gameId, playerId)
 	{
-		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName;
+		var gameName = myNetCache.getGameData(gameId).gameInfo.gameName.replace(/<[^>]*>/g, '');
 		$("#lobbyPlayerList_gameInfos-"+playerId).html("Player watching: "+gameName);
 	};
 	

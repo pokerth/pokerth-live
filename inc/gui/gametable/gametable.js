@@ -737,7 +737,7 @@ function GameTableImpl()
 
 	this.refreshGameTitleName = function ()
 	{
-		var gameTitleName = myNetCache.getNetGame().getGameData().gameInfo.gameName;
+		var gameTitleName = myNetCache.getNetGame().getGameData().gameInfo.gameName.replace(/<[^>]*>/g, '');
 		$("#gameTitleName").html("<h3>"+gameTitleName+"</h3>");		
 	}
 	
