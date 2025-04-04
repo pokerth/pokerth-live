@@ -55,6 +55,7 @@ function LobbyChatImpl()
 	
 	this.finalReceiveMsg = function(msgText, refresh) 
 	{
+		msgText = msgText.replace(/<[^>]*>/g, '');
 		$("#chatTextArea").append(msgText);
 		$("#chatTextArea").scrollTop($('#chatTextArea')[0].scrollHeight);
 	};
