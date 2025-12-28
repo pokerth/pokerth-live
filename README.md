@@ -2,10 +2,6 @@
 
 PokerTH live - Spectator tool
 
-April 2020 note (for live.pokerth.net):  
-*Login as Guest (username/password disabled)  
-*Login only works for Main FR Server
-
 ## Installation
 
 You need [git](https://git-scm.com/) and [Node.js](https://nodejs.org/) in order to clone and build the project.
@@ -33,7 +29,7 @@ Change the websocket ip:port in the following file "/inc/net/neteventhandler.js"
 
 *If you run your own server, check in your server side "~/.pokerth/config.xml" for the corresponding values to edit there.
 
-*If you just want connect to pokerth.net, inspect html code at http://live.pokerth.net/ to know the websocket ip:port used.
+*If you just want connect to pokerth.net gameserver, inspect html/js code at https://live.pokerth.net/ to know the websocket ip:port used.
 
 ## License
 GNU Affero General Public License
