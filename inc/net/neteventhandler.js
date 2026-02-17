@@ -81,8 +81,9 @@ function NetEventHandler()
 
 	this.onMessage = function(evt)
 	{
+		var rawBytes = new Uint8Array(evt.data);
 		var recvMessage = new PokerTH.PokerTHMessage();
-		recvMessage.ParseFromArray(new Uint8Array(evt.data));
+		recvMessage.ParseFromArray(rawBytes);
 		switch(recvMessage.messageType) {
 			case PokerTH.PokerTHMessage.PokerTHMessageType.Type_AnnounceMessage :
 				self.handleMsgAnnounce(recvMessage.announceMessage);
@@ -195,35 +196,29 @@ function NetEventHandler()
 	
 	this.handleMsgAnnounce = function(announce)
 	{
-		if (announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth)
+		self.isOfficialServer = (announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth);
+
+		var init = new PokerTH.PokerTHMessage;
+		init.messageType = PokerTH.PokerTHMessage.PokerTHMessageType.Type_InitMessage;
+		init.initMessage = new PokerTH.InitMessage;
+		init.initMessage.requestedVersion = new PokerTH.AnnounceMessage.Version;
+		init.initMessage.requestedVersion.majorVersion = announce.protocolVersion.majorVersion;
+		init.initMessage.requestedVersion.minorVersion = announce.protocolVersion.minorVersion;
+		init.initMessage.buildId = 0;
+		if (!self.nickName)
 		{
-			// Send Init message to server.
-			var init = new PokerTH.PokerTHMessage;
-			init.messageType = PokerTH.PokerTHMessage.PokerTHMessageType.Type_InitMessage;
-			init.initMessage = new PokerTH.InitMessage;
-			init.initMessage.requestedVersion = new PokerTH.AnnounceMessage.Version;
-			init.initMessage.requestedVersion.majorVersion = 5;
-			init.initMessage.requestedVersion.minorVersion = 1;
-			init.initMessage.buildId = 0;
-			init.initMessage.login = PokerTH.InitMessage.LoginType.authenticatedLogin;
-			if (!self.nickName) {
-				self.setGuestNickName();
-				init.initMessage.nickName = self.nickName;
-				init.initMessage.login = PokerTH.InitMessage.LoginType.guestLogin;
-			}
-			else
-			{
-				init.initMessage.clientUserData = self.scramSha1.executeStep1(self.nickName);
-				init.initMessage.login = PokerTH.InitMessage.LoginType.authenticatedLogin;
-			}
-			self.sendMsg(init);
-			self.isOfficialServer = announce.serverType === PokerTH.AnnounceMessage.ServerType.serverTypeInternetAuth;
+			self.setGuestNickName();
+			init.initMessage.nickName = self.nickName;
+			init.initMessage.login = PokerTH.InitMessage.LoginType.guestLogin;
 		}
 		else
 		{
-			self.websocket.close();
-			myGui.signalNetClientServerError("Invalid server.");
+			init.initMessage.nickName = self.nickName;
+			init.initMessage.authServerPassword = self.password;
+			init.initMessage.login = PokerTH.InitMessage.LoginType.authenticatedLogin;
+			self.password = "";
 		}
+		self.sendMsg(init);
 	};
 
 	this.handleMsgInitAck = function(initAck)
