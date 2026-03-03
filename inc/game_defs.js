@@ -7,6 +7,9 @@ POKERTH_VERSION_MINOR = 0;
 POKERTH_VERSION_PATCH = 6;
 POKERTH_BETA_RELEASE_STRING	= "2.0.6";
 
+// Client type identifier (must match server's CLIENT_TYPE_QT_WIDGET)
+CLIENT_TYPE_QT_WIDGET = 0x01;
+
 // BEtting ROund
 BERO = {
 	PREFLOP : {value: 0 }, 

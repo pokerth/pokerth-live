@@ -204,7 +204,8 @@ function NetEventHandler()
 		init.initMessage.requestedVersion = new PokerTH.AnnounceMessage.Version;
 		init.initMessage.requestedVersion.majorVersion = announce.protocolVersion.majorVersion;
 		init.initMessage.requestedVersion.minorVersion = announce.protocolVersion.minorVersion;
-		init.initMessage.buildId = POKERTH_VERSION_MAJOR * 10000 + POKERTH_VERSION_MINOR * 100 + POKERTH_VERSION_PATCH;
+		// buildId encoding: (clientType << 24) | (major << 16) | (minor << 8) | revision
+		init.initMessage.buildId = (CLIENT_TYPE_QT_WIDGET << 24) | (POKERTH_VERSION_MAJOR << 16) | (POKERTH_VERSION_MINOR << 8) | POKERTH_VERSION_PATCH;
 		if (!self.nickName)
 		{
 			self.setGuestNickName();
