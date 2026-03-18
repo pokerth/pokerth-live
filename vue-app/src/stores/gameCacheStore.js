@@ -51,6 +51,8 @@ export const useGameCacheStore = defineStore('gameCache', () => {
   function addGameData(data) {
     gameDataMap[data.gameId] = {
       ...data,
+      playerIds: data.playerIds || [],
+      spectatorIds: data.spectatorIds || [],
       playerSeats: [],
       spectatorSeats: [],
     }

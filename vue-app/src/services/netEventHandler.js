@@ -222,7 +222,7 @@ function handleMsgGameListNew(gameListNew) {
   markInitialLobbyUpdateMsg()
   if (isOfficialServer) {
     store.addGameData(gameListNew)
-    for (const pid of gameListNew.playerIds) {
+    for (const pid of (gameListNew.playerIds || [])) {
       requestPlayerInfo(pid)
     }
   }
@@ -239,26 +239,32 @@ function handleMsgGameListUpdate(gameListUpdate) {
 
 function handleMsgGameListPlayerJoined(msg) {
   const gd = store.getGameData(msg.gameId)
-  if (gd) gd.playerIds.push(msg.playerId)
+  if (gd) {
+    if (!gd.playerIds) gd.playerIds = []
+    gd.playerIds.push(msg.playerId)
+  }
   requestPlayerInfo(msg.playerId)
 }
 
 function handleMsgGameListPlayerLeft(msg) {
   const gd = store.getGameData(msg.gameId)
-  if (gd) {
+  if (gd && gd.playerIds) {
     gd.playerIds = gd.playerIds.filter(id => id !== msg.playerId)
   }
 }
 
 function handleMsgGameListSpectatorJoined(msg) {
   const gd = store.getGameData(msg.gameId)
-  if (gd) gd.spectatorIds.push(msg.playerId)
+  if (gd) {
+    if (!gd.spectatorIds) gd.spectatorIds = []
+    gd.spectatorIds.push(msg.playerId)
+  }
   requestPlayerInfo(msg.playerId)
 }
 
 function handleMsgGameListSpectatorLeft(msg) {
   const gd = store.getGameData(msg.gameId)
-  if (gd) {
+  if (gd && gd.spectatorIds) {
     gd.spectatorIds = gd.spectatorIds.filter(id => id !== msg.playerId)
   }
 }
@@ -314,7 +320,10 @@ function handleMsgGamePlayerLeft(msg) {
 
 function handleMsgGameSpectatorJoined(msg) {
   const gd = store.getGameData(msg.gameId)
-  if (gd) gd.spectatorSeats.push(msg.playerId)
+  if (gd) {
+    if (!gd.spectatorSeats) gd.spectatorSeats = []
+    gd.spectatorSeats.push(msg.playerId)
+  }
   emit('spectatorChanged')
   requestPlayerInfo(msg.playerId)
 }

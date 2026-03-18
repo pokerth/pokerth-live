@@ -1,6 +1,6 @@
 <template>
   <div class="absolute bottom-1 right-1 flex flex-col items-center text-white z-20" :style="containerStyle">
-    <img src="/gfx/gametable/spectator.svg" :style="{ width: iconSize + 'px', height: iconSize + 'px' }" alt="Spectators" />
+    <img :src="'gfx/gametable/spectator.svg'" :style="{ width: iconSize + 'px', height: iconSize + 'px' }" alt="Spectators" />
     <span class="font-bold" :style="{ fontSize: labelSize + 'px' }">{{ count }}</span>
   </div>
 </template>

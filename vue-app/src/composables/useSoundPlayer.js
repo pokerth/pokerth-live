@@ -29,7 +29,7 @@ function cleanActive() {
 }
 
 function createAudio(name) {
-  const audioElement = new Audio(`/sounds/${name}.${extension}`)
+  const audioElement = new Audio(`sounds/${name}.${extension}`)
   audioElement.addEventListener('ended', cleanActive, false)
   sounds[name] = sounds[name] || []
   sounds[name].push(audioElement)

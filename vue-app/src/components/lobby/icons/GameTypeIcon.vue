@@ -12,10 +12,10 @@ const props = defineProps({
 })
 
 const map = {
-  1: { src: '/gfx/lobby/gametype_standard.png', title: 'Standard game' },
-  2: { src: '/gfx/lobby/gametype_registered.png', title: 'Registered game' },
-  3: { src: '/gfx/lobby/gametype_inviteonly.png', title: 'Invite only game' },
-  4: { src: '/gfx/lobby/gametype_ranking.png', title: 'Ranking game' },
+  1: { src: 'gfx/lobby/gametype_standard.png', title: 'Standard game' },
+  2: { src: 'gfx/lobby/gametype_registered.png', title: 'Registered game' },
+  3: { src: 'gfx/lobby/gametype_inviteonly.png', title: 'Invite only game' },
+  4: { src: 'gfx/lobby/gametype_ranking.png', title: 'Ranking game' },
 }
 
 const src = computed(() => map[props.gameType]?.src || '')

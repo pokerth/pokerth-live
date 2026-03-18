@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <div v-if="popup.visible" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+    <div v-if="popup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <div class="bg-poker-dark border border-poker-border rounded-lg shadow-xl w-full max-w-sm">
         <div class="bg-poker-border rounded-t-lg px-6 py-3">
           <h1 class="text-white text-lg font-bold">{{ popup.title }}</h1>

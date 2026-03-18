@@ -198,7 +198,7 @@ function drawFloorAndTable() {
     ctx.fillRect(0, 0, w, h)
     drawTable(ctx, w, h)
   }
-  floorImg.src = '/gfx/gametable/floor.jpg'
+  floorImg.src = 'gfx/gametable/floor.jpg'
 }
 
 function drawTable(ctx, w, h) {
@@ -269,7 +269,7 @@ function drawTable(ctx, w, h) {
     ctx.strokeStyle = ptrn
     ctx.stroke()
   }
-  woodImg.src = '/gfx/gametable/wood-texture-small.jpg'
+  woodImg.src = 'gfx/gametable/wood-texture-small.jpg'
 }
 
 function onLeaveGame() {
