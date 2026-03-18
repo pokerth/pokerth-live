@@ -429,7 +429,9 @@ function handleMsgDealRiverCard(msg) {
 }
 
 function handleMsgAllInShowCards(msg) {
-  for (const allInData of msg.playersAllIn) {
+  const allIn = msg.playersAllIn || []
+  for (let i = 0; i < allIn.length; i++) {
+    const allInData = allIn[i]
     const pd = store.getPlayerData(allInData.playerId)
     if (pd) {
       pd.gameValues.myCard1 = allInData.allInCard1
@@ -445,7 +447,9 @@ function handleMsgEndOfHandShowCards(msg) {
   if (ng) ng.hand.currentPlayerId = 0
   emit('currentPlayerChanged')
 
-  for (const result of msg.playerResults) {
+  const results = msg.playerResults || []
+  for (let i = 0; i < results.length; i++) {
+    const result = results[i]
     const hadCards = store.hasPlayerCards(result.playerId)
     store.setPlayerResult(result)
     if (ng) {
@@ -577,6 +581,8 @@ export function leaveGame(gameId) {
   store.gameTableActive = false
   store.lobbyActive = true
   store.clearLobby()
+  // Reset player info request cache so they get re-requested
+  for (const key of Object.keys(requestedPlayerIds)) delete requestedPlayerIds[key]
   beginInitialLobbyUpdate()
   subscribeLobbyMessages(true)
 }

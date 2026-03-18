@@ -65,8 +65,8 @@ const tableCards = computed(() => {
   const cards = ng?.hand?.tableCards || []
   return holderPositions.value.map((x, idx) => ({
     x,
-    value: cards[idx] ?? null,
-    visible: cards[idx] != null,
+    value: idx < cards.length ? cards[idx] : null,
+    visible: idx < cards.length,
   }))
 })
 </script>

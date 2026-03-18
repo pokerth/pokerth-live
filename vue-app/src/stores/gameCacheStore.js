@@ -58,12 +58,34 @@ export const useGameCacheStore = defineStore('gameCache', () => {
 
   // --- Game data methods ---
   function addGameData(data) {
-    // Convert protobuf repeated fields to real arrays
-    data.playerIds = toArray(data.playerIds)
-    data.spectatorIds = toArray(data.spectatorIds)
-    data.playerSeats = []
-    data.spectatorSeats = []
-    gameDataMap[data.gameId] = data
+    // Extract into plain JS object — protobuf objects don't play well
+    // with Vue reactivity and property mutation
+    gameDataMap[data.gameId] = {
+      gameId: data.gameId,
+      gameMode: data.gameMode,
+      isPrivate: data.isPrivate,
+      adminPlayerId: data.adminPlayerId,
+      gameInfo: {
+        gameName: data.gameInfo?.gameName,
+        netGameType: data.gameInfo?.netGameType,
+        maxNumPlayers: data.gameInfo?.maxNumPlayers,
+        raiseIntervalMode: data.gameInfo?.raiseIntervalMode,
+        raiseEveryHands: data.gameInfo?.raiseEveryHands,
+        raiseEveryMinutes: data.gameInfo?.raiseEveryMinutes,
+        endRaiseMode: data.gameInfo?.endRaiseMode,
+        endRaiseSmallBlindValue: data.gameInfo?.endRaiseSmallBlindValue,
+        proposedGuiSpeed: data.gameInfo?.proposedGuiSpeed,
+        delayBetweenHands: data.gameInfo?.delayBetweenHands,
+        playerActionTimeout: data.gameInfo?.playerActionTimeout,
+        firstSmallBlind: data.gameInfo?.firstSmallBlind,
+        startMoney: data.gameInfo?.startMoney,
+        allowSpectators: data.gameInfo?.allowSpectators,
+      },
+      playerIds: toArray(data.playerIds),
+      spectatorIds: toArray(data.spectatorIds),
+      playerSeats: [],
+      spectatorSeats: [],
+    }
   }
 
   function getGameData(gameId) {
@@ -77,11 +99,26 @@ export const useGameCacheStore = defineStore('gameCache', () => {
   // --- Player data methods ---
   function addPlayerData(data) {
     const existing = playerDataMap[data.playerId]
-    const avatarFileName = buildAvatarFileName(data.playerInfoData)
-    // Store directly, preserve protobuf sub-message objects
-    data.avatarFileName = avatarFileName
-    data.gameValues = existing?.gameValues || data.gameValues
-    playerDataMap[data.playerId] = data
+    // Extract playerInfoData from protobuf to plain object
+    const pInfo = data.playerInfoData ? {
+      playerName: data.playerInfoData.playerName,
+      isHuman: data.playerInfoData.isHuman,
+      playerRights: data.playerInfoData.playerRights,
+      countryCode: data.playerInfoData.countryCode,
+      avatarData: data.playerInfoData.avatarData ? {
+        avatarType: data.playerInfoData.avatarData.avatarType,
+        avatarHash: data.playerInfoData.avatarData.avatarHash,
+      } : null,
+    } : existing?.playerInfoData || null
+    const avatarFileName = pInfo?.avatarData
+      ? buildAvatarFileName({ avatarData: pInfo.avatarData })
+      : (existing?.avatarFileName || '')
+    playerDataMap[data.playerId] = {
+      playerId: data.playerId,
+      playerInfoData: pInfo,
+      avatarFileName,
+      gameValues: existing?.gameValues || null,
+    }
   }
 
   function getPlayerData(pid) {
@@ -104,7 +141,7 @@ export const useGameCacheStore = defineStore('gameCache', () => {
     pd.gameValues.myCard2 = playerResult.resultCard2
     pd.gameValues.myCash = playerResult.playerMoney
     pd.gameValues.moneyWon = playerResult.moneyWon
-    pd.gameValues.bestHandPosition = playerResult.bestHandPosition
+    pd.gameValues.bestHandPosition = toArray(playerResult.bestHandPosition)
     pd.gameValues.cardsValue = playerResult.cardsValue
   }
 
@@ -269,7 +306,6 @@ export const useGameCacheStore = defineStore('gameCache', () => {
 
   function clearLobby() {
     for (const key of Object.keys(gameDataMap)) delete gameDataMap[key]
-    for (const key of Object.keys(playerDataMap)) delete playerDataMap[key]
     chatMessages.value = []
   }
 

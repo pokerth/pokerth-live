@@ -15,18 +15,20 @@
       <!-- Nickname -->
       <span
         v-if="showSeat"
-        class="absolute text-white text-xs font-bold truncate"
+        class="absolute text-xs font-bold truncate"
         :class="{ 'opacity-40': dimmed }"
         :style="nickStyle"
+        style="color: #fff; text-shadow: -1px 0 2px rgba(0,0,0,0.9), 1px 0 2px rgba(0,0,0,0.9), 0 -1px 2px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.9);"
       >
         {{ nickName }}
       </span>
       <!-- Cash -->
       <span
         v-if="showCash"
-        class="absolute text-poker-cash text-xs font-bold"
+        class="absolute text-xs font-bold"
         :class="{ 'opacity-40': dimmed }"
         :style="cashStyle"
+        style="color: #00ff00; text-shadow: -1px 0 2px rgba(0,0,0,0.9), 1px 0 2px rgba(0,0,0,0.9), 0 -1px 2px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.9);"
       >
         ${{ playerData?.gameValues?.myCash }}
       </span>

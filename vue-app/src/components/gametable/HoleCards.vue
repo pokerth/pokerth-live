@@ -53,25 +53,21 @@ const visible = computed(() =>
   seatState.value === SEAT_STATE.ACTIVE || seatState.value === SEAT_STATE.AUTOFOLD
 )
 
-const cardWidth = computed(() => parseInt(props.canvasHeight * 8 / 100))
-const cardHeight = computed(() => parseInt(props.canvasHeight * 13.7 / 100))
+const cardWidth = computed(() => parseInt(props.canvasWidth * 4.7 / 100))
+const cardHeight = computed(() => parseInt(props.canvasHeight * 12.67 / 100))
 
-const card1X = computed(() => {
-  const offset = isTopSeat.value
-    ? props.seatX + props.seatW - cardWidth.value * 2 - parseInt(props.canvasHeight * 1 / 100)
-    : props.seatX + props.seatW - cardWidth.value * 2 - parseInt(props.canvasHeight * 1 / 100)
-  return offset
+const cardAOffsetX = computed(() => parseInt(props.canvasHeight * 10.8 / 100))
+const cardBOffsetX = computed(() => parseInt(props.canvasHeight * 15 / 100))
+
+const card1X = computed(() => parseInt(props.seatX + cardAOffsetX.value))
+const card2X = computed(() => parseInt(props.seatX + cardBOffsetX.value))
+
+const cardOffsetY = computed(() => {
+  if (isTopSeat.value) return parseInt(props.canvasHeight * 6.4 / 100)
+  return parseInt(props.canvasHeight * 1.4 / 100)
 })
 
-const card2X = computed(() => card1X.value + cardWidth.value + 2)
-
-const card1Y = computed(() => {
-  if (isTopSeat.value) {
-    return props.seatY + parseInt(props.canvasHeight * 0.5 / 100)
-  }
-  return props.seatY + props.seatH - cardHeight.value - parseInt(props.canvasHeight * 0.5 / 100)
-})
-
+const card1Y = computed(() => parseInt(props.seatY + cardOffsetY.value))
 const card2Y = computed(() => card1Y.value)
 
 const gv = computed(() => playerData.value?.gameValues)
@@ -79,8 +75,10 @@ const gv = computed(() => playerData.value?.gameValues)
 const card1Value = computed(() => gv.value?.myCard1)
 const card2Value = computed(() => gv.value?.myCard2)
 
-const card1FaceUp = computed(() => card1Value.value != null && card1Value.value !== -1)
-const card2FaceUp = computed(() => card2Value.value != null && card2Value.value !== -1)
+// Cards are face up only when player has been dealt real cards (not both 0/equal)
+const hasCards = computed(() => card1Value.value !== card2Value.value)
+const card1FaceUp = computed(() => hasCards.value && card1Value.value != null)
+const card2FaceUp = computed(() => hasCards.value && card2Value.value != null)
 
 const folded = computed(() => gv.value?.myAction === 1)
 const card1Transparent = computed(() => folded.value)

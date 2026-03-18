@@ -104,6 +104,7 @@
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useGameCacheStore } from '@/stores'
 import { leaveGame, on, off } from '@/services/netEventHandler'
+import { useSoundPlayer } from '@/composables'
 import { computeSeats } from './seatLayout'
 import PlayerSeat from './PlayerSeat.vue'
 import HoleCards from './HoleCards.vue'
@@ -116,6 +117,7 @@ import SpectatorLabel from './SpectatorLabel.vue'
 import SettingsPopup from './SettingsPopup.vue'
 
 const store = useGameCacheStore()
+const { playActionSound } = useSoundPlayer()
 
 const gameAreaContainer = ref(null)
 const gameArea = ref(null)
@@ -286,14 +288,23 @@ function onLeaveGame() {
   if (gameId) leaveGame(gameId)
 }
 
+function onPlayersActionDone(playerId) {
+  const pd = store.getPlayerData(playerId)
+  if (pd?.gameValues?.myAction) {
+    playActionSound(pd.gameValues.myAction)
+  }
+}
+
 onMounted(() => {
   resize()
   window.addEventListener('resize', resize)
   window.addEventListener('orientationchange', resize)
+  on('playersActionDone', onPlayersActionDone)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', resize)
   window.removeEventListener('orientationchange', resize)
+  off('playersActionDone', onPlayersActionDone)
 })
 </script>
