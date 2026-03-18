@@ -1,12 +1,9 @@
 <template>
-  <div class="flex items-center gap-3 px-3 py-2">
-    <img
-      :src="avatarUrl"
-      :alt="playerName"
-      class="w-8 h-8 rounded-full object-cover bg-pth-surface-alt"
-    />
-    <span class="text-pth-text text-sm truncate">{{ playerName }}</span>
-  </div>
+  <img
+    :src="avatarUrl"
+    :alt="playerName"
+    class="w-8 h-8 shrink-0 rounded-full object-cover bg-pth-surface-alt"
+  />
 </template>
 
 <script setup>

@@ -26,7 +26,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useGameCacheStore } from '@/stores'
-import { resetServerTimeout, leaveGame } from '@/services/netEventHandler'
+import { resetServerTimeout, cancelSpectate } from '@/services/netEventHandler'
 
 const store = useGameCacheStore()
 
@@ -36,7 +36,7 @@ function onButton() {
   if (popup.value.type === 'timeout') {
     resetServerTimeout()
   } else if (popup.value.type === 'wait' && store.currentWaitingGameId) {
-    leaveGame(store.currentWaitingGameId)
+    cancelSpectate(store.currentWaitingGameId)
     store.currentWaitingGameId = 0
   }
   store.hidePopup()

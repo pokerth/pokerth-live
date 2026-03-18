@@ -1,20 +1,21 @@
 <template>
-  <li class="flex items-center gap-3 py-2 px-3 hover:bg-pth-surface rounded">
+  <li class="flex items-center gap-3 py-2 px-3 hover:bg-pth-surface rounded cursor-default">
     <PlayerAvatar :player-id="playerId" />
     <div class="flex-1 min-w-0">
-      <h3 class="text-pth-text text-sm font-semibold truncate">{{ playerName }}</h3>
-      <p class="text-pth-muted text-xs truncate">
+      <h3 class="text-pth-text text-sm font-semibold truncate leading-tight">{{ playerName }}</h3>
+      <p class="text-xs truncate leading-tight mt-0.5">
         <template v-if="gameInfo">
-          {{ isSpectator ? 'Watching' : 'Playing at' }}: {{ gameInfo.gameName }}
+          <span class="text-pth-muted">{{ isSpectator ? 'Watching' : 'Playing at' }}:</span>
+          <span class="text-pth-accent"> {{ gameInfo.gameName }}</span>
         </template>
         <template v-else>
-          <i>Currently idle</i>
+          <span class="text-pth-green italic">Currently idle</span>
         </template>
       </p>
     </div>
     <button
       v-if="gameInfo && !isSpectator"
-      class="px-3 py-1 text-xs rounded bg-pth-accent hover:bg-pth-accent-hover text-white whitespace-nowrap"
+      class="ml-auto shrink-0 px-3 py-1 text-xs rounded bg-pth-accent hover:bg-pth-accent-hover text-white whitespace-nowrap"
       @click="$emit('spectate', spectateGameId)"
     >
       Spectate

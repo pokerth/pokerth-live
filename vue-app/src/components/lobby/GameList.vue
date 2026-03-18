@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col h-full">
     <!-- Header -->
-    <div class="hidden md:flex items-center gap-2 px-3 py-2 bg-pth-surface text-pth-muted text-xs font-semibold rounded-t">
-      <span class="w-2/5 min-w-0">Name</span>
-      <span class="w-14 text-center">Players</span>
-      <span class="w-14 text-center">Status</span>
-      <span class="w-14 text-center">Type</span>
-      <span class="w-14 text-center">Private</span>
-      <span class="w-20 text-center">Spectators</span>
-      <span class="w-24 text-center">Timeouts</span>
-      <span class="w-4"></span>
+    <div class="hidden md:grid grid-cols-[1fr_3.5rem_2.5rem_2.5rem_2.5rem_4rem_5rem_1rem] items-center gap-1 px-3 py-2 bg-pth-surface text-pth-muted text-xs font-semibold rounded-t">
+      <span class="min-w-0">Name</span>
+      <span class="text-center">Players</span>
+      <span class="text-center">Status</span>
+      <span class="text-center">Type</span>
+      <span class="text-center">Private</span>
+      <span class="text-center">Spectators</span>
+      <span class="text-center">Timeouts</span>
+      <span></span>
     </div>
     <!-- List -->
     <div class="flex-1 overflow-y-auto">

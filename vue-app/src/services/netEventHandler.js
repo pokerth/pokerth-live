@@ -592,6 +592,16 @@ export function leaveGame(gameId) {
   subscribeLobbyMessages(true)
 }
 
+// Cancel spectate without clearing the lobby (used when cancelling the wait popup)
+export function cancelSpectate(gameId) {
+  const PT = window.PokerTH
+  const request = new PT.PokerTHMessage()
+  request.messageType = PT.PokerTHMessage.PokerTHMessageType.Type_LeaveGameRequestMessage
+  request.leaveGameRequestMessage = new PT.LeaveGameRequestMessage()
+  request.leaveGameRequestMessage.gameId = gameId
+  sendMsg(request)
+}
+
 export function resetServerTimeout() {
   const PT = window.PokerTH
   const request = new PT.PokerTHMessage()
