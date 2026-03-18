@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-poker-green: #056F05;
+  --color-poker-dark: #1a1a2e;
+  --color-poker-border: #431907;
+  --color-poker-border-light: #67270B;
+  --color-poker-gold: #FFD700;
+  --color-poker-cash: #FFFF00;
+  --color-poker-pot: #5FC35F;
+}
+
+body {
+  @apply bg-gray-900 text-white m-0 p-0 font-sans;
+}
+
+a {
+  @apply text-blue-400 hover:text-blue-300 no-underline;
+}
