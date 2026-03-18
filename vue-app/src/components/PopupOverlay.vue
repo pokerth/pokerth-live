@@ -7,7 +7,7 @@
         </div>
         <div class="p-6 space-y-4">
           <div class="text-pth-text text-sm" v-html="popup.message" />
-          <div v-if="popup.type === 'loading'" class="flex justify-center">
+          <div v-if="popup.type === 'loading' || popup.type === 'wait'" class="flex justify-center">
             <div class="w-8 h-8 border-4 border-pth-gold border-t-transparent rounded-full animate-spin" />
           </div>
           <button
@@ -26,7 +26,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useGameCacheStore } from '@/stores'
-import { resetServerTimeout } from '@/services/netEventHandler'
+import { resetServerTimeout, leaveGame } from '@/services/netEventHandler'
 
 const store = useGameCacheStore()
 
@@ -35,6 +35,9 @@ const popup = computed(() => store.popup)
 function onButton() {
   if (popup.value.type === 'timeout') {
     resetServerTimeout()
+  } else if (popup.value.type === 'wait' && store.currentWaitingGameId) {
+    leaveGame(store.currentWaitingGameId)
+    store.currentWaitingGameId = 0
   }
   store.hidePopup()
 }

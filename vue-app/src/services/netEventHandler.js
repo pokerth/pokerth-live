@@ -91,10 +91,15 @@ function onOpen() {
 function onClose() {
   store.connected = false
   store.nickName = ''
+  store.gameTableActive = false
+  store.lobbyActive = true
   store.showPopup('disconnect', 'Disconnected', 'Connection to server closed.', 'Close')
 }
 
 function onError(evt) {
+  store.connected = false
+  store.gameTableActive = false
+  store.lobbyActive = true
   store.showPopup('error', 'Network Error', 'A network error occurred.', 'Close')
 }
 
@@ -296,9 +301,9 @@ function handleMsgJoinGameAck(joinGameAck) {
     gd.spectatorSeats = [localPlayerId]
   }
   if (gd && gd.gameMode === NetGameMode.netGameStarted) {
-    store.showPopup('wait', 'Waiting ...', 'Joined game as Spectator.<br>Please wait until <b>the next hand</b> starts ...')
+    store.showPopup('wait', 'Waiting ...', 'Joined game as Spectator.<br>Please wait until <b>the next hand</b> starts ...', 'Cancel')
   } else {
-    store.showPopup('wait', 'Waiting ...', 'Joined game as Spectator.<br>Please wait until <b>the game</b> starts ...')
+    store.showPopup('wait', 'Waiting ...', 'Joined game as Spectator.<br>Please wait until <b>the game</b> starts ...', 'Cancel')
   }
   store.currentWaitingGameId = joinGameAck.gameId
 }
