@@ -1,15 +1,15 @@
 <template>
   <div class="p-3 text-sm">
-    <span v-if="type === 'lobby'" class="text-white">
+    <span v-if="type === 'lobby'" class="text-pth-text">
       <b>{{ senderName }}:</b> {{ sanitizedText }}
     </span>
-    <span v-else-if="type === 'private'" class="italic text-gray-300">
+    <span v-else-if="type === 'private'" class="italic text-pth-text-secondary">
       {{ senderName }}(pm): {{ sanitizedText }}
     </span>
-    <span v-else-if="type === 'global'" class="font-bold text-white">
+    <span v-else-if="type === 'global'" class="font-bold text-pth-text">
       (global notice) {{ sanitizedText }}
     </span>
-    <span v-else-if="type === 'bot'" class="text-red-400">
+    <span v-else-if="type === 'bot'" class="text-pth-text-danger">
       (chat bot) {{ sanitizedText }}
     </span>
   </div>

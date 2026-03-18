@@ -1,21 +1,21 @@
 <template>
-  <div class="border border-gray-700 rounded mb-2 overflow-hidden">
+  <div class="border border-pth-border-subtle rounded mb-2 overflow-hidden">
     <!-- Header row -->
     <div
-      class="flex items-center gap-2 px-3 py-2 bg-gray-800 cursor-pointer hover:bg-gray-700 transition-colors"
+      class="flex items-center gap-2 px-3 py-2 bg-pth-surface cursor-pointer hover:bg-pth-surface-hover transition-colors"
       @click="expanded = !expanded"
     >
-      <span class="flex-1 text-white text-sm font-semibold truncate">{{ gameName }}</span>
-      <span class="text-gray-300 text-xs w-16 text-center">{{ playerCount }}/{{ maxPlayers }}</span>
+      <span class="w-2/5 min-w-0 text-pth-text text-sm font-semibold truncate">{{ gameName }}</span>
+      <span class="text-pth-text-secondary text-xs w-14 text-center">{{ playerCount }}/{{ maxPlayers }}</span>
       <GameModeIcon :game-mode="gameData.gameMode" />
       <GameTypeIcon :game-type="gameData.gameInfo?.netGameType" />
       <PrivateIcon :is-private="gameData.isPrivate" />
       <SpectatorIcon :allow-spectators="gameData.gameInfo?.allowSpectators" :count="spectatorCount" />
-      <span class="text-gray-400 text-xs w-20 text-center">
+      <span class="text-pth-muted text-xs w-24 text-center">
         {{ gameData.gameInfo?.playerActionTimeout }}s/{{ gameData.gameInfo?.delayBetweenHands }}s
       </span>
       <svg
-        class="w-4 h-4 text-gray-400 transition-transform"
+        class="w-4 h-4 text-pth-muted transition-transform"
         :class="{ 'rotate-180': expanded }"
         fill="none" viewBox="0 0 24 24" stroke="currentColor"
       >
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Expanded details -->
-    <div v-if="expanded" class="bg-gray-900 px-3 py-2 space-y-2">
+    <div v-if="expanded" class="bg-pth-elevated px-3 py-2 space-y-2">
       <ul class="space-y-1">
         <li v-for="pid in gameData.playerIds" :key="pid">
           <PlayerAvatar :player-id="pid" />
@@ -32,7 +32,7 @@
       </ul>
       <GameInfoTable :game-info="gameData.gameInfo" />
       <button
-        class="mt-2 px-4 py-1.5 rounded bg-poker-green hover:bg-green-700 text-white text-sm font-semibold"
+        class="mt-2 px-4 py-1.5 rounded bg-pth-accent hover:bg-pth-accent-hover text-white text-sm font-semibold"
         @click="$emit('spectate', gameId)"
       >
         Spectate

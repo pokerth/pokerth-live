@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen flex flex-col bg-poker-dark text-white">
+  <div class="h-screen flex flex-col bg-pth-base text-pth-text">
     <LoginDialog v-if="!connected" :visible="!connected" />
     <template v-else>
       <router-view />

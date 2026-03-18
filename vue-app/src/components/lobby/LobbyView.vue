@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full bg-poker-dark">
+  <div class="flex flex-col h-full bg-pth-base">
     <LobbyStatusBar />
     <LobbyTabs v-model:active-tab="activeTab" class="px-4 pt-3" />
     <div class="flex-1 overflow-hidden px-4 py-3">

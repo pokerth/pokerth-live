@@ -1,12 +1,12 @@
 <template>
-  <nav class="flex gap-1 bg-gray-900 p-1 rounded">
+  <nav class="flex gap-1 bg-pth-elevated p-1 rounded">
     <button
       v-for="tab in tabs"
       :key="tab.id"
       class="px-4 py-2 rounded text-sm font-semibold transition-colors"
       :class="activeTab === tab.id
-        ? 'bg-poker-border text-white'
-        : 'text-gray-400 hover:text-white hover:bg-gray-800'"
+        ? 'bg-pth-accent text-white'
+        : 'text-pth-text-secondary hover:text-pth-text hover:bg-pth-surface'"
       @click="$emit('update:activeTab', tab.id)"
     >
       {{ tab.label }}

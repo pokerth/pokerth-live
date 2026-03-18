@@ -1,9 +1,9 @@
 <template>
   <div class="absolute" :style="positionStyle">
-    <span class="text-poker-pot font-bold" :style="{ fontSize: fontSize + 'px' }">
+    <span class="text-pth-pot font-bold" :style="{ fontSize: fontSize + 'px' }">
       Bets: ${{ betsSum }}
     </span>
-    <span class="ml-6 text-poker-pot font-bold" :style="{ fontSize: fontSize + 'px' }">
+    <span class="ml-6 text-pth-pot font-bold" :style="{ fontSize: fontSize + 'px' }">
       Total: ${{ totalPot }}
     </span>
   </div>

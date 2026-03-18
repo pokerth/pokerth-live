@@ -1,17 +1,17 @@
 <template>
   <div v-if="visible" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-    <div class="bg-poker-dark border border-poker-border rounded-lg shadow-xl w-full max-w-md">
-      <div class="bg-poker-border rounded-t-lg px-6 py-3">
+    <div class="bg-pth-surface border border-pth-border rounded-lg shadow-xl w-full max-w-md">
+      <div class="rounded-t-lg px-6 py-3" style="background: linear-gradient(to right, var(--pth-grad-start), var(--pth-grad-end));">
         <h1 class="text-white text-lg font-bold">Login</h1>
       </div>
       <div class="p-6 space-y-4">
         <div class="flex gap-4">
-          <label class="flex items-center gap-2 text-white cursor-pointer">
-            <input type="radio" v-model="loginMode" value="guest" class="accent-poker-gold" />
+          <label class="flex items-center gap-2 text-pth-text cursor-pointer">
+            <input type="radio" v-model="loginMode" value="guest" class="accent-pth-gold" />
             Guest
           </label>
-          <label class="flex items-center gap-2 text-white cursor-pointer">
-            <input type="radio" v-model="loginMode" value="registered" class="accent-poker-gold" />
+          <label class="flex items-center gap-2 text-pth-text cursor-pointer">
+            <input type="radio" v-model="loginMode" value="registered" class="accent-pth-gold" />
             Registered
           </label>
         </div>
@@ -21,24 +21,24 @@
             v-model="username"
             type="text"
             placeholder="Username"
-            class="w-full px-3 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-poker-gold focus:outline-none"
+            class="w-full px-3 py-2 rounded bg-pth-surface text-pth-text border border-pth-border focus:border-pth-gold focus:outline-none"
           />
           <input
             v-model="password"
             type="password"
             placeholder="Password"
             autocomplete="off"
-            class="w-full px-3 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-poker-gold focus:outline-none"
+            class="w-full px-3 py-2 rounded bg-pth-surface text-pth-text border border-pth-border focus:border-pth-gold focus:outline-none"
             @keydown.enter="doLogin"
           />
         </div>
 
-        <p class="text-gray-400 text-sm italic">Login may take some time, please be patient ...</p>
+        <p class="text-pth-muted text-sm italic">Login may take some time, please be patient ...</p>
 
         <div class="flex items-center gap-4">
           <button
             :disabled="connecting"
-            class="px-6 py-2 rounded bg-poker-border hover:bg-poker-border-light text-white font-semibold disabled:opacity-50"
+            class="px-6 py-2 rounded bg-pth-accent hover:bg-pth-accent-hover text-white font-semibold disabled:opacity-50"
             @click="doLogin"
           >
             Login
@@ -49,7 +49,7 @@
           href="https://pokerth.net/ucp.php?mode=register"
           target="_blank"
           rel="noopener"
-          class="block text-poker-gold text-sm hover:underline"
+          class="block text-pth-accent text-sm hover:underline"
         >
           Create your PokerTH gaming account ...
         </a>

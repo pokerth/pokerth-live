@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col h-full bg-black">
     <!-- Game title -->
-    <div class="px-4 py-1 bg-gray-900 text-white text-sm font-semibold truncate flex items-center gap-2">
+    <div class="px-4 py-1 text-white text-sm font-semibold truncate flex items-center gap-2" style="background: linear-gradient(to right, var(--pth-grad-start), var(--pth-grad-end));">
       <button
-        class="flex items-center gap-1 text-gray-300 hover:text-white transition-colors"
+        class="flex items-center gap-1 text-white/70 hover:text-white transition-colors"
         title="Zurück zur Lobby"
         @click="onLeaveGame"
       >

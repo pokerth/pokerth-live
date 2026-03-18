@@ -1,0 +1,97 @@
+/*
+ * PokerTH Live – Farbpalette
+ * =============================
+ * Zentrale Datei für ALLE Farben der Anwendung.
+ * Basierend auf dem originalen pokerth.net Farbschema
+ * (Milk v2 Theme + Titanium Preset + fd_dark)
+ *
+ * Theme-Umschaltung:
+ *   data-theme="dark"  (Standard — entspricht pokerth.net)
+ *   data-theme="light"
+ *   auf dem <html>-Element.
+ *
+ * Anpassung:
+ *   - Poker-Farben (Tisch, Buttons):  unter ":root" ändern
+ *   - UI-Farben je Theme:             unter "[data-theme=…]" ändern
+ */
+
+/* ─────────────────────────────────────────────
+   Poker-spezifische Farben (theme-unabhängig)
+   ───────────────────────────────────────────── */
+:root {
+  --pth-green:           #056F05;  /* Pokertisch-Filz */
+  --pth-green-hover:     #048a04;  /* Pokertisch-Filz Hover */
+  --pth-brown:           #431907;  /* Tischrand / Akzent-Buttons */
+  --pth-brown-hover:     #67270B;  /* Akzent-Button Hover */
+  --pth-gold:            #FFD700;  /* Gold-Akzente (Titel, Links) */
+  --pth-pot:             #5FC35F;  /* Pot-Anzeige Grün */
+}
+
+/* ─────────────────────────────────────────────
+   Dark Theme (Standard) — pokerth.net Farben
+   Milk v2 + Titanium + fd_dark
+   ───────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Hintergründe (aus dark.css) */
+  --pth-base:            #101216;  /* html — tiefster Hintergrund */
+  --pth-elevated:        #171b24;  /* Dunkle Panels (#inner-wrap, codebox) */
+  --pth-surface:         #242a36;  /* Helle Panels (navbar, forabg, li.row) */
+  --pth-surface-alt:     #283048;  /* Gradient-Endfarbe / Sekundär */
+  --pth-surface-hover:   #2e3545;  /* Hover auf Panels */
+
+  /* Akzent (Titanium Preset) */
+  --pth-accent:          #859398;  /* Primärer Akzent (Links, aktive Tabs) */
+  --pth-accent-hover:    #9cacb2;  /* Akzent Hover */
+
+  /* Gradient (Header) */
+  --pth-grad-start:      #859398;
+  --pth-grad-end:        #283048;
+
+  /* Text (aus dark.css) */
+  --pth-text:            #cccccc;  /* High-contrast Text */
+  --pth-text-secondary:  #838b98;  /* Subtle text (body, labels) */
+  --pth-text-muted:      #838b98;  /* Gedämpft (gleich subtle) */
+  --pth-text-dimmed:     #5a6270;  /* Stark gedämpft */
+  --pth-text-inverse:    #101216;  /* Inverser Text */
+  --pth-text-danger:     #BC2A4D;  /* Fehler (aus colours.css .error) */
+  --pth-text-cash:       #fde047;  /* Cash-Beträge */
+
+  /* Rahmen */
+  --pth-border:          rgba(255,255,255,0.1);  /* Standard (dark theme pattern) */
+  --pth-border-subtle:   rgba(255,255,255,0.05); /* Dezent */
+}
+
+/* ─────────────────────────────────────────────
+   Light Theme
+   (Basierend auf Milk v2 Grundfarben ohne fd_dark)
+   ───────────────────────────────────────────── */
+[data-theme="light"] {
+  /* Hintergründe (base.css defaults) */
+  --pth-base:            #ffffff;  /* body background */
+  --pth-elevated:        #f0f1f3;  /* Helle Panels */
+  --pth-surface:         #e1ebf2;  /* Jumpbox-forum bg / Karten */
+  --pth-surface-alt:     #d6dce2;  /* Sekundär */
+  --pth-surface-hover:   #cdd5dc;  /* Hover */
+
+  /* Akzent (Titanium) */
+  --pth-accent:          #859398;
+  --pth-accent-hover:    #6b7d83;
+
+  /* Gradient */
+  --pth-grad-start:      #859398;
+  --pth-grad-end:        #283048;
+
+  /* Text (base.css body color) */
+  --pth-text:            #333333;  /* Primärtext */
+  --pth-text-secondary:  #536482;  /* Details dd (colours.css) */
+  --pth-text-muted:      #777777;  /* icon-gray */
+  --pth-text-dimmed:     #999999;  /* icon-lightgray */
+  --pth-text-inverse:    #ffffff;
+  --pth-text-danger:     #BC2A4D;
+  --pth-text-cash:       #92400e;
+
+  /* Rahmen */
+  --pth-border:          #cccccc;  /* colours.css jumpbox border */
+  --pth-border-subtle:   #e1ebf2;
+}

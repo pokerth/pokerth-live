@@ -5,7 +5,7 @@
         v-model="searchQuery"
         type="text"
         placeholder="Search players ..."
-        class="w-full px-3 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-poker-gold focus:outline-none text-sm"
+        class="w-full px-3 py-2 rounded bg-pth-surface text-pth-text border border-pth-border focus:border-pth-gold focus:outline-none text-sm"
       />
     </div>
     <ul class="flex-1 overflow-y-auto">
@@ -15,7 +15,7 @@
         :player-id="player.playerId"
         @spectate="$emit('spectate', $event)"
       />
-      <li v-if="filteredPlayers.length === 0" class="p-4 text-gray-500 text-sm italic">
+      <li v-if="filteredPlayers.length === 0" class="p-4 text-pth-dimmed text-sm italic">
         No players found.
       </li>
     </ul>

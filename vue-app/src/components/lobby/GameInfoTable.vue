@@ -1,5 +1,5 @@
 <template>
-  <table class="w-full text-xs text-gray-300">
+  <table class="w-full text-xs text-pth-text-secondary">
     <tr>
       <td class="text-right pr-2 whitespace-nowrap">Start cash:</td>
       <td class="font-bold">${{ gameInfo.startMoney }}</td>

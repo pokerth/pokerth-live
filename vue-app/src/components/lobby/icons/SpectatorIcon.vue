@@ -1,7 +1,7 @@
 <template>
-  <span class="w-10 text-center flex items-center gap-1" :title="title">
+  <span class="w-20 text-center flex items-center justify-center gap-1" :title="title">
     <img :src="src" :alt="title" class="w-5 h-5 inline-block" />
-    <span class="text-gray-300 text-xs">{{ count }}</span>
+    <span class="text-pth-text-secondary text-xs">{{ count }}</span>
   </span>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-full">
-    <div ref="chatArea" class="flex-1 overflow-y-auto bg-gray-900 rounded">
+    <div ref="chatArea" class="flex-1 overflow-y-auto bg-pth-elevated rounded">
       <ChatMessage
         v-for="(msg, idx) in messages"
         :key="idx"
@@ -8,7 +8,7 @@
         :player-id="msg.playerId"
         :text="msg.text"
       />
-      <div v-if="messages.length === 0" class="p-4 text-gray-500 text-sm italic">
+      <div v-if="messages.length === 0" class="p-4 text-pth-dimmed text-sm italic">
         No messages yet.
       </div>
     </div>

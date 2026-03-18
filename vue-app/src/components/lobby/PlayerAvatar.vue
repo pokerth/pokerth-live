@@ -3,9 +3,9 @@
     <img
       :src="avatarUrl"
       :alt="playerName"
-      class="w-8 h-8 rounded-full object-cover bg-gray-700"
+      class="w-8 h-8 rounded-full object-cover bg-pth-surface-alt"
     />
-    <span class="text-white text-sm truncate">{{ playerName }}</span>
+    <span class="text-pth-text text-sm truncate">{{ playerName }}</span>
   </div>
 </template>
 
