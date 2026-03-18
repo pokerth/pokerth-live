@@ -22,10 +22,11 @@ const props = defineProps({
   visible: { type: Boolean, default: true },
   transparent: { type: Boolean, default: false },
   zIndex: { type: Number, default: 6 },
+  canvasHeight: { type: Number, default: 0 },
 })
 
 const cardSrc = computed(() => {
-  if (props.faceUp && props.cardValue != null) return getCardSrcPath(props.cardValue)
+  if (props.faceUp && props.cardValue != null) return getCardSrcPath(props.cardValue, props.canvasHeight)
   return getCardSrcPath('flipside')
 })
 

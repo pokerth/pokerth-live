@@ -10,6 +10,7 @@
       :height="cardHeight"
       :visible="visible"
       :transparent="card1Transparent"
+      :canvas-height="canvasHeight"
     />
     <CardImage
       :card-value="card2Value"
@@ -20,6 +21,7 @@
       :height="cardHeight"
       :visible="visible"
       :transparent="card2Transparent"
+      :canvas-height="canvasHeight"
     />
   </div>
 </template>

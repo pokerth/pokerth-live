@@ -27,6 +27,15 @@ function buildAvatarFileName(playerInfoData) {
 }
 
 export const useGameCacheStore = defineStore('gameCache', () => {
+  // Helper: convert protobuf repeated fields to real JS arrays
+  function toArray(val) {
+    if (!val) return []
+    if (Array.isArray(val)) return val
+    const arr = []
+    for (let i = 0; i < val.length; i++) arr.push(val[i])
+    return arr
+  }
+
   // --- Game data ---
   const gameDataMap = reactive({})
   // --- Player data ---
@@ -49,13 +58,12 @@ export const useGameCacheStore = defineStore('gameCache', () => {
 
   // --- Game data methods ---
   function addGameData(data) {
-    gameDataMap[data.gameId] = {
-      ...data,
-      playerIds: data.playerIds || [],
-      spectatorIds: data.spectatorIds || [],
-      playerSeats: [],
-      spectatorSeats: [],
-    }
+    // Convert protobuf repeated fields to real arrays
+    data.playerIds = toArray(data.playerIds)
+    data.spectatorIds = toArray(data.spectatorIds)
+    data.playerSeats = []
+    data.spectatorSeats = []
+    gameDataMap[data.gameId] = data
   }
 
   function getGameData(gameId) {
@@ -70,11 +78,10 @@ export const useGameCacheStore = defineStore('gameCache', () => {
   function addPlayerData(data) {
     const existing = playerDataMap[data.playerId]
     const avatarFileName = buildAvatarFileName(data.playerInfoData)
-    playerDataMap[data.playerId] = {
-      ...data,
-      avatarFileName,
-      gameValues: existing?.gameValues || data.gameValues,
-    }
+    // Store directly, preserve protobuf sub-message objects
+    data.avatarFileName = avatarFileName
+    data.gameValues = existing?.gameValues || data.gameValues
+    playerDataMap[data.playerId] = data
   }
 
   function getPlayerData(pid) {

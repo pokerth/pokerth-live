@@ -10,6 +10,7 @@
       :width="cardWidth"
       :height="cardHeight"
       :visible="card.visible"
+      :canvas-height="canvasHeight"
     />
     <!-- Card holder placeholders on canvas layer 5 -->
     <div

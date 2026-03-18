@@ -41,10 +41,16 @@ const playerName = computed(() =>
   playerData.value?.playerInfoData?.playerName || `id${props.playerId}`
 )
 
+function arrContains(arr, val) {
+  if (!arr) return false
+  for (let i = 0; i < arr.length; i++) { if (arr[i] === val) return true }
+  return false
+}
+
 const gameInfo = computed(() => {
-  for (const [gameId, gd] of store.gameDataMap.entries()) {
-    if (gd.playerIds?.includes(props.playerId) || gd.spectatorIds?.includes(props.playerId)) {
-      return { gameName: gd.gameInfo?.gameName?.replace(/<[^>]*>/g, '') || `Game ${gameId}`, gameId }
+  for (const [gameId, gd] of Object.entries(store.gameDataMap)) {
+    if (arrContains(gd.playerIds, props.playerId) || arrContains(gd.spectatorIds, props.playerId)) {
+      return { gameName: gd.gameInfo?.gameName?.replace(/<[^>]*>/g, '') || `Game ${gameId}`, gameId: Number(gameId) }
     }
   }
   return null
@@ -53,7 +59,7 @@ const gameInfo = computed(() => {
 const isSpectator = computed(() => {
   if (!gameInfo.value) return false
   const gd = store.getGameData(gameInfo.value.gameId)
-  return gd?.spectatorIds?.includes(props.playerId)
+  return arrContains(gd?.spectatorIds, props.playerId)
 })
 
 const spectateGameId = computed(() => gameInfo.value?.gameId)

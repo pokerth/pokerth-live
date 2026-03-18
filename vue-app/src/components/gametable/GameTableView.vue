@@ -1,8 +1,17 @@
 <template>
   <div class="flex flex-col h-full bg-black">
     <!-- Game title -->
-    <div class="px-4 py-1 bg-gray-900 text-white text-sm font-semibold truncate">
-      {{ gameTitleName }}
+    <div class="px-4 py-1 bg-gray-900 text-white text-sm font-semibold truncate flex items-center gap-2">
+      <button
+        class="flex items-center gap-1 text-gray-300 hover:text-white transition-colors"
+        title="Zurück zur Lobby"
+        @click="onLeaveGame"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <span class="truncate">{{ gameTitleName }}</span>
     </div>
 
     <!-- Game area container -->

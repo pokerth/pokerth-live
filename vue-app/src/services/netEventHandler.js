@@ -222,8 +222,9 @@ function handleMsgGameListNew(gameListNew) {
   markInitialLobbyUpdateMsg()
   if (isOfficialServer) {
     store.addGameData(gameListNew)
-    for (const pid of (gameListNew.playerIds || [])) {
-      requestPlayerInfo(pid)
+    const pids = gameListNew.playerIds || []
+    for (let i = 0; i < pids.length; i++) {
+      requestPlayerInfo(pids[i])
     }
   }
 }
@@ -249,7 +250,9 @@ function handleMsgGameListPlayerJoined(msg) {
 function handleMsgGameListPlayerLeft(msg) {
   const gd = store.getGameData(msg.gameId)
   if (gd && gd.playerIds) {
-    gd.playerIds = gd.playerIds.filter(id => id !== msg.playerId)
+    gd.playerIds = Array.isArray(gd.playerIds)
+      ? gd.playerIds.filter(id => id !== msg.playerId)
+      : []
   }
 }
 
@@ -265,7 +268,9 @@ function handleMsgGameListSpectatorJoined(msg) {
 function handleMsgGameListSpectatorLeft(msg) {
   const gd = store.getGameData(msg.gameId)
   if (gd && gd.spectatorIds) {
-    gd.spectatorIds = gd.spectatorIds.filter(id => id !== msg.playerId)
+    gd.spectatorIds = Array.isArray(gd.spectatorIds)
+      ? gd.spectatorIds.filter(id => id !== msg.playerId)
+      : []
   }
 }
 
