@@ -1,35 +1,5 @@
-# PokerTH live
+# Vue 3 + Vite
 
-PokerTH live - Spectator tool
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Installation
-
-You need [git](https://git-scm.com/) and [Node.js](https://nodejs.org/) in order to clone and build the project.
-
-Use git clone from Master branch.
-
-```bash
-git clone https://github.com/pokerth/pokerth-live.git
-```
-
-Now install neccesary dependencies.
-
-```bash
-npm install
-```
-
-Time to compile pokerTH live.
-```bash
-npm run prod
-```
-
-## Configuration
-
-Change the websocket ip:port in the following file "/inc/net/neteventhandler.js"  
-
-*If you run your own server, check in your server side "~/.pokerth/config.xml" for the corresponding values to edit there.
-
-*If you just want connect to pokerth.net gameserver, inspect html/js code at https://live.pokerth.net/ to know the websocket ip:port used.
-
-## License
-GNU Affero General Public License
+Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
