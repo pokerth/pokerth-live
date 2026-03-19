@@ -1,0 +1,42 @@
+@import "./styles/colors.css";
+@import "tailwindcss";
+
+@theme {
+  /* Poker-spezifisch (theme-unabhängig) */
+  --color-pth-green: var(--pth-green);
+  --color-pth-green-hover: var(--pth-green-hover);
+  --color-pth-brown: var(--pth-brown);
+  --color-pth-brown-hover: var(--pth-brown-hover);
+  --color-pth-gold: var(--pth-gold);
+  --color-pth-pot: var(--pth-pot);
+
+  /* Akzent (Titanium) */
+  --color-pth-accent: var(--pth-accent);
+  --color-pth-accent-hover: var(--pth-accent-hover);
+
+  /* Theme-abhängige Farben */
+  --color-pth-base: var(--pth-base);
+  --color-pth-elevated: var(--pth-elevated);
+  --color-pth-surface: var(--pth-surface);
+  --color-pth-surface-alt: var(--pth-surface-alt);
+  --color-pth-surface-hover: var(--pth-surface-hover);
+
+  --color-pth-text: var(--pth-text);
+  --color-pth-text-secondary: var(--pth-text-secondary);
+  --color-pth-text-muted: var(--pth-text-muted);
+  --color-pth-text-dimmed: var(--pth-text-dimmed);
+  --color-pth-text-inverse: var(--pth-text-inverse);
+  --color-pth-text-danger: var(--pth-text-danger);
+  --color-pth-text-cash: var(--pth-text-cash);
+
+  --color-pth-border: var(--pth-border);
+  --color-pth-border-subtle: var(--pth-border-subtle);
+}
+
+body {
+  @apply bg-pth-base text-pth-text m-0 p-0 font-sans;
+}
+
+a {
+  @apply text-pth-accent hover:text-pth-accent-hover no-underline;
+}

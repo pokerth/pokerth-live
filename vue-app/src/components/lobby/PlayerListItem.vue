@@ -1,0 +1,67 @@
+<template>
+  <li class="flex items-center gap-3 py-2 px-3 hover:bg-pth-surface rounded cursor-default">
+    <PlayerAvatar :player-id="playerId" />
+    <div class="flex-1 min-w-0">
+      <h3 class="text-pth-text text-sm font-semibold truncate leading-tight">{{ playerName }}</h3>
+      <p class="text-xs truncate leading-tight mt-0.5">
+        <template v-if="gameInfo">
+          <span class="text-pth-muted">{{ isSpectator ? 'Watching' : 'Playing at' }}:</span>
+          <span class="text-pth-accent"> {{ gameInfo.gameName }}</span>
+        </template>
+        <template v-else>
+          <span class="text-pth-green italic">Currently idle</span>
+        </template>
+      </p>
+    </div>
+    <button
+      v-if="gameInfo && !isSpectator"
+      class="ml-auto shrink-0 px-3 py-1 text-xs rounded bg-pth-accent hover:bg-pth-accent-hover text-white whitespace-nowrap"
+      @click="$emit('spectate', spectateGameId)"
+    >
+      Spectate
+    </button>
+  </li>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+import { useGameCacheStore } from '@/stores'
+import PlayerAvatar from './PlayerAvatar.vue'
+
+const props = defineProps({
+  playerId: { type: Number, required: true }
+})
+
+defineEmits(['spectate'])
+
+const store = useGameCacheStore()
+
+const playerData = computed(() => store.getPlayerData(props.playerId))
+
+const playerName = computed(() =>
+  playerData.value?.playerInfoData?.playerName || `id${props.playerId}`
+)
+
+function arrContains(arr, val) {
+  if (!arr) return false
+  for (let i = 0; i < arr.length; i++) { if (arr[i] === val) return true }
+  return false
+}
+
+const gameInfo = computed(() => {
+  for (const [gameId, gd] of Object.entries(store.gameDataMap)) {
+    if (arrContains(gd.playerIds, props.playerId) || arrContains(gd.spectatorIds, props.playerId)) {
+      return { gameName: gd.gameInfo?.gameName?.replace(/<[^>]*>/g, '') || `Game ${gameId}`, gameId: Number(gameId) }
+    }
+  }
+  return null
+})
+
+const isSpectator = computed(() => {
+  if (!gameInfo.value) return false
+  const gd = store.getGameData(gameInfo.value.gameId)
+  return arrContains(gd?.spectatorIds, props.playerId)
+})
+
+const spectateGameId = computed(() => gameInfo.value?.gameId)
+</script>
