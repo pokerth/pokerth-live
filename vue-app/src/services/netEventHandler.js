@@ -283,8 +283,9 @@ function handleMsgPlayerList(playerList) {
   if (playerList.playerListNotification === PlayerListNotification.playerListNew) {
     markInitialLobbyUpdateMsg()
     requestPlayerInfo(playerList.playerId)
+  } else if (playerList.playerListNotification === PlayerListNotification.playerListLeft) {
+    store.removePlayerData(playerList.playerId)
   }
-  // playerListLeft handled reactively via store
 }
 
 function handleMsgPlayerInfoReply(playerInfoReply) {

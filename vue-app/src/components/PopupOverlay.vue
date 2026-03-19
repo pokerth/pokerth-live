@@ -8,7 +8,7 @@
         <div class="p-6 space-y-4">
           <div class="text-pth-text text-sm" v-html="popup.message" />
           <div v-if="popup.type === 'loading' || popup.type === 'wait'" class="flex justify-center">
-            <div class="w-8 h-8 border-4 border-pth-gold border-t-transparent rounded-full animate-spin" />
+            <div class="w-8 h-8 border-4 border-pth-green border-t-transparent rounded-full animate-spin" />
           </div>
           <button
             v-if="popup.buttonText"

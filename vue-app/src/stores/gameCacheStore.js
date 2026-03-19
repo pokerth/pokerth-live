@@ -125,6 +125,10 @@ export const useGameCacheStore = defineStore('gameCache', () => {
     return playerDataMap[pid]
   }
 
+  function removePlayerData(pid) {
+    delete playerDataMap[pid]
+  }
+
   function hasPlayerData(pid) {
     return pid in playerDataMap && playerDataMap[pid]?.playerInfoData !== undefined
   }
@@ -333,6 +337,7 @@ export const useGameCacheStore = defineStore('gameCache', () => {
     // Player data
     addPlayerData,
     getPlayerData,
+    removePlayerData,
     hasPlayerData,
     hasPlayerCards,
     setPlayerResult,

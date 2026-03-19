@@ -5,9 +5,10 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
-  publicDir: 'static',
+  publicDir: false,
   build: {
-    outDir: 'public',
+    outDir: '../',
+    emptyOutDir: false,
   },
   plugins: [vue()],
   resolve: {
