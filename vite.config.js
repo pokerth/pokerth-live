@@ -7,8 +7,8 @@ export default defineConfig({
   base: './',
   publicDir: false,
   build: {
-    outDir: '.',
-    emptyOutDir: false,
+    outDir: 'dist',
+    emptyOutDir: true,
   },
   plugins: [vue()],
   resolve: {

@@ -1,11 +1,11 @@
 {
-  "name": "vue-app",
+  "name": "pokerth-live",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "cp src/index.html index.html && vite build && cp -r dist/assets . && cp dist/index.html . && rm -rf dist",
     "preview": "vite preview"
   },
   "dependencies": {
