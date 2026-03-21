@@ -141,8 +141,11 @@ export const useGameCacheStore = defineStore('gameCache', () => {
   function setPlayerResult(playerResult) {
     const pd = playerDataMap[playerResult.playerId]
     if (!pd) return
-    pd.gameValues.myCard1 = playerResult.resultCard1
-    pd.gameValues.myCard2 = playerResult.resultCard2
+    // Only reveal cards for players who have not folded
+    if (pd.gameValues.myAction !== 1) {
+      pd.gameValues.myCard1 = playerResult.resultCard1
+      pd.gameValues.myCard2 = playerResult.resultCard2
+    }
     pd.gameValues.myCash = playerResult.playerMoney
     pd.gameValues.moneyWon = playerResult.moneyWon
     pd.gameValues.bestHandPosition = toArray(playerResult.bestHandPosition)
